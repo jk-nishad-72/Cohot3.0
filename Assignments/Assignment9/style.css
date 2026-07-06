@@ -12,6 +12,25 @@
       
       
 }
+
+@font-face {
+    font-family:aonikLight ;
+    font-weight: 200;
+    src: url('./fonts/AeonikTRIAL-Light.otf');
+}
+
+
+@font-face {
+    font-family:aonikRegular ;
+    font-weight: 500;
+    src: url('./fonts/AeonikTRIAL-Regular.otf');
+}
+
+@font-face {
+    font-family:aonikBold ;
+    font-weight: 700;
+    src: url('./fonts/AeonikTRIAL-Bold.otf');
+}
 *{
     margin:0%;
     padding:0%;
@@ -151,7 +170,75 @@ main{
     -webkit-backdrop-filter: blur(10px);
    
      border-radius: var(--borderRadius);
+
+     color: var(--white);
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+
+     cursor: pointer;
+     
 }
+
+.DateAndTime{
+    width: 67%;
+    height:100%;
+    padding: 1rem;
+    display: flex;
+    justify-content:center;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+    
+}
+
+.DateAndTime>h1{
+
+    font-family: aonikRegular;
+    font-size: 2.7rem;
+}
+
+
+.DateAndTime h2{
+    font-family: aonikLight;
+    font-size: 1rem;
+}
+
+.DateAndTime .city{
+
+     font-family: aonikLight;
+    font-size: 1.2rem;
+}
+.DateAndTime .city>span{
+    text-transform: uppercase;
+}
+
+.wether{ 
+
+    
+    width: 33%;
+    height:100% ;
+    padding: 1rem;
+    display: flex;
+    justify-content:center;
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wether h2 , h4 {
+
+    font-family: aonikRegular;
+    font-size: 2rem;
+
+}
+.wether>h3 {
+
+    font-family: aonikLight;
+    font-size: .8rem;
+
+}
+
 
 
 
@@ -190,12 +277,12 @@ main{
 
     width: 100%;
     height: 25%;
-    background: #111;
+    background: transparent;
     border-radius: 50%; 
     cursor: pointer;
     overflow: hidden;
    
-
+    position: relative;
     transition: all .4s ease-in-out;
     
 }
@@ -214,6 +301,28 @@ main{
     object-fit: cover;
 }
 
+.feature>h3{
+    width: 100%;
+    height:100% ;
+    font-family: aonikLight;
+    color: var(--white);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    
+
+    text-transform: uppercase;
+    background:transparent;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 20000;
+
+}
+
 .feature>video{
     width: 100%;
     height:100% ;
@@ -222,10 +331,7 @@ main{
 }
 
 .moti img{
-
-
     background-position: center center;
-
 }
 
 /* Full Elems  */
@@ -250,6 +356,8 @@ main{
 }
 
 .fullElem>h1{
+
+     
     display: none;
     width: 100%;
     height:10% ;
