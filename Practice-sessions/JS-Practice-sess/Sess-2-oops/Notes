@@ -1,0 +1,47 @@
+# 🚀 JavaScript OOP Practice — Session 2
+
+This repository contains hands-on practice questions and solutions for mastering **Object-Oriented Programming (OOP) in JavaScript**.
+
+## 📌 Topics Covered
+
+### 🟢 Easy Level
+
+* Understanding `this` in objects
+* Default binding
+* `call()` for explicit binding
+* `apply()` with arguments
+
+### 🟡 Moderate Level
+
+* Fixing lost `this` using `bind()`
+* Prototypal inheritance (`Object.create`, `__proto__`)
+* Constructor functions & prototype methods
+
+### 🔴 Hard Level
+
+* ES6 Classes (Student grading system)
+* Inheritance (Employee → Developer)
+* Encapsulation using private fields (`#balance` in BankAccount)
+
+### 🎯 Bonus Challenge
+
+* 📚 Library Management System
+
+  * Add books
+  * Borrow / Return books
+  * Track availability
+
+## 💡 Key Learnings
+
+* Deep understanding of how `this` works in JS
+* Difference between function binding methods
+* Real-world use of OOP concepts
+* Writing scalable and reusable code
+
+## 🔗 Repository Link
+
+https://github.com/jk-nishad-72/Cohot3.0/tree/main/Practice-sessions/JS-Practice-sess/Sess-2-oops
+
+---
+
+⭐ If you found this helpful, consider giving it a star!

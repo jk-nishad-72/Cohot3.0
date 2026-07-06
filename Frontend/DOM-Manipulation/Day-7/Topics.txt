@@ -1,0 +1,25 @@
+
+// web Storage 
+
+/*
+*
+1) localStorage 
+
+.setItem
+.getItem
+*
+/
+
+/* JSON 
+*--> JSON.stringify()
+*--> JSON.parse()
+*
+/
+
+
+
+/** Modify the e-commerce project with localStorage 
+ * 
+ */
+
+

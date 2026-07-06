@@ -1,0 +1,55 @@
+
+React Day - 3  
+
+
+//* Babel ->  is A transpilar that transpile the 
+
+   let rh1 = React.createElement('h1', {} , "hello")
+
+  
+   return rh1
+
+    //  or  both are same 
+
+
+  // return (
+  //   <div> 
+
+  //       <h1> Hello </h1>
+       
+  //   </div>
+  // )
+
+
+  //*JSX   => JS + XML(HTML)
+  //*Functional Components:-
+   Function That follow rules 
+   --> 1) the first latter of File should be capital
+   --> 2) the first latter of Function should be capital
+   --> 3) Function called as Element tag < App /> ✅ | App() ❌
+
+  //*Props  => properties ({} blank object)
+
+  const Navbar = ({nav}) => {
+
+    // console.log(props.nav);
+
+    //Or 
+
+    console.log(nav);  // by using  object destructuring 
+
+  return (
+    <div>Navbar</div>
+  )
+}
+
+
+//* During calling passing the properties 
+
+ {/* {  Navbar(   'Home')} */}
+
+       {/* or */}
+
+  <Navbar  nav ='Home'   />
+
+

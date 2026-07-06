@@ -1,0 +1,46 @@
+
+//*DOM MANIPULATION  IND DEEPER 
+
+// attributes vs properties 
+/*
+*setAttribute()
+*getAttribute()
+*removeAttribut()
+*hasAttribute()
+*
+* 
+*/
+1)
+//dataset -* 
+//input.value 
+
+// creating , inserting and removal of element from DOM
+
+/**
+ * 1) creating 
+ * creatElement('div)
+ * 
+ * 2) inserting 
+ * *Old APIs 
+ * -> appendChild()
+ * ->insertBefore()
+ * ->removeChild()
+ * 
+ * *New APIs
+ * ->append();
+ * ->prepend()
+ * ->after()
+ * ->Before();
+ * ->replaceWith(new)
+ * ->replaceChild(new , child)
+ */
+
+//creatin project - todo list (Practice Project)
+
+Tastk -> 1)make this via creatElement
+         2) complete the edit & delete Functionality
+         3) Don't use AI please 
+
+
+
+

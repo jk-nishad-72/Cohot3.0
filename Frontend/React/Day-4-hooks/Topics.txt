@@ -1,0 +1,31 @@
+
+
+revising previous concepts  and studyied and practices 
+
+React Day - 4 
+*) import and export  (data  are transefer between different components )
+
+#import -> dusre components se data(variables , components etc.) lana current component me :
+ => import with same name |
+ => import with different name  ya koi bhi name se  
+
+#export -> current component se data ko dusre component ke liye bhejna ya accessible bnana 
+
+=> export with default (this imported  with different name  ya koi bhi name se ) 
+=> export with const (this is imported with same name )
+
+hooks -  jo react ko React banati hai most importent topic 
+
+1)useState()  => variables ke jagah data ko store karne ke liye useState() ka use karte hai jo react provides karata hai 
+
+
+-> state   => initial value 
+-> setState() => setFunctions hai jo do kam krti hai 
+
+1) first update the state 
+2) apne parent component ko rerender karna 
+
+3) if state ki value and update karne wali value same hai to setFunctions update nahi karta hai 
+
+
+

@@ -1,0 +1,959 @@
+*:root{
+
+    --white:#fff;
+    --black:black;
+    --pri:#f8f9fb;
+    --border:#e5e7eb;
+    --lightBlue:#dbeafe;
+    --darkBlue:#1e40af;
+    --lightGreen:#dcfce7;
+    --darkGreen:#026d2b;
+    --lightRed:#fee2e2;
+    --darkRd:#a20000;
+
+    --heading:clamp(1rem ,2vw , 2rem );
+    --para: clamp(.7rem ,1vw, .9rem);
+    --buttonFontSize:clamp( .7rem , 1vw,1rem);
+    
+
+
+}
+
+/* 
+usefull css
+
+
+
+#addTrasactin{
+    width: 100%;
+    color: var(--white);   
+    background-color: var(--black);
+}
+
+*/
+*{
+    margin:0%;
+    padding:0%;
+    box-sizing:border-box;
+   font-family:sans-serif;
+    
+}
+
+
+
+html,body{
+     height:100%;
+     width: 100%;
+}
+
+main{
+
+     height:100%;
+     width: 100%;
+
+}
+
+.sec-1{
+
+
+     height:100%;
+     width: 100%;
+     background-color: var(--white);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     position: relative;
+
+     
+
+
+}
+.sec-1 .sidebar  i{
+    color: var(--black);
+    display: none;
+}
+
+
+/* Add Transaction section  */
+.sec-1 .transactioInputBox{
+
+     position: absolute;
+     height:100%;
+     width: 100%;
+     background-color: #00000088;
+     display: none;
+     justify-content: center;
+     align-items: center;
+     z-index: 100000;
+    
+}
+.transactioInputBox form{
+    
+     height:60%;
+     width: 26%;
+     background-color: var(--white);
+     border: 1px solid var(--border);
+     border-radius: .5rem;
+     display: flex;
+     justify-content: space-between;
+     flex-direction: column;
+     align-items: start;
+     padding: 1rem 1.5rem;
+     color: var(--black);
+
+     
+}
+.transactioInputBox form>h2{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  
+}
+
+.transactioInputBox .inpBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+   
+}
+#amountAndDateInpBox{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    
+}
+ #amoutBox  #dateBox{
+    width: 50%;
+
+}
+#saveBtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    background-color: var(--black);
+}
+
+/** for all input  */
+
+ 
+input , select{
+    font-size:var(--para);
+    padding: .6rem;
+    border-radius: .4rem;
+    color: var(--black);
+    border: 1px solid var(--border);
+    outline: none;
+    background-color: var(--pri);
+    width: 100%;
+}
+
+
+
+
+/**sidebar Styling start  */
+.sec-1 .sidebar{
+
+     height:100%;
+     width: 260px;
+     background-color: var(--white);
+     border: 1px solid var(--border);
+     padding: 1rem;
+} 
+.sec-1 .sidebar .sidebar-top{
+     height:11%;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     gap: 1rem;
+     
+     
+}
+.sec-1 .sidebar .sidebar-top .logo{
+    width: 40px;
+}
+.sec-1 .sidebar .sidebar-top .logoname>h2{
+
+   font-size: 1.2rem;
+   color: var(--black);
+
+}
+.sec-1 .sidebar .sidebar-top .logoname>p{
+
+   font-size: .8rem;
+   color: var(--black);
+   opacity: .90;
+   
+}
+
+
+.sec-1 .sidebar .sidebar-bottom{
+     height:calc(100% - 11% );
+     width: 100%;
+     padding: 2rem 0rem;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     flex-direction: column;
+     
+    
+
+}
+
+.sidebar-btm-top{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.sidebar-btm-bottom{
+    width: 100%;
+}
+
+
+/** All button Commen Style  */
+
+button{
+
+    padding:.7rem .5rem ;
+    font-size: var(--buttonFontSize);
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: .5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    opacity: .80;
+    color: var(--black);
+}
+
+#dashBtn{
+    width: 100%;
+    color: var(--darkBlue);   
+    background-color: var(--lightBlue);
+}
+
+#dashBtn:hover{
+    color: var(--darkBlue);   
+    background-color: var(--lightBlue);
+}
+
+#setBtn{
+    width: 100%;
+    background: none;
+}
+
+#setBtn:hover{
+   
+    color: var(--darkBlue);   
+    background-color: var(--lightBlue);
+}
+
+#addTrasactin{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);   
+    background-color: var(--black);
+}
+
+
+/**Sidebar  Styling end  */
+
+
+
+/**MainContent  Styling start  */
+
+.sec-1 .mainContent{
+     height:100%;
+     width: calc(100% - 260px);
+     background-color: var(--white);
+     position: relative;   
+}
+
+
+
+/**Navbar Styling start  */
+.sec-1 .mainContent nav{
+     height:70px;
+     width: 100%;
+     color: var(--black);
+     background-color: var(--white);
+     border-bottom: 1px solid var(--border);
+     display: flex;
+     justify-content:end;
+     padding: 1rem 1rem;
+     /* align-items: center; */
+}
+
+.sec-1 .mainContent nav .menuIcon{
+    display: none;
+}
+
+.sec-1 .mainContent nav .right{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-left: 1px solid var(--border);
+} 
+.sec-1 .mainContent nav .right>h3{
+    font-size: clamp(.7rem , 1.1vw ,1rem);
+}
+
+#logOutBtn{
+  background: none;
+  border: 1px solid var(--black);
+}
+
+/**Dashboard Styling start  */
+.sec-1 .mainContent .dashboard{
+
+     height:calc(100%  - 70px);
+     width: 100%;
+     padding: 1.5rem 2rem;
+     background-color: var(--pri);
+     display: flex;
+     align-items: center;
+     color: var(--black);
+     gap: 1.5rem;
+     overflow-y: auto;
+     flex-wrap: wrap;
+
+      /* justify-content: space-between; */
+     /* flex-direction: column; */
+}
+.sec-1 .mainContent .dashboard::-webkit-scrollbar{
+    display: none;
+}
+
+.sec-1 .mainContent .dashboard .heading{
+    width: 100%;
+}
+.sec-1 .mainContent .dashboard .heading>h1{
+     width: 100%;
+     font-size:var(--heading);
+}
+
+.sec-1 .mainContent .dashboard .heading p{
+    opacity: .60;
+    font-size:var(--para);
+}
+
+
+.sec-1 .mainContent .dashboard .features{
+    width: 100%;
+    height: 24%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+/**Featuer Card  */
+
+.feature{
+
+ width: 25%;
+ height: 100%;
+ display: flex;
+ justify-content: space-between;
+ align-items: start;
+ flex-direction: column;
+ background-color: var(--white);
+ padding: 1.4rem;
+ border-radius: .6rem;
+ border: 1px solid var(--border);
+
+}
+
+.feature h2{
+    font-size: var(--heading);
+}
+
+.feature p{
+    opacity: .70;
+    font-size: var(--para);
+}
+
+.feature .iconBox{
+
+     background-color: var(--lightBlue);
+     padding: .7rem;
+     border-radius: .4rem;
+
+}
+
+.feature .iconBox img {
+    width: 20px;
+    color: var(--darkBlue);
+}
+
+
+#totalIncome .iconBox{
+
+  background-color: var(--lightGreen);
+
+}
+#totalIncome>h2{
+  color: var(--darkGreen);
+}
+
+#totalExpense>h2{
+  color: var(--darkRd);
+
+}
+
+#totalExpense .iconBox{
+background-color: var(--lightRed);
+
+}
+
+#totalTransaction .iconBox{
+
+}
+
+/**chart And themeBox */
+
+.sec-1 .mainContent .dashboard .chartAndTheme{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 1rem;
+    
+}
+
+.chart{
+    width: 66%;
+    height: 100%;
+    padding: 1rem;
+    border-radius: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+
+}
+.chart .chartHeading{
+    width: 100%;
+    font-size: var(--heading);
+}
+
+.chart .chartArea{
+    width: 100%;
+    height:90% ;
+    background-color: var(--pri);
+    border-radius: .6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart .chartArea #chartBox{
+
+    width:100%;
+    height:100% ;
+   
+}
+
+
+.theme{
+    width: 34%;
+    border-radius: .6rem;
+    height: 60%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+
+}
+.theme>h2{
+    font-size: var(--heading);
+}
+
+.theme .themeMode{
+    width: 100%;
+    padding: 1rem 0rem;
+    display: flex;
+    border-bottom: 1px solid var(--border);
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--para);
+
+}
+
+.theme .themeMode .mode{
+    width: 55px;
+    height: 30px;
+    background-color: var(--lightBlue);
+    padding: .2rem;
+    border-radius: 2rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.theme .themeMode .mode i{
+    position: absolute;
+    top: 0;
+    font-size: 1.2rem;
+    border-radius: 50%;
+    padding: .2rem;
+    color: var(--black);
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--border);
+}
+
+.theme .themeMode .mode .dark{
+    display: flex;
+}
+
+.theme .themeMode .mode .light{
+    display: none;
+    
+}
+
+#resetBtn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--darkRd);
+    color: var(--darkRd);   
+    background-color: var(--lightRed);
+}
+
+
+/** All Transaction Container  */
+
+.sec-1 .mainContent .dashboard .summery{
+
+    width: 65%;
+    height:fit-content;
+    background-color: var(--darkBlue);
+    padding: 1rem;
+    border-radius: .6rem;
+    background-color: var(--white);
+    border: 1px solid var(--border);
+}
+
+.summery>h2{
+    font-size: var(--heading);
+}
+
+.searchAndFilter{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    
+}
+#searInpBox {
+    width: 40%;
+    position: relative;
+}
+#searInpBox input{
+    padding-left: 20%;
+}
+
+#searInpBox .search {
+    
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%); 
+}
+
+#filterInpBox{
+    width: 60%;
+}
+
+.summery .allSummery .allFields{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .2rem;
+    border-bottom: 1px solid var(--border);
+    gap: 1rem;
+    
+}
+.summery .allSummery .allFields>h4{
+
+    color: var(--black);
+    text-transform: uppercase;
+    font-size:var(--para);
+    opacity: .70;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+       
+}
+
+.summery .allTransactionContainer{
+    width: 100%;
+    height: fit-content;
+   
+}
+
+.record{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;   
+    gap: 1rem;
+}
+.record .r-date{
+    font-weight: 300;
+}
+
+.record h5{
+    width: 25%;
+    font-size: .9rem;
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.record .r-category{
+    background-color: var(--pri);
+    padding: .5rem;
+    border-radius: .5rem;
+    font-weight: 400;
+   
+}
+
+.record .Income{
+    color: var(--darkGreen);
+}
+.record .Income::before{
+    content: "+ ";
+}
+.record .Expense{
+
+    color: var(--darkRd);
+}
+.record .Expense::before{
+    content: "- ";
+}
+.record .r-icons{
+    gap: .5rem;
+}
+
+.record .edit {
+
+    color: var(--darkBlue);
+    padding: .2rem;
+    font-size: 1.3rem;
+    border-radius: .5rem;
+}
+
+.record .edit:hover{
+    background-color: var(--lightBlue);
+}
+
+
+.record .delete {
+
+    color: var(--darkRd);
+    padding: .2rem;
+    font-size: 1.3rem;
+    border-radius: .5rem;
+}
+.record .delete:hover{
+       background-color: var(--lightRed);
+}
+
+
+
+/**Setting Styling start  */
+
+.sec-1 .setting{
+
+     height:calc(100%  - 70px);
+     width: 100%;
+     padding: 1.5rem 2rem;
+     background-color: var(--pri);
+     display: none;
+     color: var(--black);
+     flex-direction: column;
+     gap: 1rem;
+  
+      /* justify-content: space-between; */
+     /* align-items: center; */
+} 
+
+.sec-1 .setting .heading>h1{
+    font-size: var(--heading);
+}
+.sec-1 .setting .heading p{
+    opacity: .60;
+    font-size:var(--para);
+}
+
+.sec-1 .setting .profile{
+
+    width: 65%;
+    height: 36%;
+    background-color: var(--white);
+    padding: 1rem;
+    border-radius: .7rem;
+    border: 1px solid var(--border);
+
+}
+.sec-1 .setting .profile>h2{
+    width: 100%;
+    height:20% ;
+    font-size: var(--heading);
+}
+
+.sec-1 .setting .profile>form{
+    width: 100%;
+    height:80%;
+
+}
+
+.sec-1 .setting .profile>form .inputs{
+    width: 100%;
+    height:70%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    font-size: var(--para);
+    
+}
+
+.sec-1 .setting .profile>form .inputs .uName {
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+
+
+.sec-1 .setting .profile>form .inputs .uCurrency {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+
+}
+
+
+
+#saveChangeBtn{
+    
+    color: var(--white);   
+    background-color: var(--black);
+}
+
+
+/* end of desktop view  */
+
+/* Tablete view start */
+
+
+@media (max-width:1020px) {
+
+.sec-1{
+    width: 100%;
+    height: 100%;
+    background-color: var(--lightRed);
+    position: relative;
+}
+
+.sec-1 .transactioInputBox form{
+    width: 50%;
+}
+
+
+ .sec-1 .sidebar{ 
+
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+
+.sec-1 .sidebar  i{
+    color: var(--black);
+    display: flex;
+}
+
+   
+.sec-1 .mainContent nav{
+    justify-content: space-between;
+}
+
+.sec-1 .mainContent nav .menuIcon{
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: var(--heading);
+}
+
+
+ .sec-1 .mainContent{
+    width: 100%;
+    height: 100%;
+    background-color: var(--darkRd);
+  }
+
+
+.sec-1 .mainContent .dashboard .features{
+overflow-x: auto;
+
+}
+.sec-1 .mainContent .dashboard .features::-webkit-scrollbar{
+    display: none;
+}
+
+.sec-1 .mainContent .dashboard .features .feature{
+
+     width:26%;
+     height:20vh ;
+     flex-shrink: 0;
+}
+
+.feature .iconBox{
+
+     background-color: var(--lightBlue);
+     padding:.5rem;
+     border-radius: .4rem;
+
+}
+
+.feature .iconBox img {
+    width: 2vw;
+    color: var(--darkBlue);
+}
+
+
+
+.sec-1 .mainContent .dashboard .chartAndTheme{
+    flex-direction: row;
+}
+
+.sec-1 .mainContent .dashboard .summery {
+
+    width:90%;
+
+
+}
+
+
+
+}
+
+
+
+
+/* Mobile view  */
+
+
+@media (max-width:450px) {
+
+.sec-1 .transactioInputBox form{
+    width: 80%;
+}
+
+.sec-1 .mainContent .dashboard .features .feature .iconBox img{
+
+    width: 20px;
+}
+
+.sec-1 .mainContent .dashboard .features .feature{
+
+     width:50%;
+     height:20vh ;
+     flex-shrink: 0;
+}
+
+.sec-1 .mainContent .dashboard .chartAndTheme{
+    flex-direction: column;
+    height: 80vh;
+}
+
+.sec-1 .mainContent .dashboard .chartAndTheme .chart{
+    width: 100%;   
+}
+
+.sec-1 .mainContent .dashboard .chartAndTheme .theme{
+    width: 100%;   
+}
+
+
+.sec-1 .mainContent .dashboard .summery {
+ width: 100%;
+}
+
+.summery .allSummery .allFields>h4{
+    font-size: .5rem;
+ 
+}
+
+.summery .allTransactionContainer .record>h5{
+    font-size: .6rem;
+}
+.summery .allTransactionContainer .record .r-icons{
+    gap: .1rem;
+}
+.summery .allTransactionContainer .record>h5 i{
+    font-size: .7rem;
+}
+
+
+/* setting section  */
+
+.sec-1 .setting .profile{
+      width: 100%;
+}
+
+.sec-1 .setting .profile form .inputs{
+
+     
+}
+
+
+}
+
+
+
+
+

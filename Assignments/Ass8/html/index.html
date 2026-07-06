@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/money-search.png">
+    <title>
+        FinTrack Pro | Personal Finance Tracker 
+    </title>
+
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+    <link rel="stylesheet" href="../Styles/style.css">
+
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head> 
+
+<body>
+    
+    <main>
+        <!-- Main section All content Inside  -->
+       <section class="sec-1">
+
+        <!-- Transaction input form  -->
+
+        <div class="transactioInputBox">
+             <form action="#">
+                <h2>Add Transaction  <i class="ri-close-line crossBtn"></i> </h2>
+                <div class="inpBox" id="typeInpBox">
+                    <label for="typeOfTransction">Type </label> <br>
+                     <select name="" id="typeOfTransction">
+                        <option value="Expense">Expense</option>
+                        <option value="Income"> Income </option>
+
+                     </select>
+                 </div> 
+                 
+                 
+
+                 <div  id="amountAndDateInpBox">
+                     
+                     <div class="inpBox"  id="amoutBox">
+                        <label for="amountInp">Amount</label>
+                         <input required id="amountInp" type="number">
+                     </div>
+
+                     <div class="inpBox" id="dateBox">
+                         <label for="dateInp">Date</label>
+                         <input id="dateInp" type="date">
+                     </div>
+
+
+                 </div>
+
+                 <div class="inpBox" id="descInpBox">
+                    <label for="descInp">Description  </label> <br>
+                    <input required type="text" id="descInp" placeholder="e.g. Amazon, Salary, Coffe " >
+                 </div>
+
+                  <div class="inpBox" id="categaoryInpBox">
+                    <label for="categaroyInp">Category </label> <br>
+                     <select name="" id="categaroyInp"  >
+                        <option value="">Select a Category</option>
+                        <option value="Food & Dining">Food & Dining</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Reacharge & Bill">Reacharge & Bill</option>
+                        <option value="Petrol & Auto">Petrol & Auto</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other</option>
+
+                     </select>
+                 </div> 
+
+                 <button type="submit" id="saveBtn" > Save Transaction </button>
+                 
+             </form>
+        </div>
+        
+
+        <!-- SideBar feature and Setting -->
+         <div class="sidebar">
+             <i class="ri-close-large-line closeSidebar"></i>
+             <div class="sidebar-top">
+                <img src="../images/logo.png" alt="" class="logo">
+                <div class="logoname">
+                    <h2>FinTrack Pro </h2>
+                    <p>Enterprice Finance</p>
+                </div>
+
+                
+             </div>
+
+             <div class="sidebar-bottom">
+                <div class="sidebar-btm-top">
+                      <button id="dashBtn"><i class="ri-dashboard-line"></i> Dashaboard</button>
+                      <button id="setBtn"><i class="ri-settings-3-fill"></i> Settings</button>
+
+                </div>
+
+                 <div class="sidebar-btm-bottom">
+                    <button id="addTrasactin"><i class="ri-add-line"></i> Add Transaction</button>
+                </div>
+
+             </div>
+
+
+        </div>
+
+
+        <!-- Hero section  -->
+
+      <div class="mainContent">
+            
+      <!-- Navbar section  -->
+        <nav>
+            <div class="menuIcon"><i class="ri-menu-2-line"></i></div>
+         <div class="right">
+             <h3> JK Nishad </h3>
+             <button id="logOutBtn"> <i class="ri-logout-box-r-line"></i> Logout  </button>
+         </div>  
+        </nav>
+
+        <!-- Dashaboard  -->
+
+         <section class="dashboard">
+
+             <div class="heading">
+                 <h1> Financial Overview  </h1>
+                 <p>Real time tracking application </p>
+             </div>
+
+
+             <div class="features">
+
+                <div  class="feature"  id="curBalence">
+
+                    <div class="iconBox"> 
+                        <img src="../images/bank-building.png" alt="">
+                    </div>
+
+                    <p> Current Balence </p>
+
+                    <h2> ₹0.00 </h2>
+
+                    
+
+                </div>
+                 <div class="feature" id="totalIncome">
+
+                    <div class="iconBox"> 
+                        <img src="../images/grow-up.png" alt="">
+                    </div>
+
+                    <p> Total Income  </p>
+
+                    <h2> ₹0.00 </h2>
+
+                    
+
+                </div>
+
+                 <div class="feature"  id="totalExpense">
+
+                    <div class="iconBox"> 
+                        <img src="../images/downtrend.png" alt="">
+                    </div>
+
+                    <p> Total Expense </p>
+
+                    <h2> ₹0.00 </h2>
+
+                    
+
+                </div>
+
+                 <div class="feature" id="totalTransaction">
+
+                    <div class="iconBox"> 
+                        <img src="../images/piggy-bank.png" alt="">
+                    </div>
+
+                    <p> Total Transaction  </p>
+
+                    <h2> 0 </h2>
+
+                    
+
+                </div>
+
+
+             </div>
+
+             <div class="chartAndTheme">
+
+                 <div class="chart">
+
+                      <h2 class="chartHeading">Cash Flow Analysis </h2>
+
+                      <div class="chartArea">
+
+                        <canvas id="chartBox"> </canvas>
+                            
+                        
+                      </div>
+
+                 </div>
+
+                 <div class="theme">
+
+                       <h2> Preferences </h2>
+
+                       <div class="themeMode">
+
+                        <h4> Dark Mode    </h4>
+                        
+                         <div class="mode">
+                            <i class="ri-sun-line light"></i>
+                            <i class="ri-moon-line dark"> </i>
+                         </div>
+
+                       </div>
+
+                       <button id="resetBtn">   <i class="ri-delete-bin-6-line"></i> Reset All Data  </button>
+
+
+                 </div>
+                 
+             </div>
+
+             <div class="summery"> 
+
+                <h2> All Transactions </h2> 
+
+                <div class="allSummery">
+
+                     <div class="searchAndFilter">
+
+                        <div id="searInpBox">
+                            <i class="ri-search-2-line search"></i>
+                            <input id="searchInp" type="text" placeholder="Search Transactions..." >
+                        </div>
+
+                        <div id="filterInpBox">
+                            <select  id="filterInp">
+                                <option value="All">All Types</option>
+                                <option value="Income">Income Only</option>
+                                <option value="Expense">Expense Only</option>
+                            </select>
+                        </div>
+                     </div>
+
+                    <div class="allFields">
+
+                         <h4>date</h4>
+                         <h4>Description</h4>
+                         <h4>category</h4>
+                         <h4>amount</h4>
+                         <h4>action </h4>
+
+
+                    </div>
+
+                </div> 
+
+
+                <div class="allTransactionContainer">
+
+<!--                     
+                     <div class="record">
+
+                         <h5 class="r-date">2026-06-29</h5>
+
+                         <h5>Car Buy</h5>
+                         <h5 class="r-category">Shoping</h5>
+                         <h5 class="Income" > 5000.00</h5>
+                            
+                         <h5 class="r-icons"> 
+                            <i onclick="editHandle()" class="ri-pencil-fill edit"></i>
+                            <i onclick="deleteHandle()" class="ri-delete-bin-6-line delete"></i>
+                        </h5>
+
+
+                    </div> -->
+
+                    
+                </div>
+
+
+             </div>
+
+         </section>
+
+        <!-- Setting  -->
+             
+         <section class="setting">
+
+             <div class="heading">
+                 <h1> Settings  </h1>
+                 <p> Manage your account profile and app formatting.</p>
+             </div>
+
+             <div class="profile">
+
+                <h2>Profile Details </h2>
+
+                <form action="#">
+
+                   <div class="inputs">
+
+                    <div class="uName">
+                    <label for="name">Full Name </label> <br>
+                    <input type="text" id="name" >
+
+                    </div>
+                     
+
+                    <div class="uCurrency">
+                    <label for="currency">Primary Currency  </label> <br>
+                     <select name="" id="currency">
+                        <option value="₹">INR (₹)</option>
+                        <option value="€">EUR (€)</option>
+                        <option value="$">USD ($)</option>
+                        <option value="£">GBP (£)</option>
+                        <option value="¥">JPY (¥)</option>
+                     </select>
+                      </div>
+                   </div>
+                   
+                   <button type="submit" id="saveChangeBtn"> Save Changes</button>
+
+                </form>
+
+             </div>
+
+
+         </section>
+
+        </div>
+
+
+
+       </section>
+    </main>
+    <script src="../JS/script.js"></script>
+</body>
+</html>

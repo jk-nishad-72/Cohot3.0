@@ -1,0 +1,214 @@
+React Day - 6 Form handling 
+
+//** multiple useState  Handling 
+
+import React, { useState } from 'react'
+
+const App = () => {
+
+   
+
+let [count , setCount]  =  useState(0)
+const [user, setUser] = useState({
+   name:'jaykishan'
+})
+
+  return (
+
+
+    <div>
+
+        <h1>{ count} </h1>
+
+        <button onClick={()=>{
+
+          setCount(count+1)
+
+        }}> Incrementent  </button>
+
+        <h1> {user.name} </h1>
+
+        <button onClick={()=>{
+
+
+        //error because user is reference data  
+
+          // setUser(user.name = 'kkkkkkkk')
+              // or 
+
+          // ase me agar koi dusra set function(setCount) jo bhi iske parent component ke under hai vo  chalega tab user.name render  hoga  ,  
+          user.name = 'aman'  //-> ye value ko update karega but rerender nahi karega , value lexicalely store karke rakhta hai 
+          setUser(user)    //-> rerender nahi karega , jab koi dusra set Function chalega to update value rerender ho jayegi 
+
+          //  or 
+
+          //correct way to update 
+
+          // setUser({name:'kfjaksjdk'})
+  
+        }}> change name </button>
+
+
+
+      
+    </div>
+  )
+}
+
+export default App
+
+
+
+//* Form handling | input handling 
+
+*) Three Methods  
+
+1) - Brute Force -> jitne inputs utne State(variable names )
+
+ let  [user, setUser] = useState('')
+ let  [email, setEmail] = useState('')
+ let  [password, setPassword] = useState('')
+
+
+
+         <input 
+
+         className=' border-2 border-white text-white'
+         onChange={(e)=>{
+        setUser(e.target.value)
+        }}
+
+         type="text" 
+         />
+        <input 
+
+         className=' border-2 border-white text-white'
+         onChange={(e)=>{
+        setEmail(e.target.value)
+        }}
+
+         type="text" 
+         />
+
+          <input 
+
+         className=' border-2 border-white text-white'
+         onChange={(e)=>{
+        setPassword(e.target.value)
+        }}
+
+         type="text" 
+         />
+
+
+2) - Better  -> form object ka use karna 
+
+
+
+  const [formData,setFormData ] = useState(
+
+//     {
+//     name:"",
+//     email:"",
+//     password:''
+//   },
+
+  //or   -> both are same 
+
+  {},
+
+)
+
+console.log(formData);
+
+
+{/* name */}
+         <input 
+        className=' border-2 border-white text-white'
+
+         onChange={(e)=>{
+          setFormData({...formData,name:e.target.value}) 
+        }}
+         type="text" 
+         />
+
+{/* email */}
+          <input 
+        className=' border-2 border-white text-white'
+
+         onChange={(e)=>{
+          setFormData({...formData,email:e.target.value}) 
+        }}
+         type="text" 
+         />
+
+
+{/* password */}
+          <input 
+        className=' border-2 border-white text-white'
+
+         onChange={(e)=>{
+          setFormData({...formData,password:e.target.value}) 
+        }}
+         type="text" 
+         />
+         
+
+3) - optimize -> use InputHanlde a Callback Function 
+
+
+const [formData,setFormData ] = useState({})
+
+console.log(formData);
+
+
+//* optimal approach 
+
+const inputHandle = (e)=>{
+
+
+    //-> destructuring 
+    //  let {name , value} = e.target  
+
+    //  or
+
+    // console.log(e.target.value ,e.target.name);
+
+    setFormData({...formData , [e.target.name]:e.target.value})
+
+}
+
+
+
+{/* name */}
+         <input
+         
+         className=' border-2 border-white text-white'
+         name='name'
+         type="text" 
+         onChange={inputHandle}
+         />
+
+{/* email */}
+
+        <input
+         className=' border-2 border-white text-white'
+         name='email'
+         type="text" 
+         onChange={inputHandle}
+         />
+
+{/* password */}
+
+        <input
+
+         className=' border-2 border-white text-white'
+         name='passwordd'
+         type="text" 
+         onChange={inputHandle}
+         />
+
+
+
+
+

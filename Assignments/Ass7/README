@@ -1,0 +1,18 @@
+//* Explanation 
+
+1)Parsing  -> Is the Process in which ,A raw data [html , css ] converted into string form(like key and value ,pair ).
+
+2)Tokenization -> Is the Process of identifying the data type of data  and  converting the data into tokens .A
+
+3)DOM Tree -> From the tokens it generate a Parse tree also called syntax tree and in web dev it is Know as 'DOM TREE ' [DOM Document Object Model].
+
+4)CSSOM Tree ->  it is a Tree of CSS Data called " CSS Object Model" .
+
+5) Render Tree -> It is Tree Produces by combining the DOM TREE + CSSOM TREE -> called "Render Tree", It is render to the browser .
+
+6)Event Bubbling -> It is event travarsal process it goes bottom to top 'child node -> to -> parent node'.
+
+7) Event Capturing -> It is also event travarsal process but it goes top to bottom 'parent node -> to -> child node'.
+
+8) Event Delegation -> instead of giving event listeners to each child , we give single event listener to the parent.
+

@@ -1,0 +1,22 @@
+
+
+git documentation -> https://app.notion.com/p/Git-GitHub-Masterclass-38e12621ce4f8073a849d172ee100ed0?source=copy_link
+
+Git-session-2
+
+🌿 Module 9 —
+ Branching 
+
+
+
+--> see all branches 
+--> create new brach 
+->switch into the new branch nad new branch to main branch
+ -> branch status 
+ ->creating and switching at the sametime
+  -> deleting branches 
+  -> see all commits
+   -> merge new Branch to the main branch
+    -> practical understanding of merge conflict 
+    -> branching on remotely understanding pull request and merging it
+     -> after merging pull request , pull the remote code into the system

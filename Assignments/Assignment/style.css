@@ -1,0 +1,88 @@
+*{
+    margin:0%;
+    padding:0%;
+ box-sizing:border-box;
+ font-family:gilroy;
+}
+
+html,body{
+     height:100%;
+     width: 100%;
+}
+
+
+main{
+
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    color: aliceblue;
+    display: grid;
+    padding: 10px;
+    gap: 5px;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 10% 20% 20% 20% 20% 10%;
+    grid-template-areas: 
+                         "nav nav nav nav nav"
+                         "left-tp left-tp a b c"
+                         "left-tp left-tp a b f"
+                         "left-btm left-btm a e f"
+                         "left-btm left-btm d e f"
+                         "footer footer footer footer footer";
+}
+
+nav{
+    background-color: #dfff5f;
+    grid-area: nav;
+    border-radius:20px;
+}
+.left-tp{
+    background-color: red;
+    grid-area: left-tp;
+    border-radius:20px;
+
+}
+
+.left-btm{
+    background-color: blue;
+    grid-area: left-btm;
+    border-radius:20px;
+
+}
+
+.a{
+    background-color: green;
+    grid-area: a;
+    border-radius:20px;
+}
+.b{
+    background-color: rgb(255, 210, 85);
+    grid-area: b;
+    border-radius:20px;
+}
+.c{
+    background-color: #02f402;
+    grid-area: c;   
+    border-radius:20px;
+}
+.d{
+    background-color: rgb(255, 0, 225);
+    grid-area: d;
+    border-radius:20px;
+}
+.e{
+    background-color: rgb(92, 4, 45);
+    grid-area: e;
+    border-radius:20px;
+}
+.f{
+    background-color: green;
+    grid-area: f;
+    border-radius:20px;
+}
+
+footer{
+    background-color: salmon;
+    grid-area: footer;
+    border-radius:20px;
+}

@@ -1,0 +1,297 @@
+*{
+    margin:0%;
+    padding:0%;
+ box-sizing:border-box;
+ font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+html,body{
+     height:100%;
+     width: 100%;
+}
+
+
+main{
+
+     height:100%;
+     width: 100%;
+     position: relative;
+
+     
+}
+main .makdi-hero{
+
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50% , -50%);
+     height: 600px;
+     width: fit-content;
+     z-index: 2;
+     object-fit: cover;
+     
+}
+
+main nav{
+
+     height:80px;
+     width: 100%;
+     background-color: none;
+     position: absolute;
+     display: flex;
+     
+     justify-content: space-between;
+     padding: 20px 30px;
+     
+
+
+}
+
+main nav .nav-left{
+ 
+      color: #000;
+      height: 100%;
+     
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0px 20px;
+
+}
+main nav .nav-left>h1{
+     font-size: 35px;
+
+}
+main nav .nav-left .search{
+
+      border-radius:20px;
+      padding: 10px;
+      background-color: aliceblue;
+      width: 50%;
+
+}
+main nav .nav-left .search input{
+
+      outline: none;
+      background-color: aliceblue;
+      border: none;
+
+    
+}
+
+main nav .nav-right{
+  
+      height: 100%;
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 10px;
+      
+}
+
+main nav .nav-right a{
+         text-decoration: none;
+         color: #efe4e4;
+         font-size: 20px;
+}
+
+main .hero{
+      height:100%;
+      width: 100%;
+      display: flex;
+     
+      
+}
+
+main .hero .hero-left{
+     height:100%;
+     width: 50%;
+     position: relative;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     
+      
+}
+.hero-left>h1{
+     position: absolute;
+     font-size: 50px;
+     left: -5%;
+     letter-spacing:3px;
+     font-weight:500 ;
+     top: 50%;
+     transform: rotate(-90deg);
+}
+
+
+.hero-left-boxs{
+
+     width: 100%;
+     justify-content: center;
+     display: flex;
+     
+
+     
+
+}
+
+.hero-left-box li{
+
+     font-size: 20px;
+     
+     border-bottom: 1px solid black;
+     padding: 5px;
+     color: #EC1F26;
+
+
+
+     
+}
+.hero-left-box li p{
+     color: black;
+     padding: 10px;
+
+}
+
+
+
+
+
+main .hero .hero-right{
+
+     height:100%;
+     width: 50%;
+     background-color:#BD3D31;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-between;
+     padding-top: 7%;
+     
+      
+}
+
+.hero-right .hr-1{
+
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30%;
+      font-size: 70px;
+      color: #efe4e4;
+      
+      font-weight: 400;
+
+}
+
+.hero-right .hr-2{
+
+      
+      width: 100%;
+      height: 30%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+
+}
+
+.hr-2left {
+
+     display: flex;
+     align-items: center;
+  
+     flex-direction: column;
+     width: 50%;
+     color: #DBBD93;
+     
+     border-right: 2px solid #DBBD93;
+
+}
+.hr-2left>img {
+
+      width:50%;
+      margin-left: 150px;
+
+}
+.hr-2left>P {
+
+      
+      margin-left: 150px;
+
+}
+
+.hr-2right {
+
+     height: 100%;
+     width: 50%;
+     padding: 5px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     justify-content: space-evenly;
+
+}
+.hr-2right .hr-2r-box{
+
+     display: flex;
+      gap: 10px;
+     
+     font-size: 20px;
+
+}
+
+
+.hr-2right .hr-2r-box  i{
+     color: #DBBD93;
+     font-weight: 100;
+
+
+}
+
+.hr-2right .hr-2r-box h5{
+     font-weight: 500;
+      color: #DBBD93;
+}
+
+
+
+
+
+.hero-right .hr-3{
+
+      
+       width: 100%;
+       height: 40%;
+        color: #DBBD93;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 40px;
+       
+      
+}
+
+
+.hero-right .hr-3 h1 {
+     font-size: 50px;
+     margin-left: -60px;
+       
+}
+
+.hero-right .hr-3 li{
+     color: white;
+}
+.hero-right .hr-3 button{
+
+     padding: 10px 40px ;
+     font-size: 20px;
+     background-color: #DBBD93;
+     border-radius: 10px ;
+     border: none;
+}

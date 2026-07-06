@@ -1,0 +1,54 @@
+
+// Updation in react  
+
+virtual dom from real dom 
+
+New virtual dom(nvd) vs old virtual dom (ovd)
+
+// Reconciliation
+
+1>render phase :-
+
+->Create a virtual dom (copy of Real dom )
+
+--> 1) New virtual Dom 
+--> 2) old virtual Dom
+
+2>commit phase:-
+
+-> a) diffing algorithm:
+
+     --> (store the changes / saved what should be updated )
+     --> data integrate with realDom tree + paint 
+     --> than render the RealDom and delete old virtual dom 
+
+fibre react16 from 2016 (extended version of Reconciliation engine (OWC) )
+
+Creating a app using React vite 
+
+// first install node js  in your system  
+
+// than use terminal command -> 
+->npm create vite 
+-> y 
+->appName
+->react 
+->javaScript 
+->ESlint
+->No 
+--> cd appName 
+--> npm i 
+--> npm run dev 
+
+
+// SrictMode used in Production  for better optimization 
+
+
+
+
+
+
+
+
+
+

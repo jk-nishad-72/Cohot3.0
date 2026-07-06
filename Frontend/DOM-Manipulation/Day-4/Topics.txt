@@ -1,0 +1,28 @@
+
+
+
+//*Event Propagation ~ Event Travarsal 
+/*
+ * -> 1) TOP TO BOTTOM (Event CAPTURING)
+ *->  2) BOTTOM TO TOP (Event BUBBLING )
+ *
+*/
+
+/*Events:-
+ *->MouseEvent
+ *->PointerEvent
+ *->KeyboardEvent
+ *->inputEvent
+ *->inlineEvent in html
+ *
+ */
+/*Form Events 
+ * 'submint'
+ * -->preventDefault()
+ * -->reset() 
+ */
+
+ /*Taking userData and Rendering it 
+
+
+ 

@@ -1,0 +1,272 @@
+
+
+
+
+function countProperties(obj){
+
+  console.log(  Object.values(obj));
+  console.log(  Object.keys(obj));
+  console.log(  Object.entries(obj));
+  
+
+}
+
+// countProperties({a:1,b:2,c:3})
+
+
+const person = {
+  name: "Rahul",
+  age: 22,
+  city: "Delhi"
+}
+
+// for (const key in person) {
+// console.log(key +' -> ' + person[key])
+
+// }
+
+// console.log(Object.is({}));
+
+
+// for(let key in person){
+      
+//      if(key === 'email') return key
+    
+// }
+
+// shallow copy 
+
+const obj1 = { a: 1, b: 2 , skills :['hacking' , 'analytic','speakig','drawing','writting']}
+const obj2 = { c: 3, d: 4 }
+
+
+const merge = {...obj1 , ...obj2}
+
+//it changer original object also because spread operation does not copy interna objects behav like reference
+// merge.skills[3] = 'sales'
+
+// console.log(merge )
+// console.log(obj1 )
+
+//deep copy of objects 
+
+
+/*
+
+let str = JSON.stringify(obj1)
+console.log(str)
+const deepCopy =  JSON.parse(str)
+console.log(deepCopy)
+
+// changes on deepCopy object doesn't effect original object 
+
+deepCopy.skills[0] = 'jaykishan'
+
+console.log(deepCopy);
+console.log(obj1);
+
+*/
+
+
+const user = {
+  name: "Aman",
+  age: 21
+}
+
+// console.log([Object.entries(user)]);
+
+/**10
+ * 
+const marks = {
+  Anubhav: 95,
+  Rahul: 82,
+  Aman: 90
+}
+
+let mark = 0;
+let prop = ''
+for(let key in marks){
+         
+     if(mark < marks[key]) {
+         prop = key
+         mark = marks[key]
+     }
+
+    }
+
+console.log(prop +' -> '+ marks[prop])
+
+ */
+
+/**
+ * 
+const salaries = {
+  john: 1000,
+  alex: 2000,
+  bob: 1500
+}
+
+let sum = 0;
+for(let key in salaries){
+    sum += salaries[key]
+}
+
+console.log(sum);
+ */
+
+/**
+ * 
+
+ * 
+const letva = {
+  name: "Anubhav",
+  address: {
+    city: "Bhopal",
+    pincode: 462001
+  }
+}
+
+console.log(letva.address.city , letva.address.pincode);
+
+
+ */
+
+
+/**
+ * 
+let student = {
+     name :'jay',
+     mark:50,
+     isPass:function(marks){
+             if(marks>45) return "Pass"
+             else return "Fail"
+     },
+}
+
+console.log(student.name);
+console.log(student.mark);
+console.log(student.isPass(student.mark));
+ */
+
+/**
+ * 
+ * @param s 
+const arr = ["name", "Anubhav", "age", 24]
+
+let obj ={ }
+for(let i = 0;i<arr.length;i = i+2){
+     
+    obj[arr[i]]= arr[i+1]
+        
+     
+}
+
+// console.log(obj)
+
+ * @returns 
+ */
+
+
+/**
+ * 
+function countfreq(s){ 
+ 
+    let freq = {};
+
+    for(let i = 0;i<s.length;i++){
+
+       if(!freq[s[i]]){
+        freq[s[i]] = 1
+       }else {
+         freq[s[i]] = freq[s[i]] + 1;
+       }
+    }
+
+    return freq
+    
+}
+
+console.log(countfreq("banana"));
+console.log(countfreq("jaykishan"));
+console.log(countfreq("Sheryians"));
+ */
+
+/**
+ * 
+
+const users = [
+  { name: "A", age: 20 },
+  { name: "B", age: 21 },
+  { name: "C", age: 20 }
+]
+
+
+let result = {};
+
+users.forEach(obj => {
+     
+    // console.log(obj.age)
+
+    if(!result[obj.age]){
+        result[obj.age] = [obj]
+    }else{
+        result[obj.age].push(obj)
+    }
+
+});
+
+console.log(result);
+
+ */
+
+/**
+ * 
+
+let u1 = {a:1,b:2 ,c:4,d:5}
+let u2 = {a:1,b:2,c:4,d:5} 
+
+function twoObjSame(){
+    
+for(let key in u1){
+    if(!u2[key]) return false 
+    else {
+           
+        if(!(u1[key] === u2[key])) return false 
+        // console.log()
+    }
+}
+for(let key in u2){
+    if(!u1[key]) return false 
+    else {
+           
+        if(!(u1[key] === u2[key])) return false
+    }
+}
+
+
+return true
+
+}
+
+console.log(twoObjSame(u1 , u2))
+
+ */
+
+ let arr = [
+  {id:1,name:"A"},
+  {id:2,name:"B"},
+  {id:1,name:"A"}
+]
+
+let set ={}
+let res = [];
+arr.forEach(function(obj){
+         
+    if(!set[obj.id]) {
+        set.obj[id]
+    }
+})
+
+console.log(set);
+
+

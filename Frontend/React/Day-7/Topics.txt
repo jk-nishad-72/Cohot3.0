@@ -1,0 +1,8 @@
+
+React Day - 7 
+
+1)condintional Rendering using  turnary operator (true ? 'Hello' :'god bye ')
+2)2way binding =>  data UI to react , and react to UI 
+3) controled Input => 
+5)state lifting up ==> stat hook ko chile pe define na karke parent pe define karna and props ke through child ke send karna for use 
+6) children se data se kaise lete hai  possible hai using callback functions as props 

@@ -1,0 +1,51 @@
+
+
+
+// difference between nodelist vs html collection 
+
+const body = document.body;
+
+const main = document.querySelector('main') 
+
+console.log(main.childNodes)
+console.log(main.children)
+
+// console.log(body.childNodes)
+// console.log(body.children)
+
+//changing in html 
+
+/**
+ * textContent
+ * innerText
+ * innerHTML 
+ */
+
+//classes 
+/**
+ * 
+1) .classlist.add() -> add class to pariticular element
+2) .remove()  -> delete the class Name 
+3) .contains(name) --> true / false   (having class name or not)
+4) .toggle()--> isExist -> remove || !isExixt -> add 
+5).replace()--> (class , newClass) 
+ */
+
+// Changing style 
+
+//.style.BackgroundColor = 'red'
+
+//Event Handlers 
+
+//.addEventlistners('event' , callBackfunction(){},option)
+
+
+
+
+
+
+
+
+
+
+
