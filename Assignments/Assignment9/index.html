@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> FocusDesk | Productivity Dashboard </title> 
-    <link rel="icon" href="./Assets/images/logo.png">
+    <link rel="icon" href="./images/logo.png"> 
     
 
     <link
@@ -15,7 +15,6 @@
 />
 
     <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
@@ -24,20 +23,26 @@
         <i class="ri-sun-fill"></i>
         <i class="ri-close-large-fill"></i>
      -->
+
+
     <main  >  
+
+       
 
 
         <section class="allElems">
 
-            <!-- <video autoplay loop src="./Assets/video/night-vid.mp4"></video> -->
-            <video autoplay loop src="./Assets/video/137009-765458037_medium.mp4"></video>
+         <!-- <video autoplay loop  src="./video/night-vid.mp4"></video> -->
 
+         <video class="bg-vid" autoplay loop muted>
+            <source src="./video/night-vid.mp4" type="video/mp4">
+        </video>
 
             <!-- Navbar  -->
 
              <nav> 
                  <div class="nav-left">
-                     <img class="logo" src="./Assets/images/logoname.webp" alt=""> 
+                     <img class="logo" src="./images/logoname.webp" alt=""> 
                  </div>
 
                  <div class="nav-right">
@@ -66,30 +71,63 @@
 
                  <div id="0" class="feature  todo">
 
-                    <img src="https://images.pexels.com/photos/8487200/pexels-photo-8487200.jpeg" alt="">
+                    <video id="0" class="todo-vid"  autoplay loop muted >
+
+                        <source src="./video/todo-video.mp4" type="video/mp4">
+
+                    </video>
+
+                    <img src="./images/todo-image.jpg" alt="">
                  </div>
 
                   <div id="1" class="feature daily">
 
-                    <img src="https://images.pexels.com/photos/19905188/pexels-photo-19905188.jpeg" alt="">
+                       <video id="1" class="daily-vid" autoplay loop muted >
+
+                        <source src="./video/daily-video.mp4" type="video/mp4">
+
+                    </video>
+
+                    <img src="./images/daily-image.avif" alt="">
 
 
                  </div>
+
+
                   <div id="2" class="feature  moti">
 
-                    <img src="https://images.pexels.com/photos/7550594/pexels-photo-7550594.jpeg" alt="">
+                    
+                        <video id="2" class="moti-vid" autoplay loop muted >
+
+                        <source src="./video/motivation-video.mp4" type="video/mp4">
+
+                    </video>
+
+
+                    <img src="./images/moti-image.avif" alt="">
                  </div>
 
                   <div id="3" class="feature  pomo">
+                   
 
-                    <img src="https://images.pexels.com/photos/13014155/pexels-photo-13014155.jpeg" alt="">
+                     <video id="3" class="pomo-vid" autoplay loop muted >
+
+                        <source src="./video/pomo-video.mp4" type="video/mp4">
+
+                    </video>
+
+                    <img src="./images/pomo-image.avif" alt="">
                  </div>
-
-                 
 
                   <div id="4" class="feature  goal">
 
-                    <img src="https://images.pexels.com/photos/32240622/pexels-photo-32240622.jpeg" alt="">
+                     <video id="4" class="goal-vid" autoplay loop muted >
+
+                        <source src="./video/goal-video.mp4" type="video/mp4">
+
+                    </video>
+
+                    <img src="./images/goal-image.avif" alt="">
                  </div>
 
               </section>
@@ -162,6 +200,7 @@
 
 
     </main>
+
 
 
     <script src="script.js"></script>

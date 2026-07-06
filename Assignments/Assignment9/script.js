@@ -14,6 +14,10 @@ const featureBox  = document.querySelectorAll('.feature')
 
 const backBtn = document.querySelectorAll('.back')
 
+const allFeatursVideo = document.querySelectorAll('.feature video')
+
+console.log(allFeatursVideo);
+
 
 featureBox.forEach((elem)=>{
 
@@ -23,7 +27,22 @@ featureBox.forEach((elem)=>{
         fullElementOFFeaturBox[elem.id].style.display = 'flex';
     })
     
+
+    
+elem.addEventListener('mouseenter',()=>{
+    // console.log(allFeatursVideo[elem.id]);
+    allFeatursVideo[elem.id].style.display = 'flex'
 })
+
+elem.addEventListener('mouseleave',()=>{
+    // console.log(allFeatursVideo[elem.id]);
+    allFeatursVideo[elem.id].style.display = 'none'
+})
+
+
+})
+
+
 
 backBtn.forEach((elem)=>{
 
@@ -38,3 +57,5 @@ backBtn.forEach((elem)=>{
     
 
 })
+
+
