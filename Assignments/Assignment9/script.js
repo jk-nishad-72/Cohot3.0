@@ -17,7 +17,24 @@ const backBtn = document.querySelectorAll('.back')
 
 featureBox.forEach((elem)=>{
 
-    console.log(elem);
+    elem.addEventListener('click',()=>{
+
+        //  console.log(fullElementOFFeaturBox[elem.id]);
+        fullElementOFFeaturBox[elem.id].style.display = 'flex';
+    })
     
 })
 
+backBtn.forEach((elem)=>{
+
+    
+    elem.addEventListener('click',()=>{
+
+        //  console.log(fullElementOFFeaturBox[elem.id]);
+    
+        fullElementOFFeaturBox[elem.id].style.display = 'none';
+
+    })
+    
+
+})
