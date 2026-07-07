@@ -362,13 +362,16 @@ main{
      
    display: none;
    width: 100%;
-   height:10% ;
+   /* height:10% ; */
    display: flex;
    justify-content: space-between;
    align-items: center;
    padding: 1rem 2rem;
    color: var(--white);
    font-family: aonikBold;
+
+   font-size: clamp( 1.5rem , 3.5vw ,3.5rem);
+   height: 15%;
 
     
 }
@@ -385,7 +388,7 @@ main{
 /* todo list fullPage  */
 
 .todo-list-fullPage{
-    display: flex;
+
     flex-direction: column;    
 }
 .todo-list-fullPage>h1{
@@ -542,6 +545,76 @@ button:active{
     
 }
 
+/* Daily Planner  */
+
+.daily-planner-fullPage{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.daily-planner-fullPage .day-planner{
+
+    width: 96%;
+    height:calc(100% - 20%) ;
+    padding: 1rem;
+
+
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    
+    background-color: var(--tri2);
+    border-radius: var(--borderRadius);
+
+    overflow: auto;
+    flex-wrap: wrap;
+
+}
+
+
+.daily-planner-fullPage .day-planner::-webkit-scrollbar{
+    display: none;
+}
+
+.daily-planner-fullPage .day-planner .day-time{
+
+    width: 49%;
+    height:15%;
+    background-color: var(--pri);
+    border-radius: var(--borderRadius);
+    flex-shrink: 0;
+
+    position: relative;
+  
+}
+
+.day-time>p{
+    font-size: (.8rem , 1.5vw ,1.3rem);
+    font-family: aonikRegular;
+    position: absolute;
+    left: 2%;
+    top: 5%;
+} 
+
+.day-time>input{
+
+     width: 100%;
+     height:100% ;
+     
+     font-size:clamp( 1.3rem, 3vw, 1.8rem);
+     outline: none;
+     border: none;
+     background-color: var(--pri);
+     padding-left: 1rem;
+     padding-top: .5rem;
+    
+}
+
+
 
 
 
@@ -602,10 +675,11 @@ button:active{
     }
 
 
-     
+    /* Day Planner  */
 
-
-
+    .daily-planner-fullPage .day-planner .day-time{
+        width: 100%;
+    }
 
     
 }
@@ -614,8 +688,7 @@ button:active{
 /* Tablete view */
 
 @media (max-width:500px) {
-
-
+    
      main .allElems .wetherAndDate{
 
          width: 90%;

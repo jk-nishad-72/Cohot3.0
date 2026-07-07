@@ -277,9 +277,6 @@ const renderTaskFun = function(){
     })
 
 
-   
-    
-
 
 }
 
@@ -295,6 +292,68 @@ const  taskDone = function(index){
 
 
 renderTaskFun();
+
+
+//* Daily Planner
+
+
+const dayPlannerFun = function(){
+
+// One Day All  Planning 
+
+let oneDayAllPlanData = JSON.parse(localStorage.getItem('oneDayAllPlanData')) || {};
+
+const dayPlanner = document.querySelector('.day-planner')
+
+
+
+let hours = Array.from(
+  { length: 18 },
+  (_, idx) => `${6 + idx}:00 - ${7 + idx}:00`
+);
+
+
+let puraDinKaTime = '';
+
+hours.forEach((elem , index)=>{
+    let previousSavedData = oneDayAllPlanData[index] || ''
+   puraDinKaTime  += ` <div class="day-time">
+                            <p> ${elem}  </p>
+                            <input  id=${index} type="text" placeholder="Planning...." value= ${previousSavedData}  >
+                        </div> `
+    
+})
+
+
+
+dayPlanner.innerHTML += puraDinKaTime;
+
+const dayAllPlannInputs = document.querySelectorAll('.day-time input')
+
+// console.log(dayAllPlannInputs);
+
+dayAllPlannInputs.forEach((input , index)=>{
+
+ //Event listenner to every input 
+    input.addEventListener('input',(e)=>{
+       oneDayAllPlanData[index] = input.value;
+
+    //    console.log(oneDayAllPlanData);
+    localStorage.setItem('oneDayAllPlanData' , JSON.stringify(oneDayAllPlanData))
+    })
+})
+
+
+
+}
+
+
+dayPlannerFun();
+
+
+
+
+
 
 
 
