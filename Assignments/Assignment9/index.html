@@ -25,10 +25,10 @@
      -->
 
 
-    <main  >  
+    <main  > 
+        
+        
         <section class="allElems">
-
-            
 
          <!-- <video autoplay loop  src="./video/night-vid.mp4"></video> -->
 
@@ -160,12 +160,68 @@
         </section>
 
 
+  
+
+         <!--* All Feature Full Page -->
+
+
+
+          <!--* Todo  -->
         <section id='0' class="fullElem todo-list-fullPage  ">
 
             <h1> 
-                Your Personalised Task's list
-                 <i id="0" class="ri-close-large-fill back  "></i> 
+                 Your Personalised Task's list
+                 <i id="0" class="ri-close-large-line back  "></i>
+    
             </h1>
+
+            <div class="todo-feature">
+
+                <form class="addTask" action="">
+
+                    <input 
+                    id="taskTitle"
+                    required
+                    type="text"
+                    placeholder="Enter Task">
+
+                    <textarea 
+
+                     required
+                     name=""
+                       id="taskDescr"
+                     placeholder="Task Description"
+                     ></textarea>
+
+                   <h3 id="markImortant"> 
+                    <input 
+                    
+                    type="checkbox" 
+                    name="imp" id="imp"> 
+                    <label for="imp">Mark as Important </label>
+                   </h3>
+
+                   <button  type="submit"   id="addTask"> <i class="ri-add-line"></i> Add Task  </button>
+
+                </form>
+
+                <div class="todo-list-container">
+
+                    <!-- <div class="task-box">
+
+                         <h1 class="title" > 
+                            Title
+                             <sup class="important  "  > 
+    
+                            <i class="ri-star-half-s-fill"></i> </sup> </h1>
+                         <p class="description"> Task Description  </p>
+
+                         <button class="completed" > Marks as Completed  </button>
+
+                    </div> -->
+
+                </div>
+            </div>
 
         </section>
 

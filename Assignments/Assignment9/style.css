@@ -9,6 +9,14 @@
     --borderRadius:.2rem;
     --borderColor:#949191;
 
+    --pri:#fe9ec1;
+    --sec:#3A0519;
+    --tri1:#670D2F;
+    --tri2:#A53860;
+
+    --red:#ff0000;
+    --green:#01b001;
+
       
       
 }
@@ -109,7 +117,7 @@ main{
 
 
 .allElems nav .nav-left  .logo{
-    width: 100px;
+    width: clamp( 4rem, 10vw,100px);
     z-index: 1000;
     filter: invert();
 }
@@ -158,7 +166,6 @@ main{
    left: 22%;
    transform: translate(-50%, 0%);
 
-
    width: 40%;
    height: 33%;
 
@@ -195,26 +202,24 @@ main{
 .DateAndTime>h1{
 
     font-family: aonikRegular;
-    font-size: 2.7rem;
+    font-size: clamp(1.5rem, 3vw,2.7rem);
 }
 
 
 .DateAndTime h2{
     font-family: aonikLight;
-    font-size: 1rem;
+   font-size: clamp(.8rem, 1.5vw,1rem);
 }
 
 .DateAndTime .city{
-
-     font-family: aonikLight;
-    font-size: 1.2rem;
+    font-family: aonikLight;
+    font-size: clamp(.9rem, 1.6vw,1.2rem);
 }
 .DateAndTime .city>span{
     text-transform: uppercase;
 }
 
 .wether{ 
-
     
     width: 33%;
     height:100% ;
@@ -223,7 +228,7 @@ main{
     justify-content:center;
     align-items: start;
     flex-direction: column;
-    gap: 1rem;
+    gap: .5rem;
 }
 
 .wether h2 , h4 {
@@ -233,9 +238,8 @@ main{
 
 }
 .wether>h3 {
-
     font-family: aonikLight;
-    font-size: .8rem;
+     font-size: clamp(.5rem, 1.4vw,.8rem);
 
 }
 
@@ -252,8 +256,8 @@ main{
   
    right: 0%;
    bottom: 0%;
-   width: 7%;
-   height: 60%;
+   width: 14vh;
+   height: 65vh;
 
     /* blur effect  */
     background: rgb(255, 255, 255 ,0.2);
@@ -284,6 +288,9 @@ main{
    
     position: relative;
     transition: all .4s ease-in-out;
+    
+     /* border: 1px solid var(--borderColor); */
+
     
 }
 
@@ -336,42 +343,302 @@ main{
 
 /* Full Elems  */
 
-
-
 .fullElem{
     width: 100%;
     height:100% ;
-    background-color: gray; 
+   
     display: none;
     position: absolute;
     top: 0;
     left: 0;
     
+     background-color:var(--sec);
 }
 
 
-.todo-list-fullPage{
-
-
-}
 
 .fullElem>h1{
 
      
-    display: none;
-    width: 100%;
-    height:10% ;
+   display: none;
+   width: 100%;
+   height:10% ;
    display: flex;
    justify-content: space-between;
    align-items: center;
    padding: 1rem 2rem;
+   color: var(--white);
+   font-family: aonikBold;
+
     
 }
 
 .back{
     cursor: pointer;
     font-size: 3rem;
+    background-color: var(--pri);
+    border-radius: var(--borderRadius);
+
+    
+}
+
+/* todo list fullPage  */
+
+.todo-list-fullPage{
+    display: flex;
+    flex-direction: column;    
+}
+.todo-list-fullPage>h1{
+
+    font-size: clamp( 1.5rem , 3.5vw ,3.5rem);
+    height: 15%;
+}
+
+.todo-list-fullPage .todo-feature{
+
+     display: flex;
+     width:100% ;
+     height:calc(100% - 10%) ;
+     padding: var(--padding);
+     gap:2rem;
+     
+} 
+
+.todo-list-fullPage .todo-feature .addTask{
+    width: 40%;
+    height: 90%;
+    background-color:var(--tri2);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
+
+}
+ #taskTitle , #taskDescr , #markImortant , #addTask {
+
+    width: 95%;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: var(--padding);
+    background-color: var(--sec);
+    color: var(--pri);
+    font-family: aonikLight;
+    border-radius: var(--borderRadius);
+     cursor: pointer;
+
+
+
+}
+
+.addTask #taskDescr{
+    height: 55%;
+}
+
+.addTask>h3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+.addTask #addTask{
+    background-color: var(--pri);
+    color: var(--white);
+    
+}
+
+
+/* for all Button */
+
+button{
+    transition: all .4s ease-in-out;
+}
+button:active{
+   transform: scale(.95);
+}
+
+.todo-list-fullPage .todo-feature .todo-list-container{
+    width: 60%;
+    height: 90%;
+    padding: .5rem;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+
+    overflow-y: auto;
+    background-color: var(--tri2);
+    border-radius: var(--borderRadius);
+
+    
+}
+
+.todo-list-container::-webkit-scrollbar{
+    display: none;
+}
+.todo-list-container .task-box{
+
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: .4rem;
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    background-color: var(--pri);
+}
+
+.todo-list-container .task-box .title{
+    font-family: aonikRegular;
+    text-transform: capitalize;
+  
+    font-size: clamp(1.2rem , 2vw , 3rem);
+    
+}
+
+.todo-list-container .task-box .title .important{
+    font-family: aonikRegular;
+    color: var(--red);
+   
+}
+
+
+.todo-list-container .task-box .title .false{
+     display: none;
+}
+
+.todo-list-container .task-box .title .true{
+   
+     display: block;
+}
+
+
+.todo-list-container .task-box .description{
+
+    width: calc(100% - 28% - 28%);
+    font-family: aonikLight;
+    font-size: clamp(.8em , 1.2vw , 1.5rem);
+}
+
+.todo-list-container .task-box .completed{
+    font-family: aonikRegular;
+    cursor: pointer;
+     width: 28%;
+     font-size: clamp(.8em , 1.2vw , 1.5rem);
+    background-color: var(--green);
+    color: var(--white);
+    padding: .5rem 1rem;
+   
+    border: 1px solid var(--borderColor);
+    border-radius: var(--borderRadius);
+    
 }
 
 
 
+
+/* Tablete view */
+
+@media (max-width:1020px) {
+
+
+
+     main .allElems{
+        position: relative;
+     }
+
+    main .allElems .wetherAndDate{
+
+         width: 80%;
+         height:20%;
+        
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+     
+     main .allElems .allFeatures{ 
+        width: 85vw;
+        height: 14% ;
+        flex-direction: row;
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, -10%);
+        
+    }
+      main .allElems .allFeatures .feature{  
+        width: 25%;
+        height: 100%;
+    
+     border-radius: var(--borderRadius);
+     border: 1px solid var(--borderColor);
+        flex-direction: row;
+    }
+     
+
+   main .todo-list-fullPage .todo-feature{
+        flex-direction: column;
+        height: 90%;
+    }
+
+     main .todo-list-fullPage .todo-feature .addTask{
+        width: 100%;
+        height: 70%;
+    }
+
+
+      main .todo-list-fullPage .todo-feature .todo-list-container{
+        width: 100%;
+        height:30% ;
+    }
+
+
+     
+
+
+
+
+    
+}
+
+
+/* Tablete view */
+
+@media (max-width:500px) {
+
+
+     main .allElems .wetherAndDate{
+
+         width: 90%;
+         height:20%;
+        
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+
+     main .allElems .allFeatures{  
+        width: 95vw;
+        height: 10%;
+        
+    }
+      main .allElems .allFeatures .feature{  
+        width: 25%;
+        
+    
+    }
+
+       main .allElems .allFeatures .feature>h3{ 
+        font-size: 4vw;
+       }
+    
+}

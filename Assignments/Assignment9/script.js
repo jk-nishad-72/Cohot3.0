@@ -1,3 +1,4 @@
+// localStorage.clear()
 
 
 //* page Open And Close Functionality
@@ -208,3 +209,92 @@ dateAndTimeFun();
 
 
 weatherAndDateTimeFunctionality()
+
+
+
+//* Todo Functionality 
+
+
+
+let currentTaskArray = JSON.parse(localStorage.getItem('currentTaskArray')) || [];
+
+const taskForm = document.querySelector('.addTask')
+const taskTitleInp = document.querySelector('#taskTitle')
+const taskDescInp = document.querySelector('#taskDescr')
+const taskImpInp = document.querySelector('#imp')
+
+
+
+taskForm.addEventListener('submit',(e)=>{
+
+    e.preventDefault();
+
+    if(taskDescInp.value.trim() === '' || taskTitleInp.value.trim() === ''){
+        alert('Please Enter valid Data')
+        return
+    }
+
+    currentTaskArray.push({
+        title:taskTitleInp.value,
+        desciption:taskDescInp.value ,
+        imp:taskImpInp.checked,
+
+    })
+    
+     localStorage.setItem('currentTaskArray',JSON.stringify(currentTaskArray))
+    renderTaskFun();
+    taskForm.reset();
+
+
+})
+
+
+const renderTaskFun = function(){
+
+
+    const todoLitstContainer = document.querySelector('.todo-list-container')
+
+
+     todoLitstContainer.innerHTML = ''
+
+    currentTaskArray.forEach((task ,idx)=>{
+
+         
+       todoLitstContainer.innerHTML += `<div class="task-box">
+
+                         <h1 class="title" > 
+                            ${task.title}
+
+                             <sup class="important ${task.imp}"  > 
+    
+                            <i class="ri-star-half-s-fill"></i> </sup> </h1>
+
+                         <p class="description">  ${task.desciption} </p>
+
+                         <button id=${idx} onclick  = "{taskDone(${idx})}" class="completed" > Marks as Completed  </button>
+
+                    </div> `
+    })
+
+
+   
+    
+
+
+}
+
+const  taskDone = function(index){
+
+    currentTaskArray.splice(index,1)
+
+    localStorage.setItem('currentTaskArray',JSON.stringify(currentTaskArray))
+
+    renderTaskFun();
+        
+ }
+
+
+renderTaskFun();
+
+
+
