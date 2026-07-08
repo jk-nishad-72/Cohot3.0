@@ -33,7 +33,7 @@
          <!-- <video autoplay loop  src="./video/night-vid.mp4"></video> -->
 
          <video class="bg-vid" autoplay loop muted>
-            <source src="./video/night-vid.mp4" type="video/mp4">
+            <source src="./video/afternoon.mp4" type="video/mp4">
         </video>
 
             <!-- Navbar  -->
@@ -289,7 +289,7 @@
          <section id="3" class="fullElem pomodoro-fullPage  " >
 
             <h1>   
-                     Study with Me !
+                     <!-- Study with Me ! -->
                    <i  id="3"  class="ri-close-large-fill back"></i> 
              </h1>
 
@@ -323,10 +323,60 @@
         <!--* Goals  -->
          <section id="4" class="fullElem goals-fullPage  " >
 
-            <h1>   
-                   Set Your Daiy Goals 
-                   <i  id="4"  class="ri-close-large-fill back"></i> 
-             </h1>
+             <h1> 
+                 Daily Goals
+                 <i id="4" class="ri-close-large-line back  "></i>
+            </h1>
+
+            <div class="goal-feature">
+
+                <form class="addGoalForm" action="">
+
+                    <input 
+                    id="goalTitle"
+                    required
+                    type="text"
+                    placeholder="Enter Goal">
+
+                    <textarea 
+
+                     required
+                     name=""
+                       id="goalDescr"
+                     placeholder="Goal Description"
+                     ></textarea>
+
+                   <button  type="submit"   id="addGoalBtn"> 
+                    <i class="ri-add-line"></i> Add Goal  </button>
+
+                </form>
+
+                <div class="goal-list-container">
+
+                    <div class="goals-tracker">
+
+                    </div>
+
+<!--                     
+                    <div class="goal-box">
+
+                         <h1 class="title" > 
+                            Title 
+                         </h1>
+
+                          <img  class="goal-achieved true" src="./images/check.png" alt="">
+
+                         <p class="description"> Task Description  </p>
+
+                         <button class="completedBtn" >  <i class="ri-check-line"></i>  </button>
+                         <button onclick="handleDeleteGoal()" class="deletGoalBtn" > <i class="ri-delete-bin-2-line"></i> </button>
+
+                    </div>   -->
+
+
+
+                </div>
+            </div>
 
 
         </section>   

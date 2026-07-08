@@ -385,8 +385,8 @@ main{
 
 .back{
     cursor: pointer;
-    font-size: (1.5rem , 4vw ,2.8rem);
-    background-color: var(--pri);
+    font-size: (1.5rem , 3vw ,2rem);
+     color: var(--pri);
     border-radius: var(--borderRadius);
 
     
@@ -875,14 +875,166 @@ button:active{
    
    
    
-}
+    }
+
 .pomodoro-fullPage .pomo-container .session-box .btns button:active{
-box-shadow: 0px 0px 0px var(--black);
+    box-shadow: 0px 0px 0px var(--black);
+
+    }
+    
+/** Daily goals  */
+
+
+
+.goals-fullPage {
+
+ display: flex;
+ justify-content: start;
+ align-items: center;
+ flex-direction: column;
+}
+
+
+.goals-fullPage  .goal-feature{
+
+     display: flex;
+     width:100% ;
+     height:calc(100% - 10%) ;
+     padding: var(--padding);
+     gap:2rem;
+     
+} 
+
+.goals-fullPage  .goal-feature .addGoalForm{
+    width: 40%;
+    height: 90%;
+    background-color:var(--tri2);
+    border-radius: var(--borderRadius);
+    padding: var(--padding);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
 
 }
+
+ #goalTitle , #goalDescr , #addGoalBtn {
+
+    width: 95%;
+    outline: none;
+    border: none;
+    font-size: 1.1rem;
+    padding: var(--padding);
+    background-color: var(--sec);
+    color: var(--pri);
+    font-family: aonikLight;
+    border-radius: var(--borderRadius);
+     cursor: pointer;
+}
+
+.addGoalForm #goalDescr{
+    height: 55%;
+}
+
+.addGoalForm #addGoalBtn{
+    color: var(--sec);
+    background-color: var(--pri);
+}
+
+
+.goals-fullPage  .goal-feature .goal-list-container{
+    width: 60%;
+    height: 90%;
+    padding: .5rem;
+
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    gap: .5rem;
+
+    overflow-y: auto;
+    background-color: var(--tri2);
+    border-radius: var(--borderRadius);
+
+    
+}
+
+.goal-list-container::-webkit-scrollbar{
+    display: none;
+}
+
+
+.goal-list-container .goal-box{
+
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: .4rem;
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    background-color: var(--pri);
+}
+
+.goal-list-container .goal-box .title{
+    font-family: aonikRegular;
+    text-transform: capitalize;
   
+    font-size: clamp(1.2rem , 2vw , 3rem);
+    
+}
+
+.goal-list-container .goal-box .goal-achieved{
+    width: 5%;
+   
+}
 
 
+.goal-list-container .goal-box .false{
+     display: none;
+}
+
+.goal-list-container .goal-box.true{
+   
+     display: block;
+}
+
+
+.goal-list-container .goal-box .description{
+
+    width: calc(100% - 28% - 28%);
+    font-family: aonikLight;
+    font-size: clamp(.8em , 1.2vw , 1.5rem);
+}
+
+.goal-list-container .goal-box .completedBtn, .deletGoalBtn{
+
+    font-family: aonikRegular;
+    cursor: pointer;
+     width:fit-content;
+     font-size: clamp(.6rem , 1.2vw , 1.5rem);
+    color: var(--white);
+    padding: .5rem 1rem;
+    background-color: var(--green);
+
+   
+    border: 1px solid var(--borderColor);
+    border-radius: var(--borderRadius);
+    
+}
+
+
+.goal-list-container .goal-box .deletGoalBtn{
+
+     background-color: var(--red);
+}
+
+  
 
 
 
@@ -928,6 +1080,10 @@ box-shadow: 0px 0px 0px var(--black);
     }
      
 
+ 
+
+     /* todo section  */
+
    main .todo-list-fullPage .todo-feature{
         flex-direction: column;
         height: 90%;
@@ -940,6 +1096,25 @@ box-shadow: 0px 0px 0px var(--black);
 
 
       main .todo-list-fullPage .todo-feature .todo-list-container{
+        width: 100%;
+        height:30% ;
+    }
+
+
+
+    /* Goal section  */
+     main .goals-fullPage  .goal-feature{
+        flex-direction: column;
+        height: 90%;
+    }
+
+     main .goals-fullPage  .goal-feature .addGoalForm{
+        width: 100%;
+        height: 70%;
+    }
+
+
+      main .goals-fullPage  .goal-feature .goal-list-container{
         width: 100%;
         height:30% ;
     }
@@ -984,14 +1159,19 @@ box-shadow: 0px 0px 0px var(--black);
        main .allElems .allFeatures .feature>h3{ 
         font-size: 4vw;
        }
-    
-        
+  
      /* Todo */
     
      main .todo-list-fullPage .todo-feature .addTask {
         padding: .5rem;
      }
 
+
+      /* goal */
+    
+     main .goals-fullPage  .goal-feature .addGoalForm{
+        padding: .5rem;
+     }
 
         /* Pomodoro  */
 

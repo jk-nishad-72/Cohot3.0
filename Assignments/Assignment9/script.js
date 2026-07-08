@@ -280,7 +280,7 @@ const renderTaskFun = function(){
 
 }
 
-const  taskDone = function(index){
+const taskDone = function(index){
 
     currentTaskArray.splice(index,1)
 
@@ -474,6 +474,93 @@ resetBtn.addEventListener('click',()=>{
 })
 
 })();
+
+
+
+//* Daily Goals 
+
+const currentGoalsArray =  JSON.parse(localStorage.getItem('currentGoalsArray'))  || [
+
+    {
+        goalTtile:'React Developer ',
+        goalDescr:'Be master in react js in 30 day',
+        isCompleted:false,
+    },
+]
+
+const addGoalForm = document.querySelector('.addGoalForm')
+
+const goalTitleInput = document.querySelector('#goalTitle')
+const goalDescrInput = document.querySelector('#goalDescr')
+const addGoalBtnInput = document.querySelector('#addGoalBtn')
+
+
+
+
+
+addGoalForm.addEventListener('submit',(e)=>{
+
+    e.preventDefault();
+
+    currentGoalsArray.push({
+
+       goalTtile:goalTitleInput.value,
+       goalDescr:goalDescrInput.value,
+       isCompleted:false,
+
+    })
+    
+
+    localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
+    addGoalForm.reset();
+    renderGoalFun();
+     
+})
+
+const goalListContainer = document.querySelector('.goal-list-container')
+
+
+
+const renderGoalFun = ()=>{
+
+goalListContainer.innerHTML = ''
+
+currentGoalsArray.forEach((goal, index )=>{
+
+goalListContainer.innerHTML += `<div class="goal-box">
+
+                                <h1 class="title" > 
+                                     ${goal.goalTtile} 
+                                </h1>
+                                <img  class="goal-achieved    ${goal.isCompleted}  " src="./images/check.png" alt="">
+                                <p class="description">   ${goal.goalDescr}  </p>
+                                <button  onclick="handleGoalCompleted( ${index} )"  class="completedBtn" >  <i class="ri-check-line"></i>  </button>
+                                <button  onclick="handleDeleteGoal( ${index} )" class="deletGoalBtn" > <i class="ri-delete-bin-2-line"></i> </button>
+
+                            </div>  
+`
+})
+}
+
+
+const handleGoalCompleted = (index)=>{ 
+ currentGoalsArray[index].isCompleted = true;
+ localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
+
+ renderGoalFun();
+}
+
+
+const handleDeleteGoal = (index)=>{
+
+   currentGoalsArray.splice(index,1)
+   localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
+   renderGoalFun()
+}
+
+
+renderGoalFun()
+
 
 
 
