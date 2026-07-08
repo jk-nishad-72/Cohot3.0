@@ -351,6 +351,131 @@ dayAllPlannInputs.forEach((input , index)=>{
 dayPlannerFun();
 
 
+//* Motivational Qoutes Functionality 
+
+const newQuoteFetchBtn = document.querySelector('.newQuote')
+
+newQuoteFetchBtn.addEventListener('click',()=>{
+    motivationFun();
+})
+
+
+async function motivationFun(params) {
+
+
+const quoteh1 = document.querySelector('.quote h1')
+const autherh3 = document.querySelector('.auther h3')
+
+// console.log(quoteh1 , autherh3);
+    
+try{
+
+  const response = await fetch("https://dummyjson.com/quotes/random") 
+  const data = await response.json();
+ 
+
+  let quote = data.quote ;
+  let author = data.author ;
+//   console.log(quote, "-", author);
+
+ quoteh1.textContent = `${quote}`
+ autherh3.textContent = ` ${author} `
+
+   }catch(error){
+          console.log('Error',error);
+   }
+}
+
+
+motivationFun();
+
+
+
+//* Pomodoro container 
+
+
+
+(function pomodorFunctionality(){
+    
+const sessionElement = document.querySelector('.session-tag h3')
+
+const timerElement = document.querySelector('.session-box h1')
+const startBtn = document.querySelector('#start')
+const pauseBtn = document.querySelector('#pause')
+const resetBtn = document.querySelector('#reset')
+
+
+let isWorkSession = true;
+let timerInterval ;
+let totalSeconds = 25 * 60;
+
+const updateTimer = ()=>{
+
+     let minute = Math.floor( totalSeconds / 60 )
+     let seconds  = ( totalSeconds % 60 )
+
+
+     timerElement.textContent = ` ${String(minute).padStart(2,'0')}:${String(seconds).padStart(2,'0')} `
+     
+}
+
+
+const startTimerFun = ()=>{
+
+
+    clearInterval(timerInterval)
+
+    if(isWorkSession){
+
+        timerInterval = setInterval(function(){
+
+             if(totalSeconds > 0){
+                totalSeconds--;
+                updateTimer()
+
+             } 
+             else{
+
+                 
+                 swtichSessionAndTimer();
+             }
+
+        },1000)
+    }
+
+
+}
+
+const swtichSessionAndTimer = ()=>{
+     isWorkSession =  !isWorkSession
+     totalSeconds = isWorkSession ? 25 * 60 : 5 * 60;
+
+     sessionElement.textContent = isWorkSession ? " Work Session ":" Take a Break"
+     sessionElement.style.backgroundColor = isWorkSession ? "var(--green)":"var(--blue)";
+     sessionElement.style.boxShadow = isWorkSession? "var(--greenBoxShado)":"var(--blueBoxShado)"
+
+}
+const pauseTimerFun = ()=>{
+     clearInterval(timerInterval)
+}
+
+startBtn.addEventListener('click', ()=> startTimerFun() )
+pauseBtn.addEventListener('click',pauseTimerFun)
+
+resetBtn.addEventListener('click',()=>{
+
+    clearInterval(timerInterval)
+    isWorkSession = true;
+    totalSeconds = 25 * 60;
+    sessionElement.textContent = " Work Sesstion "
+    sessionElement.style.backgroundColor = "var(--green)"
+    sessionElement.style.boxShadow = "var(--greenBoxShado)"
+    updateTimer();
+})
+
+})();
+
+
 
 
 

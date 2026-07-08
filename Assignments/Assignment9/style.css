@@ -14,17 +14,24 @@
     --tri1:#670D2F;
     --tri2:#A53860;
 
+
+    
     --red:#ff0000;
     --green:#01b001;
+    --greenBoxShado:0 0 40px 10px rgba(60, 241, 63, 0.598);
+    --blue:#01a6ff;
+    --blueBoxShado:  0 0 40px 10px rgba(101, 203, 219, 0.598);
 
       
       
 }
 
+
 @font-face {
     font-family:aonikLight ;
     font-weight: 200;
     src: url('./fonts/AeonikTRIAL-Light.otf');
+ 
 }
 
 
@@ -459,9 +466,13 @@ main{
 
 button{
     transition: all .4s ease-in-out;
+    cursor: pointer;
+
 }
 button:active{
    transform: scale(.95);
+   box-shadow: 0px 0px 0px var(--black);
+
 }
 
 .todo-list-fullPage .todo-feature .todo-list-container{
@@ -549,7 +560,7 @@ button:active{
 
 .daily-planner-fullPage{
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -613,6 +624,261 @@ button:active{
      padding-top: .5rem;
     
 }
+
+/** Motivationl Container  */
+
+.moti-fullPage{
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column
+    
+}
+.moti-fullPage>h1 button{
+
+    padding: .8rem;
+    cursor: pointer;
+    font-size: clamp(1rem , 2.5vw , 1.5rem);
+    
+    outline: none;
+    border: none;
+    color: var(--white);
+    border-radius: var(--borderRadius);
+    background-color: var(--green);
+    
+
+}
+.moti-fullPage  .moti-container{
+
+    width: 96% ;
+    height: calc(100% - 20% ) ;
+
+    border-radius: var(--borderRadius);
+     border: 1px solid var(--borderColor);
+    background-color: var(--pri);  
+    padding: 1rem;
+
+    position: relative;
+ 
+    box-shadow:
+        0 0 40px 10px rgba(217, 43, 179, 0.4),   /* box ke bahar glow */
+        inset 0 0 60px rgba(0, 0, 0, 0.4);        /* box ke andar shadow, depth ke liye */
+
+}
+
+.moti-fullPage  .moti-container .moti-wrapper{
+
+  
+         
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--borderColor);
+
+    width: 100%;
+    height:100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+     
+}
+
+.moti-fullPage  .moti-container .moti-wrapper .motivation-box{        
+    border-radius: var(--borderRadius);
+    border: 5px solid var(--sec);
+    width: 70%;
+    height:fit-content;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: column;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 40px 10px rgba(212, 103, 189, 0.588),   /* box ke bahar glow */
+        inset 0 0 60px rgba(0, 0, 0, 0.4);        /* box ke andar shadow, depth ke liye */
+    
+}
+
+
+
+.moti-fullPage  .moti-container .moti-wrapper .motivation-box .tag{        
+
+    width: fit-content;
+    border-radius: var(--borderRadius);
+    background-color: var(--tri1);
+    color: var(--white);
+    padding: .8rem .5rem;
+
+   font-size:clamp(.7rem , 2vw ,1.5rem);
+
+    font-family: aonikRegular;
+
+}
+
+
+.moti-fullPage  .moti-container .moti-wrapper .motivation-box .quote{        
+
+    width: 100%;
+    border-radius: var(--borderRadius);
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    color: var(--sec);
+    padding: .8rem .5rem;
+    font-size:clamp( 1rem, 3vw,1.7rem);
+    font-family: aonikRegular;
+
+}
+
+
+
+.moti-fullPage  .moti-container .moti-wrapper .motivation-box .auther{        
+
+   width: 100%;
+   display: flex;
+   align-items: end;
+   justify-content: end;
+   
+}
+
+
+
+.moti-fullPage  .moti-container .moti-wrapper .motivation-box .auther>h3{        
+
+    width: fit-content;
+    border-radius: var(--borderRadius);
+    background-color: var(--tri1);
+    color: var(--white);
+    padding: .8rem .5rem;
+
+    font-size:clamp(.7rem , 2vw ,1.5rem);
+    font-family: aonikRegular;
+    text-transform: capitalize;
+}
+
+
+/** PomoDoro  */
+
+
+.pomodoro-fullPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+
+.pomodoro-fullPage .pomo-container{
+
+    width: 96%;
+    height: 80%;
+
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 2rem;
+
+    /* background-color: var(--pri); */
+
+    
+}
+
+.pomodoro-fullPage .pomo-container .session-tag>h3{
+
+    background-color: var(--green);
+    color: var(--white);
+    padding: var(--padding);
+    border-radius: var(--borderRadius);
+    font-family: aonikRegular;
+    font-size: clamp(1.2rem , 3vw , 2rem);
+    
+    box-shadow:var(--greenBoxShado) ;
+
+}
+
+
+
+
+.pomodoro-fullPage .pomo-container .session-box{
+
+    color: var(--white);
+    padding: var(--padding);
+    font-family: aonikRegular;
+
+    height: 70%;
+    width: 70%;
+
+     display: flex;
+     justify-content: start;
+     align-items: center;
+     flex-direction: column;
+     gap: 1rem;
+    font-size: clamp(1.2rem , 3vw , 2rem);
+   
+}
+
+
+
+.pomodoro-fullPage .pomo-container .session-box>h1{
+
+
+    color: var(--white);
+    font-size: clamp(5rem , 10vw , 12rem);
+    font-family: aonikBold;
+   
+}
+
+
+
+
+.pomodoro-fullPage .pomo-container .session-box .btns{
+
+    color: var(--white);
+    padding: var(--padding);
+    font-family: aonikRegular;
+
+    display: flex;
+    gap: .8rem;
+   
+}
+
+.pomodoro-fullPage .pomo-container .session-box .btns button{
+    
+
+    color: var(--white);
+    padding: .5rem .8rem;
+    border-radius: var(--borderRadius);
+    background-color: var(--tri2);
+    
+    font-family: aonikRegular;
+
+    text-transform: uppercase;
+    border: none;
+
+    font-size: clamp(.7rem , 3vw , 2rem);
+    box-shadow: 7px 7px 0px var(--black);
+   
+   
+   
+}
+.pomodoro-fullPage .pomo-container .session-box .btns button:active{
+box-shadow: 0px 0px 0px var(--black);
+
+}
+  
+
+
 
 
 
@@ -681,14 +947,15 @@ button:active{
         width: 100%;
     }
 
-    
+
+   
 }
 
 
-/* Tablete view */
+/* Mobile view */
 
 @media (max-width:500px) {
-    
+
      main .allElems .wetherAndDate{
 
          width: 90%;
@@ -713,5 +980,15 @@ button:active{
        main .allElems .allFeatures .feature>h3{ 
         font-size: 4vw;
        }
+    
+
+        /* Pomodoro  */
+
+    main .pomodoro-fullPage::-webkit-scrollbar{
+
+        display: none;
+    }
+    
+ 
     
 }
