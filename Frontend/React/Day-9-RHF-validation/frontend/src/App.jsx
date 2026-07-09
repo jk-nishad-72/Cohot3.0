@@ -33,7 +33,9 @@ const App = () => {
             users.length > 0
              ?
             users.map((user ,index)=>{
-              return <UserCard key={index}   user = {user}  setUsers={setUsers}  setToggle ={setToggle} id = {index} setUpdateUser = {setUpdateUser} /> 
+              return <UserCard key={index} 
+                user = {user}  setUsers={setUsers}  setToggle ={setToggle}
+               id = {index} setUpdateUser = {setUpdateUser} /> 
             }) 
             :
             <h1 className=' text-white text-9xl text-center'> NO any User  </h1>

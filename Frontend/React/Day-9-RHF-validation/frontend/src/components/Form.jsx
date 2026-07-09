@@ -39,6 +39,7 @@ const formSubmit = function(data){
         index === updateUser.id ? {...item , name , email , mobile , image} :item ) ) 
 
         setUpdateUser({})
+        
     }else{
      setUsers((prev)=>{
       return  [...prev , data]

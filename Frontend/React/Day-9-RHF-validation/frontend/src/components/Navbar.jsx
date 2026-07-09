@@ -10,6 +10,7 @@ const Navbar = ({setToggle}) => {
     <div className=' bg-black  flex items-center justify-between text-white py-5 rounded-md border-1  px-[2rem]'>
        <div>
         <h1 className='px-5 py-3   right-full text-black cursor-pointer'>
+          
           <img className='w-10 rounded-full' src="https://imgs.search.brave.com/8N_daD3HBZmFJEDzeLtnxXixFSbU0l2Vx1RTlq5mAQg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L2ZyZWUtdmVjdG9y/L2JsdWUtY2lyY2xl/LXdpdGgtd2hpdGUt/dXNlcl83ODM3MC00/NzA3LmpwZz9zZW10/PWFpc19oeWJyaWQm/dz03NDAmcT04MA" alt="" />
         </h1>
        </div>
@@ -27,4 +28,4 @@ const Navbar = ({setToggle}) => {
   )
 }
 
-export default Navbar
+export default Navbar 

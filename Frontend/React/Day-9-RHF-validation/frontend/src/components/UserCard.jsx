@@ -20,6 +20,7 @@ const updateHandle = function(){
 
 
 const deleteHandle = ()=>{
+  
    setUsers(prev => prev.filter((e,index) => index !== id) )
     
 }
