@@ -72,7 +72,8 @@ pageOpenAndCloseFunctionality()
 Is task ko 3 parts mein todo
 Part 1: User ka location (lat/lon) nikaalna
 Part 2: Lat/lon se City name nikaalna
-Part 3: Lat/lon se Weather nikaalna
+Part 3: Lat/lon se Weather nikaalna 
+
 
  */
 
@@ -121,9 +122,6 @@ async function getLocation(lat, lon) {
 
 
     // console.log(lat , lon);
-
-  
-
     const resOfApi = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
    
     const jsonData = await resOfApi.json();
@@ -145,7 +143,6 @@ async function getLocation(lat, lon) {
 //* Part 3: Lat/lon se Weather nikaalna
 async function getWeatherByLocation(lat , lon ) {
 
-          
 
               const resOfApi =  await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`)
 
@@ -162,7 +159,7 @@ async function getWeatherByLocation(lat , lon ) {
 }
 
 
-// *Date & Time 
+//*  Date & Time 
 
 const dateAndTimeFun = function(){
 
@@ -184,13 +181,15 @@ const dateAndTimeFun = function(){
     let year = today.getFullYear()
     let tarikh = today.getDate()  
       
-    let timePeriod = 'AM'
+    let timePeriod = hour >= 12 ? 'PM' : 'AM';
 
-    if(hour > 12 ){
-        hour = hour - 12 
-        timePeriod = 'PM'
+    if(hour === 0 ){
+        hour =  12 
     }
+    else if(hour >12) hour -= 12;
 
+
+  dynamicBackgroundFun(hour , timePeriod)
 
    dateTag.textContent = `${tarikh} ${allMonthOfYear[monthOfYeer]} ${year}`
    dayTag.textContent = ` ${allDaysOfWeek[dayOfWeek]}, ${String(hour).padStart('2','0')}:${String(minute).padStart('2','0')}:${String(second).padStart('2','0')} `
@@ -203,12 +202,66 @@ setInterval(()=>{
 dateAndTimeFun();
 },1000)
 
-
-
 }
 
 
 weatherAndDateTimeFunctionality()
+
+//* Dynamic Background 
+/**
+Morning: 5:00 AM – 12:00 PM
+Afternoon: 12:00 PM – 5:00 PM
+Evening: 5:00 PM – 9:00 PM
+Night: 9:00 PM – 4:00 AM
+ */
+
+let backGroundVideo = {
+
+     morning:'./video/day-vid.mp4',
+     afternoon:'./video/afternoon.mp4',
+     evening:'./video/137009-765458037_medium.mp4',
+     night:'./video/night-vid.mp4'
+
+}
+
+
+const videoElement = document.querySelector('.bg-vid')
+let currentTimePeriod = null;
+
+const dynamicBackgroundFun = function(time , period){
+
+  let key ;
+
+       if(time >= 5  && time < 12  && period === 'AM' ){
+
+        key = 'morning'
+        
+       }
+       else if((time >= 12 &&  period === 'PM') || (time < 5 && period ==='PM') ){
+
+      key = 'afternoon'
+        
+       }
+       else if(time >= 5   && time < 9 && period ==='PM' ){
+
+        
+        key = 'evening'
+       }
+       else if(time >= 9 && ( period === 'PM' || period ==='AM') ||  (time < 5 && period === 'AM') ){
+         key = 'night'
+       }
+   
+   
+       if(key && key !== currentTimePeriod){
+
+          currentTimePeriod = key;
+
+          videoElement.setAttribute('src',backGroundVideo[key])
+
+       }
+    
+}
+
 
 
 
@@ -514,6 +567,7 @@ addGoalForm.addEventListener('submit',(e)=>{
     localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
     addGoalForm.reset();
     renderGoalFun();
+    goalTrackerFun();
      
 })
 
@@ -548,6 +602,7 @@ const handleGoalCompleted = (index)=>{
  localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
 
  renderGoalFun();
+ goalTrackerFun();
 }
 
 
@@ -556,14 +611,95 @@ const handleDeleteGoal = (index)=>{
    currentGoalsArray.splice(index,1)
    localStorage.setItem('currentGoalsArray' , JSON.stringify(currentGoalsArray))
    renderGoalFun()
+   goalTrackerFun()
+
 }
 
 
 renderGoalFun()
 
 
+//* Goal Tracker 
 
 
+const goalTrackerFun = ()=>{
+
+    
+const totalGoal = currentGoalsArray.length;
+
+const completedGoal  = currentGoalsArray.filter( (elem)=> elem.isCompleted === true).length;
+
+const percentage =  Math.floor((completedGoal / totalGoal) * 100);
+
+const progressFillerElement = document.querySelector('.progress-filler')
+
+const goalCountElement = document.querySelector('.goal-count')
+
+
+ progressFillerElement.style.width = percentage + '%';
+
+ goalCountElement.textContent = ` ${completedGoal} / ${totalGoal}`
+
+
+
+}
+
+
+
+goalTrackerFun();
+
+
+// *theme feature 
+
+const darkBtn = document.querySelector('.dark')
+const lightBtn = document.querySelector(".light")
+const rootElement = document.documentElement;
+const goalsTrackerInfo = document.querySelector('.goals-tracker .info')
+
+
+
+
+/**
+ *  
+ * 
+ */
+
+
+darkBtn.addEventListener('click',()=>{
+
+     lightBtn.style.display = 'flex'
+     darkBtn.style.display = 'none'
+ 
+
+    rootElement.style.setProperty('--pri','#EF88AD')
+    rootElement.style.setProperty('--sec','#3A0519')
+    rootElement.style.setProperty('--tri1','#670D2F')
+    rootElement.style.setProperty('--tri2','#A53860')
+    rootElement.style.setProperty('--motiBoxShado',"0 0 40px 10px rgba(212, 103, 189, 0.588), inset 0 0 60px rgba(0, 0, 0, 0.4)")
+    rootElement.style.setProperty('--greenBoxShado' ,"0 0 40px 10px rgba(60, 241, 63, 0.598)");
+    rootElement.style.setProperty('  --blueBoxShado' , '0 0 40px 10px rgba(101, 203, 219, 0.598)')
+    goalsTrackerInfo.style.color = 'var(--white)'
+
+    
+})
+
+
+lightBtn.addEventListener('click',()=>{
+
+    darkBtn.style.display = 'flex'
+    lightBtn.style.display = 'none'
+
+    
+    rootElement.style.setProperty('--pri','#F2EFE5')
+    rootElement.style.setProperty('--sec','#B4B4B8')
+    rootElement.style.setProperty('--tri1','#C7C8CC')
+    rootElement.style.setProperty('--tri2','#E3E1D9')
+    rootElement.style.setProperty('--motiBoxShado',"0 0 40px 10px rgba(155, 146, 153, 0.553) , inset 0 0 60px rgba(234, 228, 228, 0.371) ")
+    rootElement.style.setProperty('--greenBoxShado','0 0 40px 10px rgba(75, 111, 75, 0.534)')
+    rootElement.style.setProperty('--blueBoxShado','0 0 40px 10px rgba(117, 143, 147, 0.598)')
+    goalsTrackerInfo.style.color = 'var(--black)'
+    
+})
 
 
 
