@@ -1,2 +1,28 @@
+React Day 11 Context API (SOLVING PROBLEM OF PROP DRILING)
 
+Topics 
+
+DSM -> Local share management  -> Context api 
+steps for context api 
+
+1) MAKE a folder name as context 
+2) create your context(store) -> using createContext()
+
+3) Make your create provider => 
+->Make a contextProvider function which accepts a children .
+->return <MyStore.provider value={{...}}>
+    {children}
+</MyStore.provider>
+
+4) hold your data inside context provider
+5) pass value prop and state to it and make it available to the all child component .
+6) in the any child component use useContext(Mystore) to get the data .
+
+example     
+
+
+
+    
+
+GSM -> gloabal share management -> redux , recoil , zustand , 
 
