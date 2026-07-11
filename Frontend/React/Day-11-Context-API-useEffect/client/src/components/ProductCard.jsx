@@ -1,15 +1,52 @@
 import React from "react";
 import { useContext } from "react";
-import { MyShopStore } from "../context/MyShopContext";
+import { MyShopStore2 } from "../context/MyShopContext2";
+import { ToastContainer, toast } from 'react-toastify';
 
 const ProductCard = ({  product }) => {
 
-  let { setCart} = useContext(MyShopStore)
-
-   
+  let {setCart}  = useContext(MyShopStore2)
 
 
-  return (
+  
+
+  const addedToCart = ()=> toast.success(`Item Added to Cart!`)
+
+
+ const handleAddCart = ( )=>{
+
+
+  setCart(prev => {
+     
+        let existingCart  = prev.find(element =>  element.id == product.id);
+
+    
+        // not existing cart 
+        if(!existingCart){
+          return [...prev , {...product , count:1}]
+        }
+        
+      // if  existing cart 
+
+      return prev.map(item => {
+
+        return item.id === product.id ? {...item , count: item.count+1} : item
+
+        /* or 
+        if(item.id === product.id){
+          return {...item , count:item.count+1}
+        }
+
+        return item  */ 
+      })
+
+      
+          
+  })
+  addedToCart()
+}
+
+     return (
     <div className="bg-gray-900 text-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
 
       {/* Image */}
@@ -50,12 +87,14 @@ const ProductCard = ({  product }) => {
         {/* Button */}
         <button 
 
-         onClick={()=> setCart(prev => [...prev , product]) }
+        onClick={handleAddCart}
         className="w-full mt-3 bg-blue-600 hover:bg-blue-700 py-2 rounded-lg font-medium cursor-pointer">
           Add to Cart
         </button>
 
-      </div> 
+        
+
+        </div> 
 
 
     </div>

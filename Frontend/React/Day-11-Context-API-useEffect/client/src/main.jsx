@@ -5,15 +5,20 @@ import App from './App.jsx'
 
 
 import TestComp from './testComponents/TestComp.jsx'
-import { ContextProvider } from './context/MyContext.jsx'
-import { MyShopProvider } from './context/MyShopContext.jsx'        
+
+import {ContexProvider2} from './context/MyShopContext2.jsx'
 
 createRoot(document.getElementById('root')).render(
   
    
-     <MyShopProvider>
+  
+   
+   <ContexProvider2>
+    
        <App />
-     </MyShopProvider>
+
+   </ContexProvider2>
+            
     
         // <ContextProvider> 
         //    <TestComp />

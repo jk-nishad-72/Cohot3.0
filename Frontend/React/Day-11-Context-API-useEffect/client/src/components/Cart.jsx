@@ -1,15 +1,37 @@
 import React, { useContext } from "react";
-import { MyShopStore } from "../context/MyShopContext";
+// import { useContext } from "react";
+import { MyShopStore2 } from "../context/MyShopContext2";
+import { toast } from "react-toastify";
+
 
 const Cart = () => {
 
 
-  let {cart} = useContext(MyShopStore)
-  // calculate total price
+  let {cart ,setCart}  = useContext(MyShopStore2)
+
+  cart =  cart.length < 0 ?[] : cart; 
+  
+  
+
+    
+    
+
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price,
     0
   );
+
+  const handleRemove = (item_id)=>{
+
+      const filtedCart = cart.filter((item)=> item.id != item_id)
+
+      setCart(filtedCart)
+
+      toast.error("Item Removed From Cart ")
+            
+  }
+
+  
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-6">
@@ -54,14 +76,21 @@ const Cart = () => {
 
                   {/* Quantity (static for now) */}
                   <div className="flex items-center gap-2 mt-2">
-                    <button className="px-2 bg-gray-700 rounded">-</button>
-                    <span>1</span>
-                    <button className="px-2 bg-gray-700 rounded">+</button>
+                    <button 
+
+                     className="px-2 bg-gray-700 rounded">-</button>
+                    <span>{item.count} </span>
+                    <button 
+
+                    className="px-2 bg-gray-700 rounded">+</button>
                   </div>
                 </div>
 
                 {/* Remove */}
-                <button className="text-red-400 hover:text-red-600 ml-4">
+                <button 
+                
+                 onClick={()=>handleRemove(item.id)}
+                className="text-red-400 hover:text-red-600 ml-4">
                   Remove
                 </button>
               </div>
