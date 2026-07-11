@@ -10,13 +10,15 @@ export const ContextProvider = ({children})=>{
      const [name, setName] = useState("Jay kishan Nishad ")
 
 
-     return( 
+     return ( 
 
      <Mystore.Provider value={{name , setName}}>
             {children}
      </Mystore.Provider>
 
      )
+
+
 }
 
 

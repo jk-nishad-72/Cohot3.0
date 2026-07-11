@@ -6,13 +6,17 @@ import App from './App.jsx'
 
 import TestComp from './testComponents/TestComp.jsx'
 import { ContextProvider } from './context/MyContext.jsx'
+import { MyShopProvider } from './context/MyShopContext.jsx'        
 
 createRoot(document.getElementById('root')).render(
   
-    // <App />
-
-        <ContextProvider> 
-           <TestComp />
-        </ContextProvider>
+   
+     <MyShopProvider>
+       <App />
+     </MyShopProvider>
+    
+        // <ContextProvider> 
+        //    <TestComp />
+        // </ContextProvider>
 
 )
