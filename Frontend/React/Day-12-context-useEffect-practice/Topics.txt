@@ -1,0 +1,155 @@
+
+
+React Day-12 of practice on Context API and useEffect()
+
+
+import React from 'react'
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import { useState } from 'react'
+
+const App = () => {
+
+  const [count , setCount] =  useState(0) 
+
+    console.log('App is rendering ');
+  
+  return (
+    <div>
+      
+      App 
+
+      < Home />
+      < About />
+      < Contact />
+
+       
+       <p> {count} </p>
+
+
+       {/* on this single change the entire react app is rendered  */}
+       
+       <button 
+        onClick={()=>{
+           setCount(count+1)
+        }}
+       >
+         Increment 
+       </button>
+      
+      </div>
+
+
+  )
+}
+
+export default App 
+
+
+
+// Context 
+
+import { useState } from "react";
+import { createContext } from "react";
+
+
+
+// Consumer -> createContext();
+
+ export const MyStore = createContext();
+
+// for consumer we need to make ->provider 
+
+export const MyStoreContextProvider = ({children})=>{
+
+     const [count , setCount] =  useState(0) 
+
+     return (<MyStore.Provider 
+
+      value={{count , setCount}}
+     > 
+        {children}
+     </MyStore.Provider>)
+}
+
+
+
+// 
+
+
+import React, { useContext } from 'react'
+import Home from './pages/Home'
+import About from './pages/About'
+import Contact from './pages/Contact'
+
+import { MyStore } from './context/MyContext'
+
+const App = () => {
+
+ 
+    const {count , setCount }  =  useContext(MyStore) 
+
+
+    // kyuki setCount ka Parent Component  ContextProvider(hof)  hai jiska children   app hai jo ->
+    //  jab bhi setcount function chalta hai to vo state ko update karta hai and 
+    // apne parent component ko renrender karta hai   and isliye app rerender hoti hai isko solve karne ke liye useEffect() ka use krte hai
+
+    console.log('App is rendering ');
+  
+  return (
+    <div>
+      
+      App 
+
+      < Home />
+      < About />
+      < Contact />
+
+       
+       <p> {count} </p>
+
+
+       {/* on this single change the entire react app is rendered  */}
+
+       <button 
+        onClick={()=>{
+           setCount(count+1)
+        }}
+       >
+         Increment 
+       </button>
+      
+      </div>
+
+
+  )
+}
+
+export default App
+
+
+// To handle this we use useEffect()
+
+firstely understanding component lify cycly 
+mounting -> render tree
+updatation  -> any changers on render tree 
+unmounting -> remove component from render tree 
+
+
+// studying useEffect() 
+-is a hook , asynchronousely 
+- it's accept two argument 
+1) call back function ()=>{} 
+2) depencie array [] 
+
+// Important for interview -> Memory Leak => 
+ 
+ is a concept of js and react where a code of component is run even if component is unmounted (eg setInterval()) this is known as Memory Leak
+
+//  to handle it we write a unmounted function which handle Memory leak  return ()=>{ clearInterval() }
+
+
+
+// last understanding axios to call API 
+
