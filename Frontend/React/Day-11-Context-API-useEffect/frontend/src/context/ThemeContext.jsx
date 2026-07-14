@@ -10,6 +10,7 @@ import { useState } from 'react';
 export const ThemeStoreProvider = ({children})=>{
 
      const [theme, setTheme] = useState('dark')
+     const [count , setCount ] = useState(0)
 
       const toggleTheme = ()=>{
 
@@ -18,12 +19,26 @@ export const ThemeStoreProvider = ({children})=>{
         })
       }
 
+    const increment = ()=>{
+       setCount(prev => prev+1)
+    }
+
+     const decrement = ()=>{
+       setCount(prev => prev-1)
+    }
+
+    
+     const reset = ()=>{
+       setCount(0)
+    }
+
+
     return (
 
  
              <ThemeStoreContext.Provider 
 
-             value={{theme , toggleTheme  }}
+             value={{theme , toggleTheme  , count ,increment , decrement , reset }}
              >
                  {children}
              </ThemeStoreContext.Provider>

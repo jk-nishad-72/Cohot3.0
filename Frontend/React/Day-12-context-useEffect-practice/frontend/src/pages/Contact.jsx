@@ -1,10 +1,18 @@
 
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Contact = () => {
 
 
-      console.log('Cantact is rendering ');
+
+    useEffect(()=>{
+         console.log('Cantact is Mount ');
+
+         return ()=>{
+             console.log('Cantact is UnMount ');
+         }
+    },[])
+     
   return (
     <div>Contact</div>
   )

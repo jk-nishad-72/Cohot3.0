@@ -1,6 +1,8 @@
 
 import React from 'react'
 import Navber from '../components/Navber'
+import HeroText from '../components/HeroText'
+import Counter from '../components/Counter'
 
 const Home = () => {
 
@@ -10,11 +12,10 @@ const Home = () => {
     <div className=' relative w-full h-screen   '>
 
         < Navber />
-           <div className=' absolute  top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]' >
+        < HeroText value = "Home" />
+         <Counter />
 
-              <h1 className=' text-center w-full text-7xl mb-4 ' >Hello JK Nishad <br /> Welcome to your home page </h1>
-    
-           </div>
+        
     </div>
   )
 }

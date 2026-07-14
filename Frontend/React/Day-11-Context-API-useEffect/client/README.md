@@ -1,3 +1,5 @@
+n de
+
 # React Day 11 — Context API (Solving Prop Drilling)
 
 ## 1. The Problem: Prop Drilling
@@ -32,6 +34,7 @@ function Profile({ user }) {
 ```
 
 **Issues with prop drilling:**
+
 - Intermediate components become cluttered with props they don't use.
 - Hard to maintain/refactor — renaming or restructuring breaks the chain.
 - Doesn't scale well in large applications.
@@ -40,10 +43,10 @@ function Profile({ user }) {
 
 ## 2. Two Types of State Sharing
 
-| Type | Meaning | Tools |
-|---|---|---|
-| **DSM** (Direct State Management / Local Share Management) | Sharing state within a component tree using React's built-in tools | **Context API** |
-| **GSM** (Global Share Management) | Sharing state across the entire app using external libraries | **Redux, Recoil, Zustand, Jotai, MobX** |
+| Type                                                             | Meaning                                                            | Tools                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------- |
+| **DSM** (Direct State Management / Local Share Management) | Sharing state within a component tree using React's built-in tools | **Context API**                         |
+| **GSM** (Global Share Management)                          | Sharing state across the entire app using external libraries       | **Redux, Recoil, Zustand, Jotai, MobX** |
 
 - **Context API** is best for small-to-medium apps or specific feature-level state (theme, auth, language).
 - **GSM libraries** (Redux, Zustand, Recoil) are better for large, complex apps with frequent state updates, middleware needs, dev tools, etc.
@@ -53,6 +56,7 @@ function Profile({ user }) {
 ## 3. Context API — Step-by-Step
 
 ### Step 1: Create a `context` folder
+
 Organize all your context files in one place.
 
 ```
@@ -76,6 +80,7 @@ export default UserContext;
 ### Step 3: Create your Provider
 
 The Provider is a wrapper component that:
+
 - Accepts `children` (the components it will wrap).
 - Returns `<MyStore.Provider value={{...}}>` so all children can access the data.
 
@@ -271,14 +276,14 @@ function Profile() {
 
 ## 6. DSM vs GSM — Quick Comparison
 
-| Feature | Context API (DSM) | Redux / Zustand / Recoil (GSM) |
-|---|---|---|
-| Setup complexity | Low | Medium–High |
-| Boilerplate | Minimal | More (Redux especially) |
-| Performance at scale | Can cause unnecessary re-renders | Optimized for large apps |
-| DevTools | Limited | Excellent (Redux DevTools) |
-| Best for | Theme, Auth, Language, small feature state | Complex, app-wide, frequently updated state |
-| Learning curve | Easy | Moderate to steep (Redux) |
+| Feature              | Context API (DSM)                          | Redux / Zustand / Recoil (GSM)              |
+| -------------------- | ------------------------------------------ | ------------------------------------------- |
+| Setup complexity     | Low                                        | Medium–High                                |
+| Boilerplate          | Minimal                                    | More (Redux especially)                     |
+| Performance at scale | Can cause unnecessary re-renders           | Optimized for large apps                    |
+| DevTools             | Limited                                    | Excellent (Redux DevTools)                  |
+| Best for             | Theme, Auth, Language, small feature state | Complex, app-wide, frequently updated state |
+| Learning curve       | Easy                                       | Moderate to steep (Redux)                   |
 
 ---
 
@@ -301,16 +306,19 @@ return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
 ## 8. Practice Projects
 
 ### 🟢 Easy
+
 1. **Theme Switcher** — Build a light/dark mode toggle using Context API. The toggle button should be in the Navbar, but the theme should affect the entire app's background and text color.
 2. **Counter with Context** — Move a simple counter (increment/decrement/reset) from local `useState` into a Context so multiple sibling components can display and update the same count.
 3. **Language Selector** — Create a `LanguageContext` that stores `"en"` or `"hi"`. Display a few static strings that change based on the selected language, accessible from at least 3 nested components.
 
 ### 🟡 Medium
+
 1. **Authentication Flow** — Build an `AuthContext` that stores `isLoggedIn`, `user`, `login()`, and `logout()`. Protect a `Dashboard` route so it only renders if logged in, and show a `Login` page otherwise. Use it across a Navbar (show user name / logout button) and Dashboard (show welcome message).
 2. **Shopping Cart** — Create a `CartContext` with `items`, `addToCart()`, `removeFromCart()`, `getTotal()`. Build a `ProductList` component (adds items), a `Navbar` (shows cart item count), and a `CartPage` (lists items + total) — all reading from the same context.
 3. **Multi-Step Form Wizard** — Use Context to hold form data across 3 separate step components (Personal Info → Address → Review), so data persists as the user navigates between steps without prop drilling.
 
 ### 🔴 Hard
+
 1. **Combine Context + useReducer** — Build a `TodoContext` using `useReducer` (actions: ADD, DELETE, TOGGLE, EDIT, FILTER) instead of `useState`. Create separate components for `TodoInput`, `TodoList`, `TodoFilter`, `TodoStats` — all consuming the same reducer-powered context.
 2. **Nested/Multiple Contexts** — Build an app with `AuthContext`, `ThemeContext`, and `CartContext` all active simultaneously. Practice composing multiple providers cleanly (e.g., an `AppProviders.jsx` that combines them), and ensure components only re-render when their *relevant* context changes.
 3. **Mini E-commerce App with Context as Global Store** — Full app: `ProductContext` (fetch products from an API), `CartContext`, `AuthContext`, `WishlistContext`. Include search/filter functionality, protected checkout page, and persist cart data to `localStorage` synced with Context state.

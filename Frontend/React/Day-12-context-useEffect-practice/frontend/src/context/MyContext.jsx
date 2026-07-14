@@ -13,10 +13,10 @@ export const MyStoreContextProvider = ({children})=>{
 
      const [count , setCount] =  useState(0) 
 
-     return (<MyStore.Provider 
-
-      value={{count , setCount}}
-     > 
+     return (
+     
+     <MyStore.Provider 
+      value={{count , setCount}}   > 
         {children}
      </MyStore.Provider>)
 }
