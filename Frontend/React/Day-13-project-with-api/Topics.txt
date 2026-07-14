@@ -3,3 +3,12 @@
 React Day - 13 Project with api and context api 
 
 npm install axios 
+
+
+shop project
+
+-> show products using axios , useEffects 
+-> use context api  for data centrilzation 
+-> add to cart , 
+->remove from cart 
+-> Increase and decrease Qauntity of product 
