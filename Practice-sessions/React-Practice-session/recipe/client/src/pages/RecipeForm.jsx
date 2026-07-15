@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { SiCodechef } from "react-icons/si";
 import { useForm } from "react-hook-form";
+import {nanoid} from 'nanoid'
 
 import {
   FaUtensils,
@@ -11,10 +12,15 @@ import {
   FaClipboardList,
 } from "react-icons/fa6";
 import { toast } from "react-toastify";
+import { MyRecipeStore } from "../context/MyRecipeContext";
+import { useNavigate } from "react-router";
 
 
 
 const RecipeForm = () => {
+
+    const navigate = useNavigate()
+      let { myrecipe , setMyRecipe } = useContext(MyRecipeStore)
 
 
      let {  register ,
@@ -23,8 +29,7 @@ const RecipeForm = () => {
             reset , } =         useForm({
 
                              mode:"onchange",
-          
-                        })
+     })
 
 
         // console.log(errors);
@@ -32,10 +37,16 @@ const RecipeForm = () => {
                   
 const handleSubmitFun = (data)=>{
 
-    console.log(data);
+    // console.log(data);
+
+    let newArr = [...myrecipe , {...data , _id:nanoid() , favorite:false} ]
+
+    setMyRecipe(newArr)
+    localStorage.setItem('myrecipe' , JSON.stringify(newArr));
     
     reset()
     toast.success('Recipe added successfully')
+    navigate('/')
 }
 
 

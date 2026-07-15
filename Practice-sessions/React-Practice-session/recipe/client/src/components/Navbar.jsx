@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -7,8 +7,14 @@ import {
   FaSearch,
   FaUtensils,
 } from "react-icons/fa";
+import RecipeCard from "./RecipeCard";
+import { MyRecipeStore } from "../context/MyRecipeContext";
 
 const Navbar = () => {
+
+  const [search , setSearch] = useState(false)
+  const [searchValue , setSearchValue] = useState("")
+  let {myrecipe} = useContext(MyRecipeStore)
 
   const navLinkStyle = ({ isActive }) =>
     `flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${
@@ -23,9 +29,9 @@ const Navbar = () => {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
+      className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
     >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between relative">
 
         {/* Logo */}
         <NavLink
@@ -57,9 +63,18 @@ const Navbar = () => {
           <input
             type="text"
             placeholder="Search recipes..."
+            onFocus={()=>setSearch(true)}
+            onBlur={()=>setSearch(false)} 
+            onChange={(e)=>{
+              // console.log(e.target.value); 
+              setSearchValue(e.target.value)
+
+            }}
             className="w-full pl-11 pr-4 py-3 rounded-full border border-gray-300 outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 transition"
           />
-          
+
+         
+
         </div>
 
         {/* Navigation */}
@@ -83,7 +98,18 @@ const Navbar = () => {
 
         </div>
 
-      </div>
+      </div> 
+
+       <div className="absolute top-15  bg-white rounded-lg shadow-xl mt-2 w-screen ">
+         {
+           search && 
+             ( <motion.div className="   bg-white rounded-lg shadow-xl  w-screen ">
+                       {
+                         <RecipeCard  myrecipe={myrecipe.filter((val)=>val.recipeName.toLocaleLowerCase().includes(searchValue))} />
+                       }
+             </motion.div>) 
+         }
+       </div>
     </motion.nav>
   );
 };

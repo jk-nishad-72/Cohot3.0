@@ -1,9 +1,20 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
+import RecipeCard from '../components/RecipeCard'
+import { MyRecipeStore } from '../context/MyRecipeContext'
 
 const Favourites = () => {
+
+    let {myrecipe } = useContext(MyRecipeStore)
+
+    let fav = myrecipe.filter(val => val.favorite === true) 
+
   return (
-    <div>Favourites</div>
+    <div> 
+      
+         <RecipeCard  myrecipe={fav}/>
+
+    </div>
   )
 }
 
