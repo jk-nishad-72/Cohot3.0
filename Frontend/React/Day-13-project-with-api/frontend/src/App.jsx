@@ -6,33 +6,40 @@ import CartScreen from "./pages/CartScreen";
   import { ToastContainer, toast } from 'react-toastify';
 import { useContext } from "react";
 import { MyStoreContext } from "./context/MyContext";
+import { MyShopPracticeContext } from "./context/MyPracticeContext";
 
 const App = () => {
 
 
-  const [products, setProducts] = useState([]);
+  let {toggle ,carts , setCarts} = useContext(MyShopPracticeContext)
 
-   let {carts ,setCarts ,toggle ,setToggle} = useContext(MyStoreContext) 
+   const [products  , setProducts] = useState([] )
   
 
-  const getProductData = async () => {
 
+   
+   const getProductData = async () => {
 
-    try {
-      const response = await axios.get(
-        "https://fakestoreapi.com/products"
-      );
-      setProducts(response.data);
-    } catch (error) {
-      console.log("Fetch Error -> ", error);
-    }
+     try {
 
+        let result = await axios.get('https://fakestoreapi.com/products')
 
-  };
+    
+        setProducts(result.data)
+        
+      
+     } catch (error) {
+      
+            console.log('Product Error ' , error);
+            
+     }
+    
+   }
 
-  useEffect(() => {
-    getProductData();
-  }, []);
+ useEffect(()=>{
+  getProductData()
+ },[])
+
 
   return (
     <div className="bg-gray-100 min-h-screen relative ">
@@ -54,23 +61,23 @@ const App = () => {
             </h1>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products.map((product) =>{
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"> 
 
-                   let isProductExistInCart = carts.find((item)=> item.id === product.id)                       
-                     
-                  return <ProductCard 
-                   key={product.id}
-                   product={product} 
-                   isProductExistInCart ={isProductExistInCart}
-                   carts = {carts}
-                   setCarts ={setCarts} />
-              })}
+              {
+                 products.map((product) =>{
+
+                  let isProductExistInCart = carts.find((item)=> item.id === product.id)
+
+                   return <  ProductCard key={product.id}  product = {product} isProductExistInCart = {isProductExistInCart}  />
+                 })
+
+              }
+              
             </div>
           </>
         ) : (
     
-          <CartScreen carts = {carts} setCarts={ setCarts} />
+          <CartScreen  />
         )}
 
       </div>

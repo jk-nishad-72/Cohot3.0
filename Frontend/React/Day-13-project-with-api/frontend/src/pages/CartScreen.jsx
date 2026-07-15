@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { MyStoreContext } from "../context/MyContext";
+import { MyShopPracticeContext } from "../context/MyPracticeContext";
 
 const CartScreen = () => {
 
 
- let {carts ,setCarts ,  increment , decrement} = useContext(MyStoreContext) 
+   let{ carts , increment , decrement } = useContext(MyShopPracticeContext)
+
   
   return (
     <div className="max-w-5xl mx-auto bg-white p-6 rounded-xl shadow-md">
@@ -48,7 +50,9 @@ const CartScreen = () => {
 
                 <button
                 
-                 onClick={()=>decrement(item.id)}
+               onClick={()=>decrement(item.id)}
+
+                   
                   className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300"
                 >
                   −
@@ -60,7 +64,7 @@ const CartScreen = () => {
 
                 <button
                
-                    onClick={()=>increment(item.id)}
+               onClick={()=>increment(item.id)}
                   className="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300"
                 >
                   +

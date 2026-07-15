@@ -2,22 +2,15 @@
 
 import React from "react";
 import { useContext } from "react";
-  import { ToastContainer, toast } from 'react-toastify';
+
 import { MyStoreContext } from "../context/MyContext";
+import { MyShopPracticeContext } from "../context/MyPracticeContext";
 
-const ProductCard = ({ product ,isProductExistInCart,  }) => {
+const ProductCard = ({product ,isProductExistInCart}) => {
 
+   let { increment , decrement  ,hanclAddTocart}   = useContext(MyShopPracticeContext)
 
-    let {carts ,setCarts ,  increment , decrement} = useContext(MyStoreContext) 
-     
-const handleAddToCart = ()=>{
-       
-  setCarts(prev => [...prev , {...product , qty:1}])
-     
-  toast.success('Product Added To cart')
-       
-    }
-
+ 
 
   return (
     <div className="bg-white shadow-md rounded-xl p-4 hover:shadow-xl transition duration-300">
@@ -54,20 +47,21 @@ const handleAddToCart = ()=>{
 
                 <button
                 
-                       onClick={()=>decrement(product.id)}
+                  onClick={()=>decrement(product.id)}
                   className=" px-3 py-1 rounded  cursor-pointer hover:bg-blue-500 bg-gray-300"
                 >
                   −
                 </button>
 
+                   
                 <span className="font-semibold text-lg">
                   {isProductExistInCart.qty}
                 </span>
 
                 <button
                
-                  onClick={()=>increment(product.id)}
-
+                
+                   onClick={()=>increment(product.id)}
                   className=" px-3 py-1  rounded cursor-pointer hover:bg-blue-500 bg-gray-300"
                 >
                   +
@@ -80,7 +74,7 @@ const handleAddToCart = ()=>{
             //   {/* Button */}
                 <button 
 
-                onClick={handleAddToCart}
+                onClick={()=>hanclAddTocart(product)}
                 className="w-full mt-4 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition cursor-pointer">
                     Add to Cart
                 </button>

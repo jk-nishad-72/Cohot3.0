@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import { MyStoreContext } from "../context/MyContext";
+import { MyShopPracticeContext } from "../context/MyPracticeContext";
 
 const Navbar = () => {
 
-    let {toggle ,setToggle ,carts} = useContext(MyStoreContext)     
+  let {toggle , setToggle ,carts} = useContext(MyShopPracticeContext)
 
+
+    
   return (
     <nav className="bg-white shadow-md px-6 py-4 flex justify-between items-center">
 
@@ -14,14 +17,16 @@ const Navbar = () => {
 
       <div className="flex gap-6">
         <button
-          onClick={() => setToggle(true)}
+       
+         onClick={()=> setToggle(true)}
           className="hover:text-blue-500 cursor-pointer"
         >
           Home
         </button>
 
         <button
-          onClick={() => setToggle(false)}
+    
+     onClick={()=>setToggle(false)}
           className="hover:text-blue-500 cursor-pointer relative"
         >
         
