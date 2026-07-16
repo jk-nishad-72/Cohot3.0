@@ -28,7 +28,7 @@ const RecipeCard = ({myrecipe}) => {
 
      <> 
 
-    <h1 className=" text-2xl font-bold my-3  text-center w-full   text-orange-500 ">  All Recipes </h1>
+    <h1 className=" text-2xl font-bold my-3  text-center w-full   text-orange-500 border-b-2 border-gray-300 p-3 ">  All Recipes </h1>
 
        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-6 p-6">
 
