@@ -1,0 +1,19 @@
+
+
+React Day -  14
+
+Topics: React Router -> multiple page / without reloading 
+1. Installation
+    a. Basic Example
+
+
+2) Components for Routing
+    a. BrowserRouter
+    b. Routes
+    c. Route
+    d. Link
+    e. NavLink
+    g. useNavigate
+    h. nested routing 
+    i. useOutlet  -> very important for the nested routing
+
