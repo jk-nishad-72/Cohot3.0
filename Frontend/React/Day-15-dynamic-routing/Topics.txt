@@ -1,0 +1,59 @@
+
+React day 15 Dynamic Routing 
+
+underStanding 2 routing approach 
+1) Declarative Routing 
+2) Data routing 
+
+
+
+*) Dynamic Routing -> 
+
+     <Routes>
+              <Route path='/' element ={<Home />} > </Route>
+              <Route path='/about' element ={<About />} > </Route>
+              <Route path='/products' element ={<Products />} > </Route>
+              <Route path='/details/:id' element ={<ProductDetail />} > </Route>
+    </Routes>
+
+*) useParams hook for accessing params data as object 
+
+and showing data occording to geted data 
+
+
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router'
+
+const ProductDetail = () => {
+
+     const {id} = useParams();
+     const [singleProduct , setSingleProduct] = useState({})
+         
+
+     const getSingleProduct = async () => {
+
+       try {
+        
+        let result = await axios.get(`https://fakestoreapi.com/products/${id}`)
+        console.log(result.data);
+        
+       } catch (error) {
+
+        console.log(error);
+    
+       }
+     }
+
+useEffect(()=>{
+    getSingleProduct()
+},[])
+
+
+
+  return (
+    <div>ProductDetail</div>
+  )
+}
+
+export default ProductDetail
