@@ -28,9 +28,9 @@ const Register = () => {
             return 
          }
 
-         let newArr = [...allUsers , {...data , _id:nanoid() , role:'customer' , status:'active' , cart:[] , address:[] , order:[]}]
+         let newArr = [...allUsers , {...data , _id:nanoid() , role:'customer' , status:'active' , cart:[] , address:[] , favorites:[] , orders:[]}]
          setAllUser(newArr) 
-         localStorage.setItem('allUser' , JSON.stringify(newArr)) 
+         localStorage.setItem('allUsers' , JSON.stringify(newArr)) 
          reset()
          toast.success('Account Created Successfully')
          navigate('/login')

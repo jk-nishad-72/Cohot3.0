@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import AppRoutes from "./routes/AppRoutes";
 import { ToastContainer, toast } from 'react-toastify';
+import { MyShopStoreContext } from "./context/MyContext";
+import { useNavigate } from "react-router";
 
 const App = () => {
+
+   let {currentUser  , } = useContext(MyShopStoreContext)
+   let navigate = useNavigate()
+
+
+     useEffect(()=>{
+       if(!currentUser.email){  
+         navigate('/login') 
+       }
+     },[])
+
 
   
   return (

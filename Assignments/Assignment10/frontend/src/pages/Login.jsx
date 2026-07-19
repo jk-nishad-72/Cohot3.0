@@ -10,16 +10,15 @@ import { MyShopStoreContext } from "../context/MyContext";
 
 const Login = () => {
 
-     let {allUsers , setAllUser , setCurrentUser} = useContext(MyShopStoreContext) 
+     let {allUsers  , setCurrentUser} = useContext(MyShopStoreContext) 
      let {register , handleSubmit , formState:{errors} , reset }   = useForm({mode:'onChange'})
      const navigate = useNavigate()
 
 
     const handleLoginFun = (data)=>{
-
+       
          let foundUser= allUsers.find((user)=>(user.email === data.email))
-         console.log(foundUser);
-         
+        
          if(!foundUser){
             toast.error('User Does Not Exist !')
             return 
