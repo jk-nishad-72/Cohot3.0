@@ -43,6 +43,11 @@ const navLinkStyle = ({ isActive }) =>
       : "text-gray-600 hover:bg-gray-100 hover:text-black hover:scale-105"
   }`;
 
+  const handlSideBarOpenClose  = () => {
+    setOpenMenu(false)
+    setShowUserPopUp(false) 
+  }
+
   return (
     <motion.nav 
 
@@ -79,12 +84,12 @@ const navLinkStyle = ({ isActive }) =>
         <div className="hidden md:flex items-center gap-5 relative"> 
           
           {/* Cart */}
-          <div className="relative cursor-pointer border border-gray-300 rounded-full p-2">
+          <NavLink to='/cart-products'  className="relative cursor-pointer border border-gray-300 rounded-full p-2">
             <FiShoppingCart className="text-xl" />
             <span className="absolute -top-2 -right-2 text-xs bg-black text-white px-1 rounded-full">
               {uCart.length}
             </span>
-          </div>
+          </NavLink>
 
           {/* User */}
           <div 
@@ -137,13 +142,13 @@ const navLinkStyle = ({ isActive }) =>
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden px-6 pb-6 space-y-4 bg-white"
           >
-            <NavLink to="/" className={navLinkStyle} onClick={() => setOpenMenu(false)}>
+            <NavLink to="/" className={navLinkStyle} onClick={handlSideBarOpenClose}>
               Home
             </NavLink>
-            <NavLink to="/shop" className={navLinkStyle} onClick={() => setOpenMenu(false)}>
+            <NavLink to="/shop" className={navLinkStyle} onClick={handlSideBarOpenClose}>
               Shop
             </NavLink>
-            <NavLink to="/about" className={navLinkStyle} onClick={() => setOpenMenu(false)}>
+            <NavLink to="/about" className={navLinkStyle} onClick={handlSideBarOpenClose}>
               About
             </NavLink>
 
@@ -152,10 +157,11 @@ const navLinkStyle = ({ isActive }) =>
               <span className="text-sm font-medium text-blue-500"> {currentUser?.fName}   </span>
             </div>
 
-            <div className="flex items-center gap-2">
+            <NavLink to='/cart-products' className="flex items-center gap-2" onClick={handlSideBarOpenClose} > 
+
               <FiShoppingCart />
               <span> Cart ({uCart.length}) </span>
-            </div>
+            </NavLink>  
 
             <button
               onClick={handleLogout}

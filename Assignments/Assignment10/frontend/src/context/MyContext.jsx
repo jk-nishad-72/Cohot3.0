@@ -26,20 +26,31 @@ export const ContextProvider = ({children})=>{
      })
 
 
-     const addToCartFun = (product)=>{
-
-      console.log(product);
-      
+const addToCartFun = (product)=>{
 
        let updatedCart = [...uCart , product]
        setUCart(updatedCart)
-      const user = JSON.parse(localStorage.getItem('currentUser'))
-      user.cart = updatedCart
-      localStorage.setItem('currentUser' , JSON.stringify(user))
+       const user = JSON.parse(localStorage.getItem('currentUser'))
+       user.cart = updatedCart
+       localStorage.setItem('currentUser' , JSON.stringify(user))
        toast.success("Product Added Successfully") 
      
-     }
+}
 
+
+  const handleClearCart = () => {
+    if (uCart.length === 0) {
+      toast.warning('Cart is already empty')
+      return
+    } else {
+
+       const user = JSON.parse(localStorage.getItem('currentUser'))
+       user.cart = [] 
+       localStorage.setItem('currentUser' , JSON.stringify(user))
+       setUCart([]) 
+      toast.info('Cart cleared')
+    }
+  }
     
      
 
@@ -70,7 +81,21 @@ useEffect(()=>{
      return (
          
          <MyShopStoreContext
-               value={{products , setProducts , allUsers , setAllUser , currentUser , setCurrentUser , addToCartFun , uCart }}
+               value={ 
+                
+                {
+                products , 
+                setProducts , 
+                allUsers , 
+                setAllUser , 
+                currentUser , 
+                setCurrentUser , 
+                addToCartFun , 
+                uCart  , 
+                setUCart ,
+                handleClearCart
+              }
+              }
          >
             {children}
          </MyShopStoreContext>
