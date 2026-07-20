@@ -178,7 +178,7 @@ const CartProducts = () => {
 
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => toast.success('Proceeding to checkout')}
+              onClick={() => toast.success(' Product Succesfully Ordered ')}
               className="w-full flex items-center justify-center gap-2 bg-[#141414] hover:bg-[#2B2B2B] text-white font-medium text-sm rounded-full py-3.5 transition-colors"
             >
               Checkout

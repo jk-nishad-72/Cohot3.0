@@ -1,0 +1,7 @@
+
+
+React Day 16 Data Routing Approach 
+
+Used in Dashboard designs 
+
+//creating protected routes (authenticated route )
