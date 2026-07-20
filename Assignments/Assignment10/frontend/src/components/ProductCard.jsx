@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import RatingStars from "./RatingStars"
 import { motion } from "framer-motion";
 import { FiShoppingBag } from "react-icons/fi";
@@ -7,23 +7,33 @@ import { FaRegHeart } from "react-icons/fa";
 import { BsCartCheck } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import { FiShoppingCart } from "react-icons/fi";
+import { MyShopStoreContext } from "../context/MyContext";
 
 
 
 
-const ProductCard = ({ variants ,  product, bg, onAddToCart, onNavigate }) => {
+const ProductCard = ({ variants ,  product, bg, onNavigate }) => {
+
+  let { uCart  , setUCart  , addToCartFun } = useContext(MyShopStoreContext)
+
+    const [isInCart, setIsInCart] = useState(()=>{
+    return uCart.some((item)=>item.id === product.id) 
+  })
+
+
+
   const [wishlisted, setWishlisted] = useState(false)
-  const [isInCart, setIsInCart] = useState(false)
+
   const discounted = product.price * (1 - product.discountPercentage / 100)
-  const outOfStock = product.stock === 0
+  const outOfStock = product.stock === 0 
 
   return (
     <motion.div 
      variants={variants}
      whileHover={{ y: -4 }} 
-     className="group cursor-pointer" onClick={onNavigate}>
+     className="group cursor-pointer" 
+     onClick={onNavigate}>
 
-   
       <div className="relative aspect-square rounded-3xl overflow-hidden" style={{ backgroundColor: bg }}>
            {/* 2. image wrapper */}
         <img
@@ -70,13 +80,13 @@ const ProductCard = ({ variants ,  product, bg, onAddToCart, onNavigate }) => {
            <div className=' relative '>
              
           <div className="flex items-center gap-1.5 mt-1">
-            <RatingStars rating={product.rating} />
+            <RatingStars rating={product.rating} />  
             <span className="text-[11px] text-[#8A8A85]">({product.rating.toFixed(1)})</span>
           </div>
 
-          <div className="flex items-baseline gap-2 mt-1">
+          <div className="flex items-baseline gap-2 mt-1"> 
             <span className="text-[15px] font-semibold text-[#141414]">${discounted.toFixed(2)}</span>
-            {product.discountPercentage > 0 && (
+            {product.discountPercentage > 0 && ( 
               <span className="text-[12px] text-[#B5B2AA] line-through">${product.price.toFixed(2)}</span>
             )}
           </div> 
@@ -86,7 +96,6 @@ const ProductCard = ({ variants ,  product, bg, onAddToCart, onNavigate }) => {
                 <button 
             className={` absolute text-sm  right-0 bottom-2 flex gap-2 items-center border border-[#E5E3DD] rounded-full px-3 py-2 cursor-pointer bg-[#141414] text-[#fff]  `}
           >
-
           <BsCartCheck size={13} /> Added 
         </button>
           : 
@@ -95,7 +104,7 @@ const ProductCard = ({ variants ,  product, bg, onAddToCart, onNavigate }) => {
                onClick={(event)=>{
                 event.stopPropagation();
                 setIsInCart(true) 
-                onAddToCart(product) 
+                addToCartFun(product) 
                }}
             className=' absolute text-sm  right-0 bottom-2 flex gap-2 items-center border border-[#E5E3DD] rounded-full px-3 py-2 cursor-pointer hover:bg-[#141414] hover:text-[#fff] '
           >

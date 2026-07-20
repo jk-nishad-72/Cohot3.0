@@ -16,7 +16,8 @@ const cardVariants = {
 
 const gridVariants = { hidden: {}, show: { transition: { staggerChildren: 0.05 } } }
 
-const Shop = () => {
+const Shop = () => { 
+  
   const { products, addToCartFun } = useContext(MyShopStoreContext)
   const navigate = useNavigate()
   const [activeCategory, setActiveCategory] = useState('All')
@@ -95,7 +96,7 @@ const Shop = () => {
                 key={product.id}
                 product={product}
                 bg={PALETTE[i % PALETTE.length]}
-                onAddToCart={addToCartFun}
+              
                 onNavigate={() => navigate(`/product/${product.id}`)}
               />
             ))}

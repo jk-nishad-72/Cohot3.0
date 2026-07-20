@@ -5,6 +5,9 @@ import { useParams, useNavigate } from 'react-router'
 import { FiShoppingBag, FiArrowLeft, FiMinus, FiPlus, FiPlus as FiExpand } from 'react-icons/fi'
 import { FaHeart, FaRegHeart, FaStar } from 'react-icons/fa'
 import { MyShopStoreContext } from '../context/MyContext'
+import { BsCartCheck } from 'react-icons/bs'
+import { MdDone } from 'react-icons/md'
+
 
 const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED'] 
 
@@ -17,6 +20,7 @@ const RatingStars = ({ rating, size = 12 }) => (
     ))}
   </div>
 )
+
 
 const formatDate = (iso) =>
   new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
@@ -64,25 +68,31 @@ const DetailSkeleton = () => (
 )
 
 const ProductDetails = () => {
+
   const { id } = useParams()
   const navigate = useNavigate()
-  const { addToCartFun } = useContext(MyShopStoreContext)
+  const {uCart ,  addToCartFun ,  incrementProductQuantity, decrementProductQuantity } = useContext(MyShopStoreContext)
 
-  const [singleProduct, setSingleProduct] = useState(null)
+   const [isInCart, setIsInCart] = useState(false)
+
+  const [singleProduct, setSingleProduct] = useState({})
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [activeImg, setActiveImg] = useState(0)
-  const [wishlisted, setWishlisted] = useState(false)
-  const [qty, setQty] = useState(1)
+  const [wishlisted, setWishlisted] = useState(false) 
+
+
   const [openAccordion, setOpenAccordion] = useState('description')
 
   const getSingleProduct = async () => {
+
     setLoading(true)
     setError(false)
+
     try {
       const result = await axios.get(`https://dummyjson.com/products/${id}`)
       setSingleProduct(result.data)
-      setQty(result.data.minimumOrderQuantity || 1)
+     
       setActiveImg(0)
     } catch (err) {
       console.log(err)
@@ -90,9 +100,18 @@ const ProductDetails = () => {
     } finally {
       setLoading(false)
     }
+
   }
 
-  useEffect(() => { getSingleProduct() }, [id])
+  useEffect(() => {
+     getSingleProduct() 
+     setIsInCart(()=>{
+      // console.log(singleProduct ,id);
+    return uCart.some((value)=> value.id === Number(id))  
+  })
+  }, [id])
+
+
 
   const avgFromReviews = useMemo(() => {
     if (!singleProduct) return 0
@@ -100,6 +119,7 @@ const ProductDetails = () => {
       ? singleProduct.reviews.reduce((s, r) => s + r.rating, 0) / singleProduct.reviews.length
       : singleProduct.rating
   }, [singleProduct])
+
 
   if (loading) return <DetailSkeleton />
 
@@ -140,9 +160,17 @@ const ProductDetails = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* gallery */}
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <div className="relative aspect-square rounded-3xl overflow-hidden" style={{ backgroundColor: bg }}>
+          <motion.div 
+          initial={{ opacity: 0, y: 16 }} 
+          animate={{ opacity: 1, y: 0 }} 
+          transition={{ duration: 0.4 }}
+          >
+            <div 
+            className="relative aspect-square rounded-3xl overflow-hidden" 
+            style={{ backgroundColor: bg }}>
+
               <AnimatePresence mode="wait">
+
                 <motion.img
                   key={activeImg}
                   src={images[activeImg]}
@@ -153,13 +181,14 @@ const ProductDetails = () => {
                   transition={{ duration: 0.25 }}
                   className="w-full h-full object-contain p-12"
                 />
+
               </AnimatePresence>
 
               <motion.button
                 onClick={() => setWishlisted((w) => !w)}
                 whileTap={{ scale: 0.8 }}
                 className="absolute top-4 left-4 w-9 h-9 rounded-full bg-white/85 backdrop-blur flex items-center justify-center"
-              >
+              > 
                 {wishlisted ? <FaHeart size={14} className="text-[#141414]" /> : <FaRegHeart size={14} className="text-[#141414]" />}
               </motion.button>
 
@@ -168,6 +197,7 @@ const ProductDetails = () => {
                   -{Math.round(singleProduct.discountPercentage)}%
                 </span>
               )}
+
             </div>
 
             {images.length > 1 && (
@@ -219,26 +249,45 @@ const ProductDetails = () => {
               </span>
             </div>
 
-            {!outOfStock && (
-              <div className="flex items-stretch gap-3 mb-8">
-                <div className="flex items-center border border-[#E5E3DD] rounded-full overflow-hidden">
-                  <button onClick={() => setQty((q) => Math.max(min, q - 1))} className="w-11 h-11 flex items-center justify-center text-[#141414] hover:bg-[#F0EFEA]">
-                    <FiMinus size={14} />
-                  </button>
-                  <span className="w-10 text-center text-sm text-[#141414]">{qty}</span>
-                  <button onClick={() => setQty((q) => Math.min(singleProduct.stock, q + 1))} className="w-11 h-11 flex items-center justify-center text-[#141414] hover:bg-[#F0EFEA]">
-                    <FiPlus size={14} />
-                  </button>
-                </div>
 
-                <motion.button
+            {!outOfStock && (
+              <div className="flex items-stretch gap-3 mb-8 mx-auto">
+                
+                <div className="flex items-center border border-[#E5E3DD] rounded-full w-[150px] ">
+              
+                  <span className=" p-4 text-center text-sm text-[#141414] flex items-center justify-center  "> Mini Order: {singleProduct.minimumOrderQuantity || 1} </span>
+                 
+                </div> 
+                 {
+                  isInCart ? (
+                  <motion.button
+                   whileTap={{ scale: 0.97 }}
+
+                   onClick={()=> navigate('/cart-products')}
+                 
+                  className="flex-1 flex items-center justify-center gap-2 bg-[#141414] hover:bg-[#2B2B2B] text-white font-medium text-sm rounded-full transition-colors"
+                >
+                  <MdDone size={20} /> Added  
+                </motion.button> 
+
+                  ) :
+                  <motion.button
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => addToCartFun({ ...singleProduct, quantity: qty })}
+                  onClick={() =>{ 
+                    addToCartFun(singleProduct) 
+                    setIsInCart(true)
+                  }}
                   className="flex-1 flex items-center justify-center gap-2 bg-[#141414] hover:bg-[#2B2B2B] text-white font-medium text-sm rounded-full transition-colors"
                 >
                   <FiShoppingBag size={16} /> Add to Bag
-                </motion.button>
-              </div>
+
+                </motion.button> 
+
+                 }
+
+
+            
+              </div> 
             )}
 
             {/* accordion, mirrors the "Why Choose Us" +/- pattern */}
@@ -293,8 +342,13 @@ const ProductDetails = () => {
             </div>
           </div>
         )}
+
+
+
       </div>
     </div>
+
+
   )
 }
 

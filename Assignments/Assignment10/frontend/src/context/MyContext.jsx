@@ -28,7 +28,9 @@ export const ContextProvider = ({children})=>{
 
 const addToCartFun = (product)=>{
 
-       let updatedCart = [...uCart , product]
+      //  console.log(product.minimumOrderQuantity);
+       
+       let updatedCart = [...uCart , {...product , quantity:product.minimumOrderQuantity || 1}]  
        setUCart(updatedCart)
        const user = JSON.parse(localStorage.getItem('currentUser'))
        user.cart = updatedCart
@@ -37,8 +39,74 @@ const addToCartFun = (product)=>{
      
 }
 
+const incrementProductQuantity = (productId)=>{
 
-  const handleClearCart = () => {
+    const productObj = uCart.find((prdct)=> prdct.id === productId) 
+    let { stock , quantity} = productObj
+   
+    if(quantity < stock){
+
+       let updateCart = uCart.map((item)=>{ 
+         return  item.id === productId ?   {...item , quantity: item.quantity + 1} : item 
+        })
+
+       setUCart(updateCart)  
+       const user = JSON.parse(localStorage.getItem('currentUser'))
+       user.cart = updateCart
+       localStorage.setItem('currentUser' , JSON.stringify(user)) 
+
+      
+    }
+    else {
+       toast.error("Out of Stock")
+
+    }   
+}
+
+
+const decrementProductQuantity = (productId)=>{
+ 
+
+   const productObj = uCart.find((prdct)=> prdct.id === productId)
+   let {minimumOrderQuantity  , quantity} = productObj
+
+    if(quantity > minimumOrderQuantity){ 
+
+      let updateCart = uCart.map((item)=>{ 
+         return  item.id === productId ?   {...item , quantity: item.quantity - 1} : item 
+        })
+
+       setUCart(updateCart)  
+       const user = JSON.parse(localStorage.getItem('currentUser'))
+       user.cart = updateCart
+       localStorage.setItem('currentUser' , JSON.stringify(user))
+
+      } 
+  
+    else {
+       toast.error("Minimum Order Quantity Required") 
+
+    }  
+  
+}
+
+
+  const handleRemoveCart = (id) => {
+
+    console.log(id);
+
+    const updatedCart = uCart.filter((item)=> item.id !== id) 
+    setUCart(updatedCart)
+
+    const user = JSON.parse(localStorage.getItem('currentUser'))
+    user.cart = updatedCart
+    localStorage.setItem('currentUser' , JSON.stringify(user))
+    
+    toast.info('Item removed')
+  }
+
+  const handleClearCart = () => { 
+
     if (uCart.length === 0) {
       toast.warning('Cart is already empty')
       return
@@ -54,11 +122,9 @@ const addToCartFun = (product)=>{
     
      
 
-   
 
 const getProducts = async () => {
-     
-              
+    
            try {
             
             let result = await axios.get(`https://dummyjson.com/products/`)
@@ -93,7 +159,10 @@ useEffect(()=>{
                 addToCartFun , 
                 uCart  , 
                 setUCart ,
-                handleClearCart
+                handleClearCart,
+                incrementProductQuantity,
+                decrementProductQuantity,
+                handleRemoveCart
               }
               }
          >

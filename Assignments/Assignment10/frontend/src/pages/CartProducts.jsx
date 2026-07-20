@@ -8,7 +8,7 @@ import { MyShopStoreContext } from '../context/MyContext'
 const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED']
 
 const CartProducts = () => {
-  const { uCart, setUCart ,handleClearCart } = useContext(MyShopStoreContext)
+  const { uCart, setUCart ,handleClearCart  , incrementProductQuantity, decrementProductQuantity ,handleRemoveCart} = useContext(MyShopStoreContext)
   const navigate = useNavigate()
 
   const lineTotal = (p) => {
@@ -26,21 +26,7 @@ const CartProducts = () => {
   const total = subtotal + shipping
 
 
-  const handleRemove = (id) => {
-    setUCart((prev) => prev.filter((p) => p.id !== id))
-    toast.info('Item removed')
-  }
 
-  const handleQty = (id, delta) => {
-    setUCart((prev) =>
-      prev.map((p) => {
-        if (p.id !== id) return p
-        const min = p.minimumOrderQuantity || 1
-        const nextQty = Math.max(min, Math.min(p.stock ?? 999, (p.quantity || 1) + delta))
-        return { ...p, quantity: nextQty }
-      })
-    )
-  }
 
   // ── empty state ──────────────────────────────
   if (uCart.length === 0) {
@@ -119,24 +105,24 @@ const CartProducts = () => {
                         <h2 className="text-[15px] font-medium text-[#141414] truncate">{p.title}</h2>
                       </div>
                       <button
-                        onClick={() => handleRemove(p.id)}
+                        onClick={() => handleRemoveCart(p.id)} 
                         className="w-8 h-8 shrink-0 rounded-full flex items-center justify-center text-[#8A8A85] hover:bg-[#F0EFEA] hover:text-[#141414] transition-colors"
                       >
-                        <FiTrash2 size={14} />
+                        <FiTrash2 size={14} /> 
                       </button>
                     </div>
 
                     <div className="flex items-end justify-between mt-2">
                       <div className="flex items-center border border-[#E5E3DD] rounded-full overflow-hidden">
                         <button
-                          onClick={() => handleQty(p.id, -1)}
+                          onClick={() => decrementProductQuantity(p.id)}
                           className="w-8 h-8 flex items-center justify-center text-[#141414] hover:bg-[#F0EFEA]"
                         >
-                          <FiMinus size={12} />
+                          <FiMinus size={12} /> 
                         </button>
-                        <span className="w-8 text-center text-[13px] text-[#141414]">{p.quantity || 1}</span>
+                        <span className="w-8 text-center text-[13px] text-[#141414]">{p.quantity}</span>
                         <button
-                          onClick={() => handleQty(p.id, 1)}
+                          onClick={() => incrementProductQuantity(p.id)} 
                           className="w-8 h-8 flex items-center justify-center text-[#141414] hover:bg-[#F0EFEA]"
                         >
                           <FiPlus size={12} />
