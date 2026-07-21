@@ -1,0 +1,52 @@
+import React from "react";
+
+const ProductCard = ({ product }) => {
+  return (
+    <div className="bg-gray-900 text-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300">
+
+      {/* Image */}
+      <div className="h-52 bg-white flex items-center justify-center p-4">
+        <img
+          src={product.image}
+          alt={product.title}
+          className="h-full object-contain"
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-4 space-y-2">
+
+        {/* Title */}
+        <h2 className="text-lg font-semibold line-clamp-2">
+          {product.title}
+        </h2>
+
+        {/* Category */}
+        <p className="text-sm text-gray-400 capitalize">
+          {product.category}
+        </p>
+
+        {/* Price */}
+        <p className="text-xl font-bold text-green-400">
+          ₹ {product.price}
+        </p>
+
+        {/* Rating */}
+        <div className="flex items-center gap-2">
+          <span className="text-yellow-400">⭐ {product.rating.rate}</span>
+          <span className="text-gray-400 text-sm">
+            ({product.rating.count} reviews)
+          </span>
+        </div>
+
+        {/* Button */}
+        <button className="w-full mt-3 bg-blue-600 hover:bg-blue-700 py-2 rounded-lg font-medium">
+          Add to Cart
+        </button>
+
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
