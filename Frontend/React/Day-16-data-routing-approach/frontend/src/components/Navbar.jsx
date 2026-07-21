@@ -25,8 +25,6 @@ const Navbar = () => {
 
               console.log(isLoggedIn); 
               
-  
-            
 
   const navigate = useNavigate()
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -40,11 +38,21 @@ const Navbar = () => {
 
      const handleLogout = ()=>{
 
-       localStorage.removeItem("isLoggedIn")
+      let confirm  =  window.confirm(" Are you sure About Log out ! ") 
+
+      if(confirm){  
+         
+      localStorage.removeItem("isLoggedIn")
       setIsLoggedIn(null)
       navigate("/auth/login") 
-      toast.success('Log out Succesfully ')
+      toast.success('Log out Succesfully ') 
 
+      } 
+
+      else{ 
+        toast.error('Log out Cancelled ') 
+        return
+      } 
 
      }
 

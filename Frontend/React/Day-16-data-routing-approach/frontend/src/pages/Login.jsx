@@ -48,21 +48,23 @@ const Login = () => {
 
   const handleSubmitForm = (data) => { 
  
-      if(!isLoggedIn) {
-        navigate('/auth/register') 
-        reset() 
-        return toast.error("User doesn't exist")
-       }
-        
-     let  user = isLoggedIn.email === data.email && isLoggedIn.password === data.password  
+     let user = users.find(user => user.email === data.email)
 
       if(user){  
+
+         if (user.password !== data.password) {
+
+          toast.error('Invalid Passwrod')
+          reset() 
+          return;
+          
+         }
         navigate('/') 
         toast.success('Login successfully') 
         reset() 
       }
       else{ 
-        toast.error('invalid email or password') 
+        toast.error('invalid Email ') 
       }     
   };
 

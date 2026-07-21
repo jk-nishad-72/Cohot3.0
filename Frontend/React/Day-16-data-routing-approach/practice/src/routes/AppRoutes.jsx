@@ -1,10 +1,4 @@
 
-
-React Day 16 Data Routing Approach 
-
-Used in Dashboard designs 
-
-
 import React from 'react'
 import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
