@@ -5,19 +5,21 @@ import { toast } from 'react-toastify'
 import { FiMinus, FiPlus, FiTrash2, FiShoppingBag, FiArrowLeft } from 'react-icons/fi'
 import { MyShopStoreContext } from '../context/MyContext'
 
-const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED']
+const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED']  
 
 const CartProducts = () => {
   const { uCart, setUCart ,handleClearCart  , incrementProductQuantity, decrementProductQuantity ,handleRemoveCart} = useContext(MyShopStoreContext)
   const navigate = useNavigate()
 
   const lineTotal = (p) => {
-    const unit = p.price * (1 - (p.discountPercentage || 0) / 100)
+    const unit = p.price * (1 - (p.discountPercentage || 0) / 100) 
     return unit * (p.quantity || 1)
   }
 
   // plain calculation — runs every render, no useMemo needed.
-  // uCart is small (a handful of items) so this costs nothing noticeable.
+  // uCart is small (a handful of items) so this costs nothing noticeable. 
+
+  
   let subtotal = 0
   for (const p of uCart) {
     subtotal += lineTotal(p)

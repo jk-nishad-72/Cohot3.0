@@ -1,0 +1,16 @@
+
+Music app 
+
+
+hey cludie write a detailed prompt for google stich 
+to design 
+1. a music player for our music app 
+use latest design trends 
+add animations 
+make it responsive  
+2. 
+design pages 
+Login page 
+register page 
+ -> register page have input of name , username , email , password  and user role -> [user | artist ]
+
