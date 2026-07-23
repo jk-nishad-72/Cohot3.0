@@ -1,12 +1,15 @@
 
 import React from 'react'
-  console.log("about rendering ");
-  
 
-const About = () => {
+
+const About = React.memo(()=> {
+
+  console.log("about rendering ");
+ 
   return (
     <div>About</div>
   )
 }
+) 
 
-export default About
+export default About 

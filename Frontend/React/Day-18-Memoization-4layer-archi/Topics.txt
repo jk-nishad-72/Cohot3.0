@@ -1,0 +1,145 @@
+
+React Day 18 Memoization 
+
+Memoization:-
+used to saved 
+
+1) React.memo(component_reference , ()=>{}) => 
+
+//How to use  2 useCase syntax 
+
+const App = () => {
+
+  console.log("App rendering ");
+  
+    const [count, setCount] = useState(0)
+  return (
+    <div>
+
+      <h1> {count} </h1>
+       <button 
+
+       onClick={()=> setCount(count+1)}
+       
+       > Incremnet  </button>
+
+       <Home />
+       <About /> 
+    </div>
+  )
+}
+
+//1) by giving function component_reference name 
+
+const Home = () => {
+
+  console.log("Home rendering ");  
+
+  return (
+    <div>Home</div>
+  )
+}
+
+export default React.memo(Home)  
+
+
+//2) by using arrow function with  wrapping the entire component
+const About = React.memo(()=> {
+
+  console.log("about rendering ");
+ 
+  return (
+    <div>About</div>
+  )
+}
+) 
+
+export default About  
+
+// React.memo() failed here because now home accepting dynamic props 
+
+const Home = ({name}) => {
+
+  console.log("Home rendering ");  
+
+  return (
+    <div>Home - {name} </div> 
+  )
+}
+
+export default React.memo(Home)  
+
+
+// when the home component is accepting props
+
+
+
+
+
+const App = () => {
+
+  console.log("App rendering ");
+  
+    const [count, setCount] = useState(0)  // premitive data 
+    const [user , setUser  ] = useState({name:"jay" , age:20 , id:1}) //reference data , user state store the refence of object 
+
+
+  return (
+    <div>
+
+      <h1> {count} {" "} {user.name} </h1>
+       <button 
+
+       onClick={()=> setCount(count+1)}
+       
+       > Incremnet  </button>
+
+       <br />
+
+        <button 
+
+       onClick={()=> setUser({name:"kishan"})}  // here we are create new object , so new refence is created  every sigle time when it render ,  this is the main problem of re-rendering  , we can solved this issue by using  memoization
+       
+       > change User   </button>
+
+       <Home user = {user} />
+       <About /> 
+    </div>
+  )
+}
+
+export default App
+
+
+const Home = ({user}) => {
+
+  console.log("Home rendering ");  
+
+  return (
+    <div>Home - {user.name} </div>  
+  )
+}
+
+export default React.memo(Home ,(prevProps , nextProps)=>{
+  return prevProps.user.name === nextProps.user.name // if this is true it will not re render when the name is changed than only will the home is re render 
+})  
+
+
+
+
+
+2) useCallback(()=>{},[])  
+
+
+3) const great = useMemo(()=>{
+
+    return result 
+})
+
+4) 4 layer Architecture 
+
+1) Presentation layer
+2) Business layer
+3) Data layer
+4) state layer 
+
