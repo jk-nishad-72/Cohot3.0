@@ -61,9 +61,9 @@ const navLinkStyle = ({ isActive }) =>
         {/* LOGO */}
         <div
           onClick={() => navigate("/")}
-          className="flex items-center gap-2 text-xl font-semibold cursor-pointer"
+          className="flex items-center gap-2 text-xl font-['Fraunces'] italic font-semibold cursor-pointer"
         >
-          <FiShoppingBag className="text-2xl" />
+          <FiShoppingBag className="text-2xl " />
           Buyzaar
         </div>
 
@@ -174,7 +174,12 @@ const navLinkStyle = ({ isActive }) =>
         )}
 
       </AnimatePresence>
+
+      
+
     </motion.nav>
+
+    
   );
 };
 

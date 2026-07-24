@@ -15,7 +15,6 @@ import { MyShopStoreContext } from "../context/MyContext";
 const ProductCard = ({ variants ,  product, bg, onNavigate }) => {
 
   let { uCart  , setUCart  , addToCartFun } = useContext(MyShopStoreContext)
-
     const [isInCart, setIsInCart] = useState(()=>{
     return uCart.some((item)=>item.id === product.id) 
   })
@@ -45,7 +44,8 @@ const ProductCard = ({ variants ,  product, bg, onNavigate }) => {
 
 
          {/* Favorite button */}
-        <motion.button
+        <motion.button 
+
           onClick={(e) => { e.stopPropagation(); setWishlisted((w) => !w) }}
           whileTap={{ scale: 0.8 }}
           className="absolute top-3 left-3 w-8 h-8 rounded-full bg-white/85 backdrop-blur flex items-center justify-center"
@@ -101,7 +101,7 @@ const ProductCard = ({ variants ,  product, bg, onNavigate }) => {
           : 
           <button 
 
-               onClick={(event)=>{
+                onClick={(event)=>{
                 event.stopPropagation();
                 setIsInCart(true) 
                 addToCartFun(product) 

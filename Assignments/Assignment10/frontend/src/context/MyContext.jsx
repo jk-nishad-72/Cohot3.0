@@ -116,7 +116,7 @@ const decrementProductQuantity = (productId)=>{
        user.cart = [] 
        localStorage.setItem('currentUser' , JSON.stringify(user))
        setUCart([]) 
-      toast.info('Cart cleared')
+      
     }
   }
     

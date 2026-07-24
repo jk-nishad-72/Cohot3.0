@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { FiMinus, FiPlus, FiTrash2, FiShoppingBag, FiArrowLeft } from 'react-icons/fi'
 import { MyShopStoreContext } from '../context/MyContext'
 
+
 const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED']  
 
 const CartProducts = () => {
@@ -13,14 +14,14 @@ const CartProducts = () => {
 
   const lineTotal = (p) => {
     const unit = p.price * (1 - (p.discountPercentage || 0) / 100) 
-    return unit * (p.quantity || 1)
+    return unit * (p.quantity || 1) 
   }
 
   // plain calculation — runs every render, no useMemo needed.
   // uCart is small (a handful of items) so this costs nothing noticeable. 
 
   
-  let subtotal = 0
+  let subtotal = 0 
   for (const p of uCart) {
     subtotal += lineTotal(p)
   }
@@ -50,7 +51,9 @@ const CartProducts = () => {
   }
 
 
-  return (
+  return ( 
+
+    <> 
     <div className="bg-[#FAFAF9] min-h-screen">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
         {/* header */}
@@ -70,7 +73,10 @@ const CartProducts = () => {
           </div>
 
           <button
-            onClick={handleClearCart} 
+            onClick={()=>{
+              handleClearCart();
+              toast.info('Cart cleared')
+            }} 
             className="text-[13px] font-medium text-[#8A8A85] hover:text-[#141414] transition-colors cursor-pointer border border-[#E5E3DD] rounded-full px-3 py-2 "
           >
             Clear cart
@@ -180,7 +186,9 @@ const CartProducts = () => {
 
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => toast.success(' Product Succesfully Ordered ')}
+              onClick={() =>{ 
+                handleClearCart()
+                toast.success(' Product Succesfully Ordered ')}}
               className="w-full flex items-center justify-center gap-2 bg-[#141414] hover:bg-[#2B2B2B] text-white font-medium text-sm rounded-full py-3.5 transition-colors"
             >
               Checkout
@@ -194,8 +202,13 @@ const CartProducts = () => {
             </button>
           </motion.div>
         </div>
+
+
+
       </div>
+    
     </div>
+    </>
   )
 }
 

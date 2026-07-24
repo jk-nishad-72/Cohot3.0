@@ -1,0 +1,33 @@
+React Day 19 -  debouncing and throtling ,
+  // debouncing 
+    const filterData = ()=>{
+
+       console.log('filter is render...');
+       
+      const arr = products.filter((val)=>{
+        return val.title.toLowerCase().includes(searchDAta)
+      })
+      console.log(arr);
+      setProducts(arr)
+      
+    }
+
+
+   useEffect(()=>{
+
+    if(!searchDAta) return
+     
+     const Id = setTimeout(()=>{
+     filterData()
+     },1000)
+    return ()=>{clearTimeout(Id)}
+
+   } , [searchDAta]) 
+   
+   
+   //throtling...
+
+   //code splitting 
+   //lazy loading 
+   //supense fallback
+   //loader :

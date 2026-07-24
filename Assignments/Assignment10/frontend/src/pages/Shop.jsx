@@ -5,6 +5,7 @@ import { FiShoppingBag, FiArrowLeft, FiArrowRight } from 'react-icons/fi'
 import { FaHeart, FaRegHeart, FaStar } from 'react-icons/fa'
 import { MyShopStoreContext } from '../context/MyContext.jsx'
 import ProductCard from '../components/ProductCard.jsx'
+import Footer from '../components/Footer.jsx'
 
 // each card sits on a flat color block — the signature move of this system
 const PALETTE = ['#F6D875', '#F2A15C', '#8FC7B8', '#F2A9C4', '#9BC4EA', '#C7B8ED']
@@ -47,8 +48,10 @@ const Shop = () => {
   }
 
   return (
+
+     <>
     <div className="bg-[#FAFAF9] min-h-screen">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <div className="max-w-9xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14"> 
         {/* header row, mirrors "Top-Selling Product" section framing */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
           <div>
@@ -102,8 +105,13 @@ const Shop = () => {
             ))}
           </motion.div>
         </AnimatePresence>
-      </div>
+      </div> 
+
     </div>
+
+     <Footer />
+     </>
+
   )
 }
 
