@@ -9,7 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 
 const Register = () => { 
 
-        let { role, setRole } = useContext(AuthContext)
+      let { role, setRole } = useContext(AuthContext)
       let { navigate, register , handleSubmit , errors , registerHandle } =       AuthHook() 
 
 

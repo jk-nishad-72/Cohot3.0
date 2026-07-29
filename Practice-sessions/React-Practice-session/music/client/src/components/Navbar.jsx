@@ -18,7 +18,7 @@ const Navbar = () => {
 
     <div className='flex w-full justify-between px-8'>
              <div>
-              Vibe
+                <h1>Vibe</h1>
              </div>
              <div>
               
@@ -28,7 +28,7 @@ const Navbar = () => {
 
              </div>
              <div>
-                <h2>{loggedUser?.username} </h2>
+                <h2>{loggedUser?.fullName} </h2> 
              </div>
     </div>
   )
