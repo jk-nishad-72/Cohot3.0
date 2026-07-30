@@ -1,0 +1,7 @@
+
+React Day 22 
+TANSTACK QUERY 
+optimising api calling 
+code spliting 
+
+
