@@ -1,0 +1,25 @@
+
+React Day 23 Frontend Architecture and api integration 
+
+study abot 
+Frontend Architecture
+1) component based 
+2) 4 layer Architecture feature based 
+3) mono-repo 
+
+4 layer Architecture 
+1) presentation -> UI
+2) business logic -> hooks
+3) Data Fetching [api calling] -> api
+4) data managing state management[redux / contextAPI]-> state
+
+Defining our E-commerce features 
+1)Auth
+2)Products
+3)cart
+4)order & checkout
+
+today we completed our Auth Feature in E-commerce project with json server api integration .
+
+
+
