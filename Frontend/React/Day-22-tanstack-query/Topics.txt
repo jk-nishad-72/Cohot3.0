@@ -5,3 +5,53 @@ optimising api calling
 code spliting 
 
 
+import { useEffect, useState } from "react";
+import { axiosInstance } from "../config/axiosInstance";
+import { getProductsAPI } from "../api/getProductAPI";
+
+
+const Shop = () => {
+
+  const [products , setProducts] = useState([])
+  const [isLaoding , setIsloading] = useState(true)
+
+
+  const getProduct  = async () => {
+
+       try {
+        
+        const result = await getProductsAPI();
+        console.log(result);
+         setIsloading(true)
+         setProducts(result)
+       } catch (error) {
+        console.log('error',error);
+      
+       }finally{    
+          setIsloading(false)
+       }
+
+      
+  }
+
+useEffect(()=>{
+   getProduct()
+
+},[])
+
+  return (
+
+     <div> 
+     {
+       isLaoding ? <h1> isLoading </h1>
+        : <div> Products  </div>
+     
+     }
+     </div>
+  )
+}
+
+export default Shop
+
+//replacing this with this-> code 
+
