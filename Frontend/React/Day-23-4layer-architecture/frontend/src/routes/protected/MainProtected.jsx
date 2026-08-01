@@ -1,15 +1,21 @@
 
 import React from 'react'
-import { Outlet } from 'react-router'
+import { useSelector } from 'react-redux'
+import { Navigate, Outlet } from 'react-router'
 
 const MainProtected = () => {
 
-    
-  return (
-    <div>
-         <Outlet />
-    </div>
-  )
+    const { user  ,  isAuthenticated, isLoading} = useSelector((store)=>store.auth)
+
+   console.log(isAuthenticated);
+   
+
+
+    return (
+  
+             !isAuthenticated ? <Navigate to={'/'} /> : <> <Outlet /> </> 
+           
+    )
 }
 
-export default MainProtected
+export default MainProtected 

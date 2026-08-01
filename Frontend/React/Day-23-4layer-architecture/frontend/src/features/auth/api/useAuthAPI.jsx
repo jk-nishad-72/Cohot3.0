@@ -27,11 +27,28 @@ export const loginAPi = async (credentials) => {
 
 // In refresing the web calling api server  to get logged in user  using accessToken [hydration]
 
-export const hydrateUser = async () => {
+export const hydrateUser = async () => { 
 
+    // get the token 
+
+    let token = localStorage.getItem('token') 
+
+    if(!token) return 
+
+
+    // console.log(token);
+    
     try {
         
-         const res = await api.get('/auth/me',)
+        const res = await api.get("/auth/me",{ 
+            headers: {
+                Authorization: `Bearer ${token}`, // Pass JWT via Authorization header
+              },
+         })
+
+        //  console.log(' logged IN UserData ' , res.data);
+
+         return res.data
     } catch (error) {
         console.log('hydration error',error);
         
