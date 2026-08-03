@@ -1,9 +1,17 @@
 
 import React from 'react'
+import { Outlet } from 'react-router'
+import Navbar from '../../shared/ui/components/Navbar'
 
 const MainLayout = () => {
   return (
-    <div>MainLayout</div>
+
+    <div>
+   <Navbar />
+   <Outlet />
+    </div>
+
+
   )
 }
 
