@@ -4,6 +4,9 @@ import { api } from "../../../config/api";
 export const loginAPI = async (credentials)=>{
 
     try {
+
+         console.log(credentials);
+         
          const res = await api.post("/auth/login",credentials)
          console.log('login api response ',res.data.accessToken);
          localStorage.setItem('token',res.data.accessToken)

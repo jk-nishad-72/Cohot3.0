@@ -3,6 +3,8 @@ import { useNavigate } from "react-router"
 import { loginAPI } from "../api/useAuthAPI";
 import { useDispatch } from "react-redux";
 import { addUser } from "../state/authSlice";
+import { loginUserAction } from "../state/authOuterAction";
+import { toast } from "react-toastify";
 
 
 
@@ -24,10 +26,17 @@ export const useAuth = ()=>{
 
       try {
 
-         const result = await loginAPI(data)
-         console.log('login Form result ',result);
+        //  const result = await loginAPI(data)
+        //  console.log('login Form result ',result);
 
-         dispatch(addUser(result))
+        //  dispatch(addUser(result)) 
+        // replaced by 
+
+        dispatch(loginUserAction(data)) 
+
+        toast.success('login succesfully')
+
+
       } catch (error) {
 
         console.log('Login Form error',error);

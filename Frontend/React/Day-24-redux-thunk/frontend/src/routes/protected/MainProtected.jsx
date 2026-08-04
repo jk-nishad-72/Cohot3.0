@@ -6,12 +6,17 @@ import { Navigate, Outlet } from 'react-router'
 const MainProtected = () => {
 
     
-    const {user , isAuthenticated} = useSelector((store)=>store.auth)
+    const {user , isLoading } = useSelector((store)=>store.auth)
 
-    console.log(user ,isAuthenticated);
+    console.log(isLoading);
+    
 
+    if(isLoading) return <h1> loading state.... </h1>
+   
 
-  return ( isAuthenticated ? <Outlet /> : <Navigate to={'/'} />)
+  
+
+  return ( user ? <Outlet /> : <Navigate to={'/'} />)
 }
 
 export default MainProtected

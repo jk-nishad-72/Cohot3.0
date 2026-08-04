@@ -13,6 +13,7 @@ import { useDispatch } from 'react-redux'
 import { addUser } from '../features/auth/state/authSlice'
 import Home from '../shared/ui/pages/Home'
 import Shop from '../shared/ui/pages/Shop'
+import { hydrationAction } from '../features/auth/state/authOuterAction'
 
 const AppRoutes = () => {
 
@@ -24,16 +25,17 @@ const AppRoutes = () => {
 
             try {
 
-                let result = await hydrateAPI()
+                // let result = await hydrateAPI() 
+                // console.log('hydration result', result);
+                // dispatch(addUser(result))
 
-                console.log('hydration result', result);
-                 dispatch(addUser(result))
-                
+                // replace by 
+
+                dispatch(hydrationAction()) 
                 
             } catch (error) {
 
                 console.log('hydration fun error',error);
-                
                 
             }
         })()

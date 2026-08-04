@@ -12,7 +12,7 @@ const PublicProtected = () => {
    
     
 
-  return ( isAuthenticated ? <Navigate to={'/main'} />: <Outlet />) 
+  return ( user ? <Navigate to={'/main'} />: <Outlet />) 
 }
 
 export default PublicProtected
