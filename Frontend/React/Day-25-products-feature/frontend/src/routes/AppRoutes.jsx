@@ -14,6 +14,8 @@ import { addUser } from '../features/auth/state/authSlice'
 import Home from '../shared/ui/pages/Home'
 import Shop from '../shared/ui/pages/Shop'
 import { hydrationAction } from '../features/auth/state/authOuterAction'
+import CartPage from '../features/cart/ui/pages/CartPage'
+import OrdersPage from '../features/orders/ui/pages/OrdersPage'
 
 const AppRoutes = () => {
 
@@ -85,6 +87,15 @@ const AppRoutes = () => {
                             path:'shop',
                             element:<Shop />,
                         },
+                        {
+                            path:'cart',
+                            element:<CartPage />,
+                        },
+                         {
+                            path:'orders',
+                            element:<OrdersPage />,
+                        },
+
 
                     ]
                 },
