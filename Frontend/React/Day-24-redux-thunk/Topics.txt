@@ -2,3 +2,204 @@
 
 React Day 24  api integration syncing with react readux and creating extraReducers 
 
+// redux thunk -> used to create outer action and syncing with redux store  
+
+// extraReducers ->  used to manage the api states i 
+
+//authOuterAction.jsx
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+import { api } from "../../../config/api";
+
+
+export const loginUserAction = createAsyncThunk(
+    "/auth/login",
+    async (credentials, thunkApi) => {
+
+        try {
+
+                      console.log(credentials , 'Outer Action triggerd ')
+                      const res = await api.post("/auth/login",credentials)
+                    //   console.log('login api response ',res.data.accessToken);
+                      localStorage.setItem('token',res.data.accessToken)
+                      return res.data  
+            
+        } catch (error) {
+
+             
+            toast.error('Login Failed')
+
+            return thunkApi.rejectWithValue('Login Failed ')
+            
+        }
+    
+})
+
+
+export const hydrationAction = createAsyncThunk("/auth/me",
+    async (_, thunkApi ) => {
+     let token = localStorage.getItem('token')
+
+      console.log('hydation triggered ');
+      
+
+        try {
+
+             let res = await api.get('/auth/me',{
+                headers: {
+                    Authorization: `Bearer ${token}`, // Pass JWT via Authorization header
+                  }, 
+             })
+
+             return res.data
+            
+        } catch (error) {
+
+            toast.error('Unauthrized user')
+
+            return thunkApi.rejectWithValue('hydration failed ')
+            
+        }
+    
+})
+
+
+// authSlice.jsx
+import { createSlice } from "@reduxjs/toolkit";
+import { hydrationAction, loginUserAction } from "./authOuterAction";
+
+
+const authSlice = createSlice({
+    name:'auth',
+    initialState:{
+        user:null,
+        isAuthenticated:false,
+        isLoading:true,
+
+    },
+    // reducers:{
+    //     addUser:(state , action)=>{
+    //         state.user = action.payload
+    //         state.isAuthenticated = true
+    //         state.isLoading = false
+
+    //     },
+    //     removeUser:(state)=>{
+    //         state.user = null
+    //         state.isAuthenticated = false;
+    //         state.isLoading = false
+    //     }
+    // },
+
+    extraReducers:(builder)=>{
+
+
+        // handle 3 case of api pending fullfiled ,rejected 
+        builder
+        .addCase(loginUserAction.pending, (state , action )=>{
+
+             state.isLoading = true
+
+
+        })
+        .addCase(loginUserAction.fulfilled, (state , action )=>{
+
+            state.user = action.payload
+            state.isAuthenticated = true
+            state.isLoading = false
+
+        })
+        .addCase(loginUserAction.rejected, (state , action )=>{
+
+            state.isLoading = false
+
+        })
+        .addCase(hydrationAction.pending, (state , action )=>{
+
+            state.isLoading = true
+
+
+       })
+       .addCase(hydrationAction.fulfilled, (state , action )=>{
+
+           state.user = action.payload
+           state.isAuthenticated = true
+           state.isLoading = false
+
+       })
+       .addCase(hydrationAction.rejected, (state , action )=>{
+
+           state.isLoading = false
+
+       })
+
+    }
+})
+
+export const {addUser , removeUser} = authSlice.actions;
+
+export default authSlice.reducer
+
+//hooks  how outer action is called 
+
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router"
+import { loginAPI } from "../api/useAuthAPI";
+import { useDispatch } from "react-redux";
+import { addUser } from "../state/authSlice";
+import { loginUserAction } from "../state/authOuterAction";
+import { toast } from "react-toastify";
+
+
+
+
+export const useAuth = ()=>{
+
+     const navigate = useNavigate();
+     const dispatch = useDispatch();
+
+   let { 
+    register,
+    handleSubmit,
+    formState:{errors},
+    reset,
+   }   = useForm({mode:'onChange'})
+
+
+   const loginForm = async (data)=>{
+
+      try {
+
+        //  const result = await loginAPI(data)
+        //  console.log('login Form result ',result);
+
+        //  dispatch(addUser(result)) 
+        // replaced by 
+
+        //   dispatch(hydrationAction()) 
+
+        dispatch(loginUserAction(data))  
+
+        toast.success('login succesfully')
+
+
+      } catch (error) {
+
+        console.log('Login Form error',error);
+        
+        
+      }
+
+    reset()
+   }
+   
+    return {
+      
+         navigate,
+         register,
+         handleSubmit,
+         errors,
+         loginForm,
+        
+    }
+}

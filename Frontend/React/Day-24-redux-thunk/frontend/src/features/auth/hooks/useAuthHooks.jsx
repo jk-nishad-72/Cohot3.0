@@ -32,7 +32,9 @@ export const useAuth = ()=>{
         //  dispatch(addUser(result)) 
         // replaced by 
 
-        dispatch(loginUserAction(data)) 
+        //   dispatch(hydrationAction()) 
+
+        dispatch(loginUserAction(data))  
 
         toast.success('login succesfully')
 

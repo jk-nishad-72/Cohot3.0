@@ -55,3 +55,10 @@ export default Shop
 
 //replacing this with this-> code 
 
+
+let {isPending , data , error}  = useQuery({
+      queryKey:[''],
+      queryFn:getProductsAPI,
+      staleTime:5000,
+    })
+

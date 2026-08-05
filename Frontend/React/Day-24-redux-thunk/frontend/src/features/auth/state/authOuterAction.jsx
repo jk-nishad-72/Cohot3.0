@@ -3,7 +3,6 @@ import { toast } from "react-toastify";
 import { api } from "../../../config/api";
 
 
-
 export const loginUserAction = createAsyncThunk(
     "/auth/login",
     async (credentials, thunkApi) => {

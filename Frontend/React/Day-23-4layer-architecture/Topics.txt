@@ -19,6 +19,8 @@ Defining our E-commerce features
 3)cart
 4)order & checkout
 
+-> each feature have 4 folder ui , hooks , api , state (in feature ) 
+
 today we completed our Auth Feature in E-commerce project with json server api integration .
 
 
