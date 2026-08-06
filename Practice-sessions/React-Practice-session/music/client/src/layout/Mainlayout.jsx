@@ -7,8 +7,6 @@ const Mainlayout = () => {
 
   return (
     <div>
-        <Navbar />
-
         <div className='router-content'>
             <Outlet /> 
         </div>

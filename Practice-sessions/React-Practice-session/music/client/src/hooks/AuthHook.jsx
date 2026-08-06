@@ -36,22 +36,17 @@ export const AuthHook = () => {
 
      newUser  = [...users , {...data , role:role , _id:Date.now()}]
 
-     
       setUsers(newUser)
       localStorage.setItem('users',JSON.stringify(newUser))
       toast.success('Account Registered ')
       reset()
       navigate('/auth/login')
-    }
-
- 
-    
+    }   
   const loginHandle = (data)=>{
 
      let userLog = users.find((user)=> user.email === data.email) 
 
      if(!userLog){
-
         toast.error('User Not Found')
         return 
      }
@@ -67,8 +62,8 @@ export const AuthHook = () => {
      localStorage.setItem('loggedUser',JSON.stringify(userLog))
      toast.success('Login SuccessFully ')
      reset();
-     navigate('/')
-      
+    navigate(data.role === 'artist' ? '/artist-dashboard' : '/', { replace: true })
+ 
     }
 
 

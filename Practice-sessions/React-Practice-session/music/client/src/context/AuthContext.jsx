@@ -7,7 +7,10 @@ export const AuthContextProvider = ({children})=>{
 
     
 
-       const [role, setRole] = useState("listener");
+       const [role, setRole] = useState(()=>{
+            let user =  JSON.parse(localStorage.getItem('loggedUser')) || null
+            return user?.role || 'listener' 
+       });
        const [users, setUsers] = useState(()=>{
         return JSON.parse(localStorage.getItem('users')) || []
        })

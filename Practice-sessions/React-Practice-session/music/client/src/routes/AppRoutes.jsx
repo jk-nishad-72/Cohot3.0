@@ -12,6 +12,8 @@ import Login from '../pages/Login'
 import Register from '../pages/Register'
 import PublicRoute from './PublicRoute'
 import AuthLayout from '../layout/AuthLayout'
+import RoleProtectedRoute from './RoleProtectedRoute '
+import HomeLayout from '../layout/HomeLayout'
 
 const AppRoutes = () => {
 
@@ -21,20 +23,39 @@ const AppRoutes = () => {
             path:'/',
             element: <ProtectedRoute />,
             children:[{
+
                 path:'',
                 element:<Mainlayout />,
                 children:[
+                    // listener only 
+                     {
+                         element:<RoleProtectedRoute allowRole={['listener']} />,
+                         children:[
+                                 {
+                                    path:'',
+                                    element:<HomeLayout />,
+                                    children:[ 
+                                         { path:'',
+                                           element:<Home />
+                                         },
+                                         {
+                                          path:'favrouite',
+                                          element:<Favrouite />
+                                           },
+                                    ]
+                                 }
+                               ]
+
+                     },
+                    // arstist only
                     {
-                        path:'',
-                        element:<Home />
-                    },
-                    {
-                        path:'/favrouite',
-                        element:<Favrouite />
-                    },
-                    {
-                        path:'/artist-dashboard',
-                        element:<ArtiestDashboard />
+                        element:<RoleProtectedRoute allowRole={['artist']} />,
+                        children:[ 
+                            {
+                                 path:'artist-dashboard',
+                                 element:<ArtiestDashboard />
+                            },
+                        ]
                     }, 
 
                     

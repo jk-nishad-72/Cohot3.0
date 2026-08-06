@@ -1,11 +1,26 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Navbar from '../components/Navbar'
-import { Outlet } from 'react-router'
+import { Navigate, Outlet } from 'react-router'
+import { AuthContext } from '../context/AuthContext'
+import { toast } from 'react-toastify'
 
-const ProtectedRoute = () => {
+const ProtectedRoute = () => { 
 
-  return (
+
+  let { role , loggedUser } = useContext(AuthContext)
+
+  if(!loggedUser){
+
+      toast.error('Unauthrized user ')
+      return <Navigate to={'/auth/login'} replace />
+  }
+
+
+  console.log(role);
+
+
+return (
     <div>
         <Outlet />
     </div>
