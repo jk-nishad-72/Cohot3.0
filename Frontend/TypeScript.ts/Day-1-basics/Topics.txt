@@ -1,0 +1,25 @@
+
+WHAT IS TYPESCRIPT AND HISTORY (is a subset of js , that make js static programming  , work as transpiler )
+WHY AND WHEN TO  USE TS 
+
+transpiler vs compiler 
+typeScript impplementaion
+
+1) create a folder
+2) npm init -y 
+3) npm i typescript -D
+4) npx tsc --init 
+5) ts file and write code 
+example : let a:Number = 50;
+
+js -> comile time  vs run time 
+
+js executing process:-
+
+1) source code 
+2) lexcer
+3) parser
+4) Binder
+5)cheker (this is typescript (type checking ))
+6) transformer 
+7) js execute 
