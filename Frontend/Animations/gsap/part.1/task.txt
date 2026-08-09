@@ -1,0 +1,10 @@
+
+### Practice - Part 1 
+
+1. Animate a box `to()` `x: 400, rotation: 720` over 3 seconds with `ease: "bounce.out"`.
+2. Rewrite the same animation using `from()` instead of `to()`. What visually changes?
+3. Use `fromTo()` to animate an element's opacity from 0 to 1 *and* scale from 0.5 to 1, over 1 second.
+4. Create a plain object `{ score: 0 }` and tween its `score` to 500 over 3 seconds, logging the rounded value on every update.
+5. What's the difference between `x: "+=50"` and `x: 50`? 
+ans =>  `x: 50` means the final value will be 50px 
+`x: "+=50"` means add  50px to the current state  

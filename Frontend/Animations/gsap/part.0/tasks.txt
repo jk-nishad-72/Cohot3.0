@@ -1,0 +1,19 @@
+
+### 🎯 Practice - Part 0
+
+1. Create a blank HTML file, load GSAP from the CDN, and animate a `<div>` 300px to the right over 2 seconds.
+ Open it in a browser and confirm it works.
+
+2. In your own words, write down two situations where you'd reach for GSAP instead of a CSS `transition`.
+// answer
+a) for smooth scroll animations 
+b) css animation has limitaion as compared to gsap , 
+css animatioon kisi ek ko select karke durse element ko handle nahi kar skte jise select kiya hai use hi animate kr skte hai 
+c) when we want to animate complex animations and optimise code 
+
+
+3. True or false: as of 2026, you  need a paid membership to use ScrollTrigger. (Explain your answer.) 
+
+answer -> false , since scrolltrigger is open source  and we can use it for free even now also   ,
+   , before 2023 it was some of plugins are paid , but after buying it by webflow a nocode company 
+   they maide it free for all and now are plugins are buindled and open for all to use freely 

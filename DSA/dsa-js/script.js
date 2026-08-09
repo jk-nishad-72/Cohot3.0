@@ -1,25 +1,26 @@
-var summaryRanges = function(nums) {
-    let result = [];
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var isMonotonic = function(nums) {
+    
 
-    for (let i = 0; i < nums.length; i++) {
-        let start = nums[i];
+   let inc = true;
+   let dec = true;
 
-        // move while numbers are consecutive
-        while (i + 1 < nums.length && nums[i + 1] === nums[i] + 1) {
-            i++;
+   for(let i = 0 ;i<nums.length;i++){
+        if(i>0 && nums[i]<nums[i-1]){
+           inc = false; 
         }
+        if(i>0 && nums[i]>nums[i-1]){
+            dec = false; 
+        } 
+   }
+   if(inc || dec)return true;  
+   return false; 
+}; 
 
-        let end = nums[i];
 
-        // format
-        if (start === end) {
-            result.push(start.toString());
-        } else {
-            result.push(start + "->" + end);
-        }
-    }
-
-    return result;
-};
-
-console.log(summaryRanges[0,9]);
+console.log(isMonotonic([1,2,2,3]));
+console.log(isMonotonic([6,5,4,4]));
+console.log(isMonotonic([1,3,2]));
