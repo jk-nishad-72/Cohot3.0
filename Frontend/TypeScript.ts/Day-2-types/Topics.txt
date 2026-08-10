@@ -1,0 +1,17 @@
+
+TypeScript Day 2 
+
+1) Inference & Annotation
+2) premitieves data types 
+a)number
+b)string,
+c)bigInt
+d)boolean
+e)symbol
+
+3) any vs unknown vs never 
+4) Array 
+5) tupples
+6)enum
+7) Union types 
+8)literel types 
