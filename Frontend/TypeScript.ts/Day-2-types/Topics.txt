@@ -1,6 +1,24 @@
 
 TypeScript Day 2 
 
+// setup 
+
+tsconfig
+
+  "module": "commonjs",
+  "target": "es2025",
+
+/package.json
+"script"{
+"dev": "nodemon --exec tsx index.ts"
+} 
+
+/need installation of tsx 
+
+// need a watchman that watches ts code on every single changes
+
+npx tsc -w 
+
 1) Inference & Annotation
 2) premitieves data types 
 a)number

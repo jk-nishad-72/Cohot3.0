@@ -1,0 +1,10 @@
+
+TypeScript Day 3 - 
+
+1. Object Types
+2. Function Types
+3. Optional Parameters
+4. Default Parameters
+5. Rest Parameters
+6. Type Aliases
+7. Interfaces

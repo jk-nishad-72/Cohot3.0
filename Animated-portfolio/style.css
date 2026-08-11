@@ -1,0 +1,23 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+    overflow-x: hidden;
+}
+
+/* This container creates the scrollable area.
+   The height determines how long you have to scroll to see all frames. */
+.scroll-container {
+    height: 500vh; /* 5 times the viewport height */
+    position: relative;
+}
+
+/* The canvas is fixed so it stays in view while we scroll down the container */
+#animation-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* This makes sure the image covers the screen without stretching */
+}
