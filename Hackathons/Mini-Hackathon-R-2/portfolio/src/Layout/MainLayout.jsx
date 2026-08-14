@@ -5,13 +5,11 @@ import Navbar from '../components/Navbar'
 
 const MainLayout = () => {
 
-  return ( 
-
-
-  <>
+  return (
+  <div className=' relative  min-h-screen min-w-screen'>
   <Navbar /> 
   <Outlet /> 
-  </>
+  </div>
 
 )
 }

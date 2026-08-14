@@ -7,4 +7,4 @@ TypeScript Day 3 -
 4. Default Parameters
 5. Rest Parameters
 6. Type Aliases
-7. Interfaces
+7. Interfaces 

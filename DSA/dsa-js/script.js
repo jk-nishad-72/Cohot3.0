@@ -1,31 +1,28 @@
 /**
- * @param {string} s
- * @return {boolean}
+ * @param {number} n
+ * @return {number}
  */
-var areOccurrencesEqual = function(s) {
+var digitFrequencyScore = function(n) {
+
     
-     let map = new Map();
+    let map = new Map();
 
-     for(let c of s){
-      map.set(c , (map.get(c) || 0 )+ 1)
-     }
+    while(n > 0){
 
-   //   console.log(map);
+       let dig = n % 10;
+       map.set(dig , (map.get(dig) || 0) + 1)
+       n = Math.floor(n / 10) 
 
-      
-       let set = new Set()
-     for(let [key , values] of map){
-
-       
-       set.add(values)
-      
-     }
-     
-   //   console.log(set.size);
-     
-    return set.size === 1
+    }
+ let sum = 0;
+    for(let [key , values] of map){
+       sum += key * values
+    }
+    
+    console.log(map);
+    return sum
+    
 };
 
-console.log(areOccurrencesEqual("abcabc"));
-console.log(areOccurrencesEqual("aaabb"));
-
+console.log(digitFrequencyScore(122));
+console.log(digitFrequencyScore(101));

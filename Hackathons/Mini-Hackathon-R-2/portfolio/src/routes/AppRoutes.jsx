@@ -7,6 +7,7 @@ import Projects from '../pages/Projects'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import ProjectDetail from '../pages/ProjectDetail'
+import Services from '../pages/Skill'
 
 const AppRoutes = () => {
 
@@ -20,6 +21,7 @@ const AppRoutes = () => {
                     path:'',
                     element:<Home />,
                 },
+                  
                  {
                     path:'projects',
                     element:<Projects />,
