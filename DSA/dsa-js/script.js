@@ -1,28 +1,31 @@
 /**
- * @param {number} n
+ * @param {number[]} nums
  * @return {number}
  */
-var digitFrequencyScore = function(n) {
+var distinctAverages = function(nums) {
 
-    
-    let map = new Map();
+    let distinct = new Set();
 
-    while(n > 0){
+    while(nums.length > 0){
+        let min = Math.min(...nums);
+        let max = Math.max(...nums);
+        let avg = (min + max) / 2;
+       
+        distinct.add(avg);
+        
+        let minIndex = nums.indexOf(min);
+      nums.splice(minIndex , 1);
 
-       let dig = n % 10;
-       map.set(dig , (map.get(dig) || 0) + 1)
-       n = Math.floor(n / 10) 
-
+        let maxIndex = nums.indexOf(max);
+      nums.splice(maxIndex , 1);
+     
+      
     }
- let sum = 0;
-    for(let [key , values] of map){
-       sum += key * values
-    }
-    
-    console.log(map);
-    return sum
-    
-};
 
-console.log(digitFrequencyScore(122));
-console.log(digitFrequencyScore(101));
+    
+    return distinct.size
+}; 
+
+console.log(distinctAverages([4,1,4,0,3,5]));
+console.log(distinctAverages([1,100]));
+
