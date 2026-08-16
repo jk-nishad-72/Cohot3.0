@@ -1,46 +1,27 @@
 /**
- * @param {number[]} nums
+ * @param {number[]} arr
  * @return {boolean}
+ * i != j
+ * 0 <= i, j < arr.length
+ * arr[i] == 2 * arr[j]
  */
-var checkPrimeFrequency = function(nums) {
+
+
+var checkIfExist = function(arr) {
     
-    let map = new Map();
-
-    for( let n of nums){
-
-      map.set(n , (map.get(n) || 0) + 1)
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (i != j && arr[i] == 2 * arr[j]) {
+                return true
+            }
+        }
     }
 
-    //  console.log(map);
-
-     for(let [key , freq] of map){
-
-               
-       if(checkPrime(freq)) return true
-
-     }
-     
-
-     return false
+    return false
 };
 
-var checkPrime = (num)=>{
+console.log(checkIfExist( [10,2,5,3]));
+console.log(checkIfExist( [3,1,7,11])); 
 
-    if(num <= 1) return false;
-    if(num === 2 ) return true;
-    if(num %2 === 0)return false
-     for(let i = 3 ; i <= Math.floor(Math.sqrt(num)) ;i += 2){
-
-        if(num % i === 0){
-          return false
-        }
-     }
-    return true
-}
-
-
-console.log(checkPrimeFrequency([1,2,3,4,5,4]));
-console.log(checkPrimeFrequency([1,2,3,4,5]));
-console.log(checkPrimeFrequency([3,0,3,6,3,3]));
 
 
