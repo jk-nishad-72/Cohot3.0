@@ -1,27 +1,27 @@
 /**
- * @param {number[]} arr
- * @return {boolean}
- * i != j
- * 0 <= i, j < arr.length
- * arr[i] == 2 * arr[j]
+ * @param {number[]} nums
+ * @return {number}
  */
+var firstUniqueEven = function(nums) { 
 
+    let map = new Map();
 
-var checkIfExist = function(arr) {
-    
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-            if (i != j && arr[i] == 2 * arr[j]) {
-                return true
-            }
-        }
+    for(let d of nums){
+
+        map.set(d , (map.get(d) || 0) +1)
     }
 
-    return false
+   
+
+   for(let [k,v] of map ){
+      if(k%2===0 && v===1){
+        return k
+      }
+   }
+   return -1
+    
+    
 };
 
-console.log(checkIfExist( [10,2,5,3]));
-console.log(checkIfExist( [3,1,7,11])); 
-
-
-
+console.log(firstUniqueEven(  [3,4,2,5,4,6]));
+console.log(firstUniqueEven(   [4,4]));
