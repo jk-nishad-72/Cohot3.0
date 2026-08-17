@@ -1,0 +1,36 @@
+
+Backend Day - 2 
+
+express over http 
+
+Protocols:=
+http -> hyper text transefer Protocols (req , res)
+https  -> http secure (req , res)
+ftp  -> file transefer Protocols (req , file , callback)
+smtp -> mail transefer , (from , to , subject)
+websockets -> two way communication , whatsapp , call videocall 
+
+REST API (representational state transefer)
+
+Methods:= 
+GET -> get the data from Backend
+POST -> sent data server to frontend
+PUT/PATCH  -> update api
+DELETE -> Delete data from server 
+
+creating APIs := 
+
+//example 
+app.get('/',(req, res)=>{
+
+    res.send(" Welcome to server ")
+})
+app.post('/user',(req, res)=>{
+
+    console.log(req.body) 
+
+    res.json({message:req.body}) 
+})
+
+
+//Using postman for api testing 
