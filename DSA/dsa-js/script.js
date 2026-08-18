@@ -1,27 +1,35 @@
 /**
- * @param {number[]} nums
- * @return {number}
+ * @param {string[]} words
+ * @return {string}
  */
-var firstUniqueEven = function(nums) { 
-
-    let map = new Map();
-
-    for(let d of nums){
-
-        map.set(d , (map.get(d) || 0) +1)
-    }
-
-   
-
-   for(let [k,v] of map ){
-      if(k%2===0 && v===1){
-        return k
+var firstPalindrome = function(words) {
+    
+        
+      for(let i = 0 ;i< words.length ;i++){
+         if(checkPalindrom(words[i])) return words[i]
       }
-   }
-   return -1
-    
-    
+
+      return ""
 };
 
-console.log(firstUniqueEven(  [3,4,2,5,4,6]));
-console.log(firstUniqueEven(   [4,4]));
+var checkPalindrom = (word)=>{
+ 
+   let i = 0;
+   let j = word.length-1;
+
+   while( i <= j ){
+
+     if(word[i] !== word[j]) return false
+     
+      i++
+      j--
+   }
+
+
+    return true
+
+}
+
+console.log(firstPalindrome(["abc","car","ada","racecar","cool"]));
+console.log(firstPalindrome(["notapalindrome","racecar"])); 
+console.log(firstPalindrome(["def","ghi"]));
