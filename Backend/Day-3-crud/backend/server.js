@@ -10,9 +10,11 @@ app.use(express.json());
 // for All the Origine the requests (Frontend to Backend ) 
 app.use(cors());
 
+
 // Read the data 
 
 let clients = []
+
 app.get('/clients',(req, res)=>{
      res.json({
         Message:'Client Data',
@@ -34,6 +36,8 @@ app.post('/create-client',(req, res)=>{
         profession,
       })
       
+    // localStorage.setItem('clients',JSON.stringify(clients))
+
     res.json({
         Message:"Client Created Successfully",
         Name:name.toUpperCase(),
@@ -49,8 +53,8 @@ app.delete('/delete-client/:id',(req, res)=>{
 
      console.log(id);
 
-     clients = clients.filter((val)=> val.id !== id)
-
+     clients = clients.filter((val)=> val.id !== id)     
+    //  localStorage.setItem('clients',JSON.stringify(clients))
      res.json({
          Message:"Client Deleted Successfully",
          client:clients || 'no client'
@@ -73,6 +77,7 @@ app.put('/update-client/:id',(req, res)=>{
         return val 
     })
 
+    // localStorage.setItem('clients',JSON.stringify(clients))
     res.json({
         Message:"Client Updated Successfully",
         Name:name.toUpperCase(),

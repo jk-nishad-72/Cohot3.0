@@ -1,35 +1,22 @@
 /**
  * @param {string[]} words
- * @return {string}
+ * @param {character} x
+ * @return {number[]}
  */
-var firstPalindrome = function(words) {
+var findWordsContaining = function(words, x) {
     
-        
-      for(let i = 0 ;i< words.length ;i++){
-         if(checkPalindrom(words[i])) return words[i]
-      }
-
-      return ""
+    let result = [];
+    for (let i = 0; i < words.length; i++) {
+        if (words[i].includes(x)) {
+            result.push(i);
+        }
+    }
+    return result;
+    
 };
 
-var checkPalindrom = (word)=>{
- 
-   let i = 0;
-   let j = word.length-1;
-
-   while( i <= j ){
-
-     if(word[i] !== word[j]) return false
-     
-      i++
-      j--
-   }
 
 
-    return true
-
-}
-
-console.log(firstPalindrome(["abc","car","ada","racecar","cool"]));
-console.log(firstPalindrome(["notapalindrome","racecar"])); 
-console.log(firstPalindrome(["def","ghi"]));
+console.log(findWordsContaining(["leet","code"], x = "e"));
+console.log(findWordsContaining( ["abc","bcd","aaaa","cbc"], x = "a"));
+console.log(findWordsContaining(["abc","bcd","aaaa","cbc"], x = "z"));

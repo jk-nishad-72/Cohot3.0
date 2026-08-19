@@ -1,13 +1,14 @@
-import Home from "./pages/Home"
+import Navbar from "./components/Navbar"
+import AppRoutes from "./routes/AppRoutes"
 
 
 const App = () => {
   return (
-    <div>
-
-       <Home />
+    <div className=" bg-slate-100 text-black min-h-screen w-full  ">
+         <Navbar />
+        <AppRoutes />
     </div> 
   )
 }
 
-export default App
+export default App 
