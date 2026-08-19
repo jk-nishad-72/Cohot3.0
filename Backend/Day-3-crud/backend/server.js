@@ -49,11 +49,13 @@ app.post('/create-client',(req, res)=>{
 // delete 
 
 app.delete('/delete-client/:id',(req, res)=>{
-     let id = req.params.id; 
+     let id = Number(req.params.id); 
 
      console.log(id);
 
      clients = clients.filter((val)=> val.id !== id)     
+     console.log(clients);
+     
     //  localStorage.setItem('clients',JSON.stringify(clients))
      res.json({
          Message:"Client Deleted Successfully",
@@ -66,7 +68,8 @@ app.delete('/delete-client/:id',(req, res)=>{
 
 app.put('/update-client/:id',(req, res)=>{
     
-    let id = req.params.id;
+    let id = Number(req.params.id); 
+    console.log(id);
     
     let {name , age , profession} = req.body;
 
@@ -76,6 +79,9 @@ app.put('/update-client/:id',(req, res)=>{
         }
         return val 
     })
+
+    console.log(clients);
+    
 
     // localStorage.setItem('clients',JSON.stringify(clients))
     res.json({

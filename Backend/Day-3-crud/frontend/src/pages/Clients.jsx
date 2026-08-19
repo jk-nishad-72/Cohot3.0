@@ -1,41 +1,14 @@
 import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import axios from "axios";
-
+import { getClients } from "../api/clientData";
+import { useContext } from "react";
+import { myClientContext } from "../context/ClientContext";
 
 
 const Clients = () => {
 
-  
-  const [clients , setClients] = useState(null)
-
-    //Fetch the data from the  backend
-
-    const getClients = async () => {
-
-        try {
-
-            let response = await axios.get(`http://localhost:3000/clients`)
-
-             console.log('DATA', response.data.client);
-
-             setClients( response.data.client)
-             
-        } catch (error) {
-           
-            console.log('Error occured while fetching the data', error);
-            
-        }
-       
-    }
-
-    console.log(clients);
-    
-    useEffect(()=>{
-       
-      getClients()
-
-    },[])
+const {clients} = useContext(myClientContext)
      
   return (
     <div className="  min-h-screen max-w-screen-xl mx-auto   ">
@@ -50,15 +23,12 @@ const Clients = () => {
 
                {
                 clients?.map((user , index)=>(
-    
                      <div key={index}>
                           <Card name={user.name} age={user.age} profession={user.profession} id={user?.id}  />
                      </div>
                 ))
                }
-
-               
-                 
+ 
             </div>
       </div>
     </div>

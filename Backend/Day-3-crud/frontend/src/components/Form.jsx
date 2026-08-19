@@ -1,38 +1,16 @@
-import axios from "axios";
-import { useForm } from "react-hook-form"
-import { useNavigate } from "react-router";
-import { toast } from "react-toastify";
+
+import { clientFormHook } from "../hooks/clentFormHook";
 
 const Form = () => { 
 
-   const navigate = useNavigate()
 
-
-   let {
-     register ,
-     handleSubmit , 
-     reset , 
-     formState:{errors}} = useForm({mode:'onChange'})
-
-
-   // call the api 
-
-     const clientData = async (data)=>{
-
-      try {
-
-         let res = await axios.post('http://localhost:3000/create-client',data)
-         console.log('server response',res.data);
-         toast.success(`Client Created !`)
-      } catch (error) {
-
-         console.log('error',error); 
-      }
-      reset()
-      navigate('/clients')
-     } 
-
-
+    const {
+      register,
+      handleSubmit,
+      errors,
+      clientData,
+    } = clientFormHook()
+ 
 
   return (
 
@@ -108,7 +86,7 @@ const Form = () => {
                  placeholder="student , engineer , labour etc..." className='  outline-none border border-gray-400 rounded-lg px-3 py-2 ' type="text" id="profession" />
 
                  {errors.profession && <p className=" text-red-500 text-sm "> {errors.profession.message} </p>}
-            </div>
+            </div> 
             <button className=" active:scale-95 transition-all duration-200  px-4 py-2 bg-blue-500  text-white  rounded-lg  text-xl cursor-pointer" type="submit">Submit</button> 
         </form>
 
