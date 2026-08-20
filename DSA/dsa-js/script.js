@@ -1,22 +1,22 @@
 /**
- * @param {string[]} words
- * @param {character} x
- * @return {number[]}
+ * @param {number} x
+ * @return {number}
  */
-var findWordsContaining = function(words, x) {
+var sumOfTheDigitsOfHarshadNumber = function(x) {
     
-    let result = [];
-    for (let i = 0; i < words.length; i++) {
-        if (words[i].includes(x)) {
-            result.push(i);
-        }
+
+    let temp = x;
+    let sum = 0;
+
+    while(x > 0){
+        let dig = x % 10;
+        sum += dig;
+        x = Math.floor(x / 10);
     }
-    return result;
-    
+
+    return temp % sum == 0 ? sum : -1; 
 };
 
+console.log(sumOfTheDigitsOfHarshadNumber(18));
+console.log(sumOfTheDigitsOfHarshadNumber(23));
 
-
-console.log(findWordsContaining(["leet","code"], x = "e"));
-console.log(findWordsContaining( ["abc","bcd","aaaa","cbc"], x = "a"));
-console.log(findWordsContaining(["abc","bcd","aaaa","cbc"], x = "z"));
