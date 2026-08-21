@@ -1,22 +1,27 @@
 /**
+ * @param {number} n
  * @param {number} x
- * @return {number}
+ * @return {boolean}
  */
-var sumOfTheDigitsOfHarshadNumber = function(x) {
+var validDigit = function(n, x) {
     
+    n = n.toString();
+    
+    
+     if(n.startsWith(x.toString())){
+        return false;
+     }
 
-    let temp = x;
-    let sum = 0;
-
-    while(x > 0){
-        let dig = x % 10;
-        sum += dig;
-        x = Math.floor(x / 10);
+    for(let i = 1; i < n.length; i++){
+        if(n[i] == x){
+            return true;
+        }
     }
-
-    return temp % sum == 0 ? sum : -1; 
+    return false;
 };
 
-console.log(sumOfTheDigitsOfHarshadNumber(18));
-console.log(sumOfTheDigitsOfHarshadNumber(23));
+
+console.log(validDigit(101 , 0));
+console.log(validDigit(232 , 2));
+
 
