@@ -1,27 +1,25 @@
 /**
- * @param {number} n
- * @param {number} x
- * @return {boolean}
+ * @param {string[]} words
+ * @return {string[]}
  */
-var validDigit = function(n, x) {
-    
-    n = n.toString();
-    
-    
-     if(n.startsWith(x.toString())){
-        return false;
-     }
+var stringMatching = function(words) {
 
-    for(let i = 1; i < n.length; i++){
-        if(n[i] == x){
-            return true;
+    let result =[];
+    for(let i=0;i<words.length;i++){
+        for(let j=0;j<words.length;j++){
+            if(i!=j && words[j].includes(words[i])){
+                result.push(words[i]);
+                break;
+            }
         }
     }
-    return false;
+    return result; 
+  
+    
 };
+console.log(stringMatching(["mass","as","hero","superhero"]));
 
+console.log(stringMatching(["leetcode","et","code"]));
 
-console.log(validDigit(101 , 0));
-console.log(validDigit(232 , 2));
 
 
