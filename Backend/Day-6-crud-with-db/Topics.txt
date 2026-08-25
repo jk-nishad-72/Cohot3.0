@@ -1,0 +1,19 @@
+
+
+Backend Day 6 CRUD with DB with MVC folder structure (Advance Notes App)
+
+MVC folder structure of Notes app backend 
+src
+ -config:
+     ->db.js:=>for connecting mongodb
+ -models:
+     ->notes.Model.js:=>creating notes Schema and Model (structure what type and how data is stored in db)
+ -routes:
+     ->notes.routes.js:=> for creating features routing for apis 
+ -controllers:
+     ->notes.controller.js:=> for api business logics.
+ -app.js:=>sari main functionality.
+     
+server-> run server only
+
+

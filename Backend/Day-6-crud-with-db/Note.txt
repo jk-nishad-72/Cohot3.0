@@ -1,2 +1,0 @@
-
-Backend Day 6 CRUD with DB with MVC folder structure 
