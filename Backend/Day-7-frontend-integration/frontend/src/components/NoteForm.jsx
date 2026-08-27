@@ -10,6 +10,7 @@ import React, { useMemo, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { FiTag, FiX, FiSave, FiLoader, FiCheck, FiPaperclip } from 'react-icons/fi';
 import { TbBold, TbItalic, TbUnderline, TbList, TbListNumbers } from 'react-icons/tb';
+import { useEffect } from 'react';
 
 const NoteForm = ({
   mode = 'create',
@@ -19,24 +20,29 @@ const NoteForm = ({
   onSubmit,
   onCancel,
 }) => {
-  const [title, setTitle] = useState(initialTitle);
-  const [tags, setTags] = useState(initialTags);
+
+  
+
+  
+  console.log(initialTitle , initialContent)
+  const [title, setTitle] = useState(()=> initialTitle);
+  const [tags, setTags] = useState(()=> initialTags);
   const [tagDraft, setTagDraft] = useState('');
-  const [content, setContent] = useState(initialContent);
+  const [description, setDescription] = useState(()=> initialContent);
   const [attachments, setAttachments] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+useEffect(()=>{
+  setTitle(initialTitle)
+  setDescription(initialContent)
+},[initialTitle,initialContent]) 
+  
+  
+  
 
   const textareaRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const isDirty = useMemo(() => {
-    return (
-      title !== initialTitle ||
-      content !== initialContent ||
-      tags.length !== initialTags.length ||
-      tags.some((t, i) => t !== initialTags[i])
-    );
-  }, [title, content, tags, initialTitle, initialContent, initialTags]);
 
   const isValid = title.trim().length > 0;
 
@@ -47,7 +53,7 @@ const NoteForm = ({
     const { selectionStart, selectionEnd, value } = el;
     const selected = value.slice(selectionStart, selectionEnd);
     const next = value.slice(0, selectionStart) + marker + selected + marker + value.slice(selectionEnd);
-    setContent(next);
+    setDescription(next);
     requestAnimationFrame(() => {
       el.focus();
       el.selectionStart = selectionStart + marker.length;
@@ -67,7 +73,7 @@ const NoteForm = ({
       .map((line, i) => `${prefixFor(i)}${line}`)
       .join('\n');
     const next = value.slice(0, lineStart) + nextBlock + value.slice(lineEnd);
-    setContent(next);
+    setDescription(next);
     requestAnimationFrame(() => el.focus());
   };
 
@@ -110,7 +116,7 @@ const NoteForm = ({
     if (!isValid || isSubmitting) return;
     setIsSubmitting(true);
     try {
-      await onSubmit?.({ title: title.trim(), tags, content, attachments });
+      await onSubmit?.({ title: title.trim(), tags, description, attachments });
     } finally {
       setIsSubmitting(false);
     }
@@ -119,7 +125,7 @@ const NoteForm = ({
   return (
     <div className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-1 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
+      {/* <div className="flex flex-wrap items-center gap-1 border-b border-slate-200 bg-slate-50 px-4 py-2.5">
         {toolbar.map(({ label, icon: Icon, action }) => (
           <motion.button
             key={label}
@@ -163,7 +169,7 @@ const NoteForm = ({
           <FiPaperclip size={16} />
         </motion.button>
         <input ref={fileInputRef} type="file" multiple onChange={handleFiles} className="hidden" />
-      </div>
+      </div> */}
 
       {/* Body */}
       <div className="flex flex-1 flex-col px-6 py-5">
@@ -174,7 +180,7 @@ const NoteForm = ({
           className="w-full border-none bg-transparent text-3xl font-bold text-slate-800 placeholder:font-bold placeholder:text-slate-400 focus:outline-none"
         />
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 border-b border-slate-100 pb-4">
+        {/* <div className="mt-3 flex flex-wrap items-center gap-2 border-b border-slate-100 pb-4">
           <FiTag size={15} className="shrink-0 text-slate-400" />
           <AnimatePresence initial={false}>
             {tags.map((tag) => (
@@ -206,9 +212,9 @@ const NoteForm = ({
             placeholder="Add tags..."
             className="min-w-[100px] flex-1 border-none bg-transparent text-sm text-slate-600 placeholder:text-slate-400 focus:outline-none"
           />
-        </div>
+        </div> */}
 
-        {attachments.length > 0 && (
+        {/* {attachments.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-2">
             {attachments.map((name) => (
               <span
@@ -228,12 +234,12 @@ const NoteForm = ({
               </span>
             ))}
           </div>
-        )}
+        )} */}
 
         <textarea
           ref={textareaRef}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
           placeholder="Start writing..."
           className="mt-4 min-h-[420px] flex-1 resize-none border-none bg-transparent text-base leading-relaxed text-slate-700 placeholder:text-slate-400 focus:outline-none"
         />
@@ -241,7 +247,7 @@ const NoteForm = ({
 
       {/* Footer */}
       <div className="flex items-center justify-between border-t border-slate-100 bg-slate-50/60 px-6 py-4">
-        <div className="flex items-center gap-2 text-sm">
+        {/* <div className="flex items-center gap-2 text-sm">
           {isDirty ? (
             <>
               <motion.span
@@ -257,7 +263,7 @@ const NoteForm = ({
               <span className="text-slate-400">All changes saved</span>
             </>
           )}
-        </div>
+        </div> */}
 
         <div className="flex items-center gap-5">
           <button
@@ -287,7 +293,7 @@ const NoteForm = ({
               <FiSave size={16} />
             )}
             {mode === 'edit' ? 'Update Note' : 'Save Note'}
-          </motion.button>
+          </motion.button> 
         </div>
       </div>
     </div>

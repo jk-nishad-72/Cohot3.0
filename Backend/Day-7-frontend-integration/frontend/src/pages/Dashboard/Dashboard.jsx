@@ -3,7 +3,7 @@ import React from 'react'
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <div className=' w-full h-full flex items-center justify-center'>Dashboard</div>
   )
 }
 

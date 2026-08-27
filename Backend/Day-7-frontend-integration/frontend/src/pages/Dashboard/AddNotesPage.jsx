@@ -16,17 +16,34 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 import { FiFolder, FiChevronRight } from 'react-icons/fi';
-import NoteForm from '../components/NoteForm';
+import NoteForm from '../../components/NoteForm';
+import { createNoteFun } from '../../api/notes.api';
 
 
-const AddNotesPage = () => {
+const AddNotesPage = () => { 
+
+
   const navigate = useNavigate();
 
   const handleSubmit = async (data) => {
     // e.g. await api.createNote(data)
+
     console.log('create note', data);
-    navigate('/notes');
+
+    try {
+      
+      let result = await createNoteFun(data)
+
+      console.log("Create Form result",result);
+      
+    } catch (error) {
+
+      console.log('Create Note Fun Error',error);
+     
+    }
+    navigate('/dashboard/allNotes'); 
   };
+
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-6 sm:px-6 lg:px-8">

@@ -3,7 +3,7 @@ import React from 'react'
 
 const Notebooks = () => {
   return (
-    <div>Notebooks</div>
+    <div className=' w-full h-full flex items-center justify-center'>Notebooks</div>
   )
 }
 

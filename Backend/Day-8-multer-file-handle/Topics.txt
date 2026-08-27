@@ -1,0 +1,13 @@
+
+Backend Day 8 files request are handled in backend using multer
+
+ftp => file transfer protocol for handling file/media for sharing file frontend to backend
+
+Multipart => file ko small small chunks me divide karna jisse buffer kahte hai 
+multer => fovides two feature
+
+1) disk Storage - used to store in local Storage 
+2) memory Storage - used to store data in server like imagekit/cloudinary/s3 backet
+
+middlware -> bich ka bander 
+

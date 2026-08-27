@@ -115,8 +115,7 @@ const deleteNoteController = async (req, res) => {
           await NoteModel.findByIdAndDelete(id)
 
           res.status(200).json({
-            message:"Update Note  Succes",
-            Updated_Note:Notes 
+            message:"Delete Note  Succes",
          })
         
         } catch (error) {

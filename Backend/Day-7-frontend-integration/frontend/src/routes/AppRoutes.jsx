@@ -2,16 +2,18 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import AuthLayout from '../layout/AuthLayout'
-import Login from '../pages/Login'
-import Register from '../pages/Register'
+import Login from '../pages/auth/Login'
+import Register from '../pages/auth/Register'
 import DashBoardLayout from '../layout/DashBoardLayout'
-import Dashboard from '../pages/Dashboard'
-import AllNotesPage from '../pages/AllNotesPage'
-import Favorites from '../pages/Favorites'
-import Notebooks from '../pages/Notebooks'
-import Tags from '../pages/Tags'
-import Archive from '../pages/Archive'
-import AddNotesPage from '../pages/AddNotesPage'
+import Dashboard from '../pages/Dashboard/Dashboard'
+import AllNotesPage from '../pages/Dashboard/AllNotesPage'
+import Favorites from '../pages/Dashboard/Favorites'
+import Notebooks from '../pages/Dashboard/Notebooks'
+import Tags from '../pages/Dashboard/Tags'
+import Archive from '../pages/Dashboard/Archive'
+import AddNotesPage from '../pages/Dashboard/AddNotesPage'
+import UpdateNote from '../pages/Dashboard/UpdateNote'
+import SingleNote from '../pages/Dashboard/SingleNote'
 
 const AppRoutes = () => {
 
@@ -44,6 +46,10 @@ const AppRoutes = () => {
                     element:<Dashboard />
                 },
                 {
+                    path:"update/:id",
+                    element:<UpdateNote />
+                },
+                {
                     path:"allNotes",
                     element:<AllNotesPage />
                 },{
@@ -65,6 +71,10 @@ const AppRoutes = () => {
                 {
                     path:"addNote",
                     element:<AddNotesPage />
+                },
+                    {
+                    path:"view/:id",
+                    element:<SingleNote />
                 },
                 
             ]
