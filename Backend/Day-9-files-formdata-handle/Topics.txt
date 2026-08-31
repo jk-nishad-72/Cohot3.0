@@ -1,0 +1,5 @@
+
+
+Backend Day - 9
+Today’s class was about Multer & FormData. Learned how multipart/form-data works, how files/data are handled in chunks, and integrated it with the frontend.
+Another step forward in backend development 

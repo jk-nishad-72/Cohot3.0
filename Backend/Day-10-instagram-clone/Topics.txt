@@ -1,0 +1,40 @@
+
+Day 77 of showing up. No shortcuts. Just consistency. 🚀
+
+Today in our 3.0 Job Ready AI-Powered Cohort at Sheryians Coding School, backend finally started feeling *real*. Not just theory… but building something that actually works.
+
+👉 We implemented image upload like a mini Instagram clone 📸
+
+Here’s what went down:
+
+* Used **Multer (memoryStorage)** to handle image files
+* Uploaded images to **ImageKit**
+* Stored the returned image URL in the database
+* Built APIs:
+  • Create Post API (upload image)
+  • Get All Posts API
+
+This was one of those days where everything connects — frontend, backend, storage, APIs 🔗
+
+💡 And then came the real challenge:
+“How do you know which post belongs to which user?”
+
+That question hit differently.
+Because coding is not just about making things work…
+It’s about making them *make sense*.
+
+👉 My approach:
+
+* Attach **userId** with every post while creating it
+* Use authentication (JWT/session) to identify the logged-in user
+* Fetch posts based on user context when needed
+
+📚 Learnings from today:
+
+* File handling is more about flow than code
+* Real-world apps = connecting multiple services
+* Backend = responsibility, not just logic
+
+Still learning. Still building. Still figuring things out.
+
+#Day77 #BackendDevelopment #NodeJS #Multer #ImageUpload #FullStackJourney #LearnInPublic #ConsistencyWins #SheryiansCodingSchool
