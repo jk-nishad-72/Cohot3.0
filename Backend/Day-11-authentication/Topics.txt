@@ -1,0 +1,10 @@
+
+Backend Day - 11
+
+implementation of this wonderfull topics => Authentication 
+
+
+Today we only study and implement ==> 
+
+accept user request | credential and create token with , server signature (jwt_secrete) 
+
