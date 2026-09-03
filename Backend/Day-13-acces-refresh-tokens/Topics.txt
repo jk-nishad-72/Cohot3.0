@@ -1,0 +1,61 @@
+
+---
+
+**Day 80 / 365 — Things just got REAL in Backend 🔐**
+
+Not gonna lie…
+today wasn’t just about coding…
+it was about **thinking like a system designer.**
+
+**Backend Day – 13 | Access Token vs Refresh Token**
+
+In our **Job Ready AI-Powered Cohort 3.0 @ Sheryians Coding School**,
+we explored something that every real-world application depends on —
+👉 **Secure Authentication Flow**
+
+---
+
+💡 **What I learned today:**
+
+• Difference between **Access Token & Refresh Token**
+• Why access tokens are **short-lived (security first)**
+• How refresh tokens help users stay logged in **without re-login**
+• Token flow:
+➡️ Login → Access Token + Refresh Token
+➡️ Access expires → Use Refresh Token
+➡️ Generate new Access Token
+
+• Where to store tokens securely (cookies vs local storage 🤯)
+• How backend verifies tokens before giving access
+
+---
+
+⚡ **Big Realization:**
+
+Earlier I thought login = done ✅
+But today I understood…
+
+👉 **Authentication is easy,
+👉 Maintaining secure sessions is the real game.**
+
+---
+
+🧠 This is the kind of concept that separates:
+“Someone who knows backend” ❌
+vs
+“Someone who understands backend deeply” ✅
+
+---
+
+🔥 Step by step, day by day…
+from writing APIs ➡️ to securing them like a pro.
+
+---
+
+💬 **Quick question for devs:**
+Which one do you prefer for storing tokens —
+Cookies 🍪 or Local Storage? And why?
+
+---
+
+#Day80 #BackendDevelopment #JWT #Authentication #WebSecurity #NodeJS #LearningInPublic #Sheryians #100DaysOfCode #FullStackJourney
