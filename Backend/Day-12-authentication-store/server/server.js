@@ -1,0 +1,10 @@
+
+const app =  require('./src/app.js');
+const connectToDB = require('./src/config/db.js');
+
+connectToDB()
+
+app.listen(3000,()=>{
+    console.log('server is running');
+    
+})

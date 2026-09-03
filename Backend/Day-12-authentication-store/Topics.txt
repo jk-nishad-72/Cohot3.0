@@ -1,0 +1,86 @@
+
+
+
+
+**🚀 Day 79 / 365 — Backend Journey Continues**
+
+Not gonna lie… today felt like a *real developer moment.*
+From just building APIs ➡️ to actually **securing them like a pro** 🔐
+
+---
+
+### 🔥 Backend Day - 12 | Authorization (The Real Game Begins)
+
+Today in our **Job Ready AI-Powered Cohort 3.0 @ Sheryians Coding School**,
+we didn’t just learn… we **implemented the backbone of real-world applications** 👇
+
+---
+
+### 💡 What we built today:
+
+* 🔐 **Authentication Flow** → Register | Login | Get User API
+* 🪪 Accepting user credentials & generating **JWT tokens**
+* ✅ Verifying users using **server-side signatures**
+* 🛡️ Protecting routes using **middleware (auth checker)**
+
+---
+
+### 🧠 Concepts that clicked today:
+
+#### 🔑 JWT (JSON Web Token)
+
+* `sign()` → Create token with user data + secret
+* `verify()` → Validate token (Is the user legit?)
+* `decode()` → Read token payload
+
+#### 🔐 Password Security with bcrypt.js
+
+* Hashing passwords before storing
+* Comparing hashed passwords during login
+
+#### 🏗️ Clean Backend Architecture
+
+* Models → `auth.model.js`
+* Routes → `auth.routes.js`
+* Controllers → `auth.controller.js`
+* Middleware → `auth.middleware.js`
+* Config → Database setup
+
+#### 🔗 APIs we created:
+
+* `POST /auth/api/register`
+* `POST /auth/api/login`
+* `GET /auth/api/user` *(Protected 🔒)*
+
+---
+
+### 🔥 Big Realization:
+
+Anyone can build APIs…
+But building **secure, production-ready APIs?**
+👉 That’s where developers level up.
+
+---
+
+### 💭 Relatable Thought:
+
+Earlier, I used to think a login system is *“just a form”…*
+Now I understand — it’s a **complete system of trust, security & validation**.
+
+---
+
+### ⚡ Consistency Check:
+
+**Day 79 Done ✅**
+Every day = 1% better.
+No shortcuts. Just showing up.
+
+---
+
+### 💬 Let’s discuss:
+
+**What was harder for you in backend — JWT or bcrypt?**
+
+---
+
+#BackendDevelopment #Authentication #JWT #NodeJS #WebDevelopment #CodingJourney #LearningInPublic #100DaysOfCode #Developers #SheryiansCodingSchool
