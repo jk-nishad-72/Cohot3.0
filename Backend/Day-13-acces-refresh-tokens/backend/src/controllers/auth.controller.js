@@ -11,6 +11,8 @@ export const registerController  = async (req , res) => {
 
          const { name , email , password } = req.body;
 
+         console.log(name , email , password);
+         
          const user = await authModel.create({
             name,
             email,
@@ -30,13 +32,15 @@ export const registerController  = async (req , res) => {
      } catch (error) {
 
         res.status(500).json({
-            message:"Server error"
+            message:"Server Register error "
         })
         
      }
     
 }
 
+
+// auth ME api
 export const authMeController = async (req ,res) => {
 
      let user = req.user
@@ -48,5 +52,56 @@ export const authMeController = async (req ,res) => {
             user:user
         }
      })
+    
+}
+
+
+// login Controller 
+
+export const loginController = async (req ,res) => {
+
+     
+     try {
+
+         const {email , password } = req.body;
+
+         let findUser = await authModel.findOne({email})
+
+          if(!findUser){
+            return res.status(401).json({
+                message:"User doesn't exist's"
+            })
+          }
+
+          let isValidPassword = bcrypt.compare(password , findUser.password)
+
+          if(!isValidPassword){
+            return res.status(401).json({
+                message:"Invalid Credentials"
+            })
+          }
+
+           let token = jwt.sign({id:findUser._id},config.ACCESS_JWT_SECRETE)
+
+          res.status(200).json({
+            message:"Login succesfully",
+            data:{
+                user:findUser,
+                Acces_Token:token
+            }
+          })
+
+     } catch (error) {
+
+        console.log("Server Login error",error);
+        res.status(500).json({
+            message:"Server Login error",
+            error:error
+        })
+        
+     }
+
+
+    
     
 }

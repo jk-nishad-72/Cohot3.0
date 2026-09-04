@@ -15,7 +15,9 @@ export const authenticate = async (req , res,next) => {
 
      let {id}  = jwt.verify(token, config.ACCESS_JWT_SECRETE)
 
-     let user = await authModel.findOne({id}) 
+    
+     
+     let user = await authModel.findById(id) 
 
      console.log(user);
      
