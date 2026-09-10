@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Network, Cloud, SquareTerminal, LogIn, Check } from 'lucide-react';
-import { authHook } from '../../hooks/useAuthHook';
+import { AuthHook } from '../../hooks/useAuthHook.jsx';
 
 // deterministic pseudo-random so the ambient swirl looks the same every render
 function seededRandom(seed) {
@@ -52,7 +52,7 @@ const Login = () => {
            register,
            errors,
            handleLoginSubmit,
-           } = authHook() 
+           } =  AuthHook() 
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-black flex flex-col items-center justify-center px-4 py-16 font-sans">
@@ -94,8 +94,8 @@ const Login = () => {
             <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-violet-600 shadow-lg shadow-violet-900/50">
               <Network size={28} className="text-white" />
             </div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Synthetix AI</h1>
-            <p className="mt-1 text-sm text-slate-400">Sign in to your workspace</p>
+            <h1 className="text-2xl font-bold text-white tracking-tight">Team-sync</h1>
+            <p className="mt-1 text-sm text-slate-400">Sign in to your workspace</p> 
           </div>
 
           {/* social buttons */}
@@ -205,7 +205,7 @@ const Login = () => {
         </div>
 
         <div className="fade-in-3 mt-6 text-center text-sm text-slate-600">
-          © 2024 Synthetix AI. Enterprise Intelligence Platforms.
+          © 2026 Team-sync. Enterprise Intelligence Platforms.
           <div className="mt-2 flex justify-center gap-6">
             <span className="cursor-pointer hover:text-slate-400">Privacy Policy</span>
             <span className="cursor-pointer hover:text-slate-400">Terms of Service</span>

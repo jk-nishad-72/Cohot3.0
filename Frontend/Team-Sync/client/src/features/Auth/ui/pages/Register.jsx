@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { User, Mail, Lock, Sparkles, Check, Network } from 'lucide-react';
-import { authHook } from '../../hooks/useAuthHook';
+import { AuthHook } from '../../hooks/useAuthHook.jsx';
 
 // ---- deterministic "random" so the neural artwork looks the same on every render ----
 function seededRandom(seed) {
@@ -65,20 +65,12 @@ const Register = () => {
   const [agreed, setAgreed] = useState(false);
   const art = useNeuralArt();
 
-  const { navigate,
+  const { 
+         navigate,
          handleSubmit,
          register,
          errors,
-         handleRegisterSubmit} = authHook()
-
-
-
- 
-
- 
-
-
-
+         handleRegisterSubmit} = AuthHook()
 
   return (
     <div className="min-h-screen flex flex-col bg-black font-sans">
@@ -168,7 +160,7 @@ const Register = () => {
         {/* RIGHT PANEL — FORM */}
         <div className="flex items-center justify-center bg-zinc-950 px-6 py-12 sm:px-12">
           <div className="w-full max-w-md">
-            <span className="md:hidden block text-lg font-bold text-white mb-8">Synthetix AI</span>
+            <span className="md:hidden block text-lg font-bold text-white mb-8">Team-sync</span>
 
             <h2 className="fade-in-1 text-3xl sm:text-4xl font-bold text-white tracking-tight mb-2">
               Create your account
@@ -333,14 +325,14 @@ const Register = () => {
       {/* FOOTER */}
       <footer className="border-t border-zinc-900 bg-black px-6 py-6 sm:px-10">
         <div className="flex flex-col items-center gap-4 md:flex-row md:justify-between">
-          <span className="text-base font-bold text-white">Synthetix AI</span>
+          <span className="text-base font-bold text-white">Team-sync</span>
           <nav className="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
             <span className="cursor-pointer hover:text-slate-300">Privacy Policy</span>
             <span className="cursor-pointer hover:text-slate-300">Terms of Service</span>
             <span className="cursor-pointer hover:text-slate-300">Security</span>
             <span className="cursor-pointer hover:text-slate-300">System Status</span>
           </nav>
-          <span className="text-sm text-slate-600">© 2024 Synthetix AI. Enterprise Intelligence Platforms.</span>
+          <span className="text-sm text-slate-600">© 2026 Team-sync. Enterprise Intelligence Platforms.</span>
         </div>
       </footer>
     </div>

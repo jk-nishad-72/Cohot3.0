@@ -1,38 +1,68 @@
 
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import DashboardLayout from '../layout/DashboardLayout'
 import Login from '../../features/Auth/ui/pages/Login'
 import Register from '../../features/Auth/ui/pages/Register'
 import AuthLayout from '../layout/AuthLayout'
 import Home from '../../features/Dashboard/ui/pages/Home'
+import { useDispatch } from 'react-redux'
+import { currentLoggedEmployee } from '../../features/Auth/state/authAction.jsx'
+import ProtectedRoutes from '../ProtectedRoutes/ProtectedRoutes.jsx'
+import PublicRoute from '../ProtectedRoutes/PublicRoute.jsx'
 
 const AppRoutes = () => {
+
+
+const dispatch = useDispatch();
+
+useEffect(()=>{
+    (async () => {
+         try {
+            dispatch(currentLoggedEmployee())  
+         } catch (error) {
+             console.log("Hydration Error",error)
+         }
+    })()
+},[])
+
 
     const router = createBrowserRouter([
         {
             path:"/",
-            element:<AuthLayout />,
+            element:<PublicRoute />,
             children:[
                 {
                     path:"",
-                    element:<Login/>,
-                },
-                {
-                    path:"register",
-                    element:<Register/>,
+                    element:<AuthLayout />,
+                    children:[
+                        {
+                            path:"",
+                            element:<Login/>,
+                        },
+                        {
+                            path:"register",
+                            element:<Register/>,
+                        }
+                    ]
                 }
             ]
         },
         {
             path:"/home",
-            element:<DashboardLayout />,
+            element:<ProtectedRoutes />,
             children:[
                 {
                     path:"",
-                    element:<Home/>,
+                    element:<DashboardLayout />,
+                    children:[
+                        {
+                            path:"",
+                            element:<Home/>,
 
+                        }
+                    ]
                 }
             ]
         }
