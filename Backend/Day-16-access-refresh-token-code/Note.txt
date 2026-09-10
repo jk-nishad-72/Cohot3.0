@@ -1,0 +1,69 @@
+<Default>
+Day 83 of my journey in the 3.0 Job-Ready AI-Powered Cohort at Sheryians Coding School 🚀  
+
+Today was all about turning concepts into real backend implementation 👨‍💻
+
+Backend Day – 16
+We worked on **Access Token & Refresh Token flow** 🔐
+
+Here’s what we built:
+✅ User Registration API → creates user + access & refresh tokens (refresh stored in DB)
+✅ Auth Check API → verifies user & sends data to client
+✅ Refresh API → validates refresh token, rotates tokens & keeps session secure
+
+This is where things start to feel real… not just theory, but actual production-level logic 💡
+
+Still learning. Still building.
+Consistency is the only shortcut.
+
+What’s one backend concept that confused you at first but made sense later? 👇
+
+#Backend #WebDevelopment #NodeJS #Authentication #JWT #CodingJourney #LearnInPublic #Sheryians
+
+<Story>
+From confusion ➝ clarity 💭➡️💡  
+
+Day 83 in my 3.0 Job-Ready AI Cohort journey at Sheryians Coding School 🚀
+
+Today’s Backend class was 🔥
+We didn’t just “learn” tokens… we actually implemented them.
+
+Backend Day – 16
+🔐 Access Token + Refresh Token system
+
+Built APIs like:
+→ Register user with tokens (refresh saved in DB)
+→ Authenticate user & fetch data
+→ Refresh tokens securely (auto-logout if invalid 👀)
+
+Honestly, this used to feel complicated…
+but implementing it step by step changed everything.
+
+That’s the power of building > just watching 💯
+
+If you’re learning backend, don’t skip auth. It’s everywhere.
+
+What are you building these days? 👇
+
+#BuildInPublic #BackendDev #JWT #NodeJS #CodingLife #Developers
+
+<ShortPunch>
+Day 83 🚀 Backend getting serious now…  
+
+Backend Day – 16:
+🔐 Access + Refresh Token implementation
+
+Built:
+✔️ Register API (tokens + DB storage)
+✔️ Auth API (verify & send user data)
+✔️ Refresh API (secure token rotation)
+
+This is the stuff real apps run on.
+
+Learning → Building → Improving 🔁
+
+Are you more into frontend or backend? 👇
+
+#Backend #Developers #CodingJourney #JWT #LearnInPublic
+
+Want me to tweak it more (funny, more professional, or add your project link)?

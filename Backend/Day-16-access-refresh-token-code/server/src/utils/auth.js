@@ -1,16 +1,17 @@
 
-import {sign , verify } from "jsonwebtoken"
-import configObj from "../config/config"
+import jwt from "jsonwebtoken"
+import configObj from "../config/config.js"
+
 
 export const tokenGenerator = ({userId})=>{
 
-    const accessToken = sign(
+    const accessToken = jwt.sign(
         {id:userId},
         configObj.ACCESS_JWT_SECRETE_KEY,{
             expiresIn:"15m",
         }
     )
-    const refreshToken = sign(
+    const refreshToken = jwt.sign(
         {id:userId},
         configObj.REFRESH_JWT_SECRETE_KEY,
         {
@@ -23,14 +24,15 @@ export const tokenGenerator = ({userId})=>{
 
 export const verifyAccesToken = (accessToken)=>{
 
-     const decode = verify(accessToken, configObj.ACCESS_JWT_SECRETE_KEY)
+     const decode = jwt.verify(accessToken, configObj.ACCESS_JWT_SECRETE_KEY)
      return decode
 
 }
 
 export const verifyRefreshToken = (refreshToken)=>{
 
-     const decode = verify(refreshToken, configObj.REFRESH_JWT_SECRETE_KEY)
+     const decode = jwt.verify(refreshToken, configObj.REFRESH_JWT_SECRETE_KEY)
+
      return decode
 
 }

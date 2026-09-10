@@ -1,0 +1,34 @@
+
+🚀 **Day 84 – Backend Journey Continues!** || Day 17
+
+Today in our **3.0 Job Ready AI-Powered Cohort at** Sheryians Coding School, we focused on something *super practical* 👇
+
+💡 **Access & Refresh Token – Frontend Implementation**
+
+But the real twist? 🤯
+While implementing this, we faced a very common issue:
+
+❌ **CORS Policy Error**
+
+👉 And this is where learning became *real learning*…
+
+Instead of getting stuck, we explored the solution:
+✅ Using **Vite Development Server Proxy** to bypass CORS during development
+
+📌 **What I understood today:**
+
+* Why CORS errors happen between frontend & backend
+* How proxy acts as a middle layer
+* How to connect `localhost:5173` ➝ `localhost:3000` smoothly
+* Real-world debugging mindset 🧠
+
+⚡ This wasn’t just theory… it was *actual problem solving*
+
+---
+
+💬 **Have you ever faced a CORS error while connecting frontend & backend?**
+How did you solve it? Let’s learn together 👇
+
+---
+
+#Day84 #BackendDevelopment #WebDevelopment #ReactJS #NodeJS #CORS #Vite #LearningInPublic #DevelopersJourney 🚀

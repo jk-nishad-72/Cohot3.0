@@ -1,6 +1,8 @@
 
 import { Router } from "express";
-import { registerController } from "../controllers/auth.controller.js";
+import { authMeController, refreshController, registerController } from "../controllers/auth.controller.js";
+import { verifyAccesToken } from "../utils/auth.js";
+import authModel from "../models/auth.model.js";
 
 const router = Router();
 
@@ -17,24 +19,13 @@ router.post('/register', registerController)
  * @GET /api/auth/me
  */
 
-router.post('/me', (req,res)=>{
-
-    let token = req.headers.autherization?.split(" ")[1];
-    console.log(token)
-
-    return
-})
-
+router.get('/me',authMeController) 
 
 /**
  * @POST /api/auth/refresh
  */
 
-router.post('/refresh', (req,res)=>{})
-
-
-
-
+router.post('/refresh', refreshController)
 
 
 export default router

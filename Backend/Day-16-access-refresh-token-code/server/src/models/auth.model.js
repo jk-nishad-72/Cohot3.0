@@ -13,13 +13,19 @@ const authSchema = new Schema({
         type:String,
         required:true,
         unique:true,
-        match:"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", // it will Validate the Email Id 
+        // match:"/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", // it will Validate the Email Id
         
     },
     password:{
         type:String,
         required:true,
-    }
+    },
+    refreshToken:{
+        type:String,
+    },
+
+},{
+    timestamps:true,
 })
 
 const authModel = model("auth",authSchema)
