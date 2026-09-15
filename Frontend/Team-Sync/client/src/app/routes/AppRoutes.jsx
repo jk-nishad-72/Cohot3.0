@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux'
 import { currentLoggedEmployee } from '../../features/Auth/state/authAction.jsx'
 import ProtectedRoutes from '../ProtectedRoutes/ProtectedRoutes.jsx'
 import PublicRoute from '../ProtectedRoutes/PublicRoute.jsx'
+import { commerRoutes } from './commenRotes.jsx'
 
 const AppRoutes = () => {
 
@@ -56,13 +57,8 @@ useEffect(()=>{
                 {
                     path:"",
                     element:<DashboardLayout />,
-                    children:[
-                        {
-                            path:"",
-                            element:<Home/>,
-
-                        }
-                    ]
+                    children:[...commerRoutes] 
+                        
                 }
             ]
         }

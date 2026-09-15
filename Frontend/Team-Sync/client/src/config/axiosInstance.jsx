@@ -8,6 +8,29 @@ export const axiosInstance = axios.create({
  
 
 
-// axiosInstace.interceptors.response.use((response)=>{
-//     return response
-// })
+//handling accesstoken 
+axiosInstance.interceptors.response.use(
+
+        (response) => response,
+   async (error)=>{
+
+     
+     let originRequest = error.config;
+     
+     if(error.response.status === 401 && !originRequest._retry){
+
+       originRequest._retry = true;
+
+       try {
+
+          await axiosInstance.get("/auth/get-accesstoken")
+          return axiosInstance(originRequest); 
+        
+       } catch (error) {
+         window.Location.href = "/";
+         return Promise.reject(error);
+       }
+     }
+
+   }
+)
