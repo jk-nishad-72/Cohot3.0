@@ -1,29 +1,34 @@
+/**
+ * @param {number[]} arr
+ * @returns {number}
+ */
+class Solution {
+    maxSubarraySum(arr) {
+        // Code here
+        
+        let sum = 0;
+        let MAX_sum = 0;
 
+        for(let i = 0;i<arr.length;i++){
 
+            for(let j = i+1;j<arr.length;j++){
+                 
+                 sum += arr[j]; 
 
-class solution {
+                 if(sum > MAX_sum){
+                    MAX_sum = sum;
+                 } else{
+                    sum = 0;
+                 }
+            }
+        }
 
-    addOne(nums){
- 
-         let sum = "";
-         for(let n of nums){
-             sum += n;
-         }
-         sum = parseInt(sum) + 1;
-
-         let ans = [];
-
-         while(sum > 0){
-            let digit = sum % 10;
-            ans.unshift(digit);
-            sum = Math.floor(sum/10)
-         }
-
-         return ans
+        return MAX_sum;
     }
 }
 
-const soln = new solution;
+const slv = new Solution()
+arr =  [2, 3, -8, 7, -1, 2, 3]
+ans = slv.maxSubarraySum(arr)
 
-console.log(soln.addOne( [5, 6, 7, 8])); 
-
+console.log(ans);
