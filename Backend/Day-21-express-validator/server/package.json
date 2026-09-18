@@ -1,9 +1,8 @@
 {
-  "name": "backend",
+  "name": "server",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/server.js"
@@ -12,13 +11,14 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "devDependencies": {
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "mongoose": "^9.10.1",
-    "nodemon": "^3.1.14"
-  },
   "dependencies": {
-    "express-validator": "^7.3.2"
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^18.0.0",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "mongoose": "^9.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

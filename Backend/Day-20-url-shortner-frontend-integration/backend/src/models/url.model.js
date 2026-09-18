@@ -18,7 +18,7 @@ const urlSchema = new mongoose.Schema({
         type:Number,
         default:0,
      },
-})
+},{timestamps:true})
 
 const urlModel = mongoose.model("urlModel",urlSchema)
 

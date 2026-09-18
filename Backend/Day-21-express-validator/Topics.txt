@@ -1,6 +1,6 @@
 
-**Day 89/365 – Building in Public 🚀**
-**Backend Day 21 – Express Validator**
+**Day 89/365 – Building in Public 🚀** 
+**Backend Day 21 – Express Validator** npm install express-validator
 
 Today’s class was all about something beginners often ignore… but real developers can’t afford to 😶‍💻
 👉 **Validation**

@@ -138,7 +138,7 @@ export const deleteController = async (req, res) => {
         }
 
         await urlModel.findOneAndDelete({
-            shortcode:code
+            shortcode:code 
         })
 
         res.status(200).json({
@@ -154,3 +154,4 @@ export const deleteController = async (req, res) => {
      }
     
 }
+
