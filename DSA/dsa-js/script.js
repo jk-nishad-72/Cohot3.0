@@ -1,34 +1,25 @@
 /**
- * @param {number[]} arr
- * @returns {number}
+ * @param {string} s
+ * @return {string}
  */
-class Solution {
-    maxSubarraySum(arr) {
-        // Code here
-        
-        let sum = 0;
-        let MAX_sum = 0;
 
-        for(let i = 0;i<arr.length;i++){
+class solution{
 
-            for(let j = i+1;j<arr.length;j++){
-                 
-                 sum += arr[j]; 
+     reverseWords(s) {
+    
+         let words = s.trim().split(".")
+         let ans = [];
 
-                 if(sum > MAX_sum){
-                    MAX_sum = sum;
-                 } else{
-                    sum = 0;
-                 }
-            }
-        }
+         for(let i = words.length-1 ;i >= 0;i--){
+             if(words[i] != ""){
+                ans.push(words[i]);
+             }
+         }
+         return ans.join(".")
+}; 
 
-        return MAX_sum;
-    }
 }
 
-const slv = new Solution()
-arr =  [2, 3, -8, 7, -1, 2, 3]
-ans = slv.maxSubarraySum(arr)
+let ans = new solution();
 
-console.log(ans);
+console.log(ans.reverseWords("a.good...example"));

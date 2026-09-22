@@ -18,10 +18,10 @@ router.post("/",shortCodeController)
 router.get("/",getAllUrlsController) 
 
 /**
- * @POST /api/url/:code
+ * @GET /api/url/:code
  */
 
-router.post("/:code",redirectController)
+router.get("/:code",redirectController)
 
 /**
  * @DELETE /api/url/:code 

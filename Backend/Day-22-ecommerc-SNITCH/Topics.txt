@@ -1,0 +1,28 @@
+
+
+Day 90 in our 3.0 Job Ready AI-Powered Cohort at Sheryians Coding School 🚀
+
+Today we started something exciting…
+👉 A **Clothing E-commerce Project (SNITCH)**
+
+This wasn’t just about coding — it was about thinking like a real developer building a real product.
+
+💡 **What I learned today:**
+• How to approach building a server for any project
+• Understanding client–developer agreement basics
+• Gaining clarity on *what to build* and *what NOT to build*
+• Writing Functional & Non-Functional Requirements
+
+🛠️ **What we built:**
+• User Registration API
+• User Model with 2 roles → Buyer & Seller
+• Data validation using Express Validator
+• Access & Refresh Token generation
+
+This project is going to bring together everything we’ve learned so far 🔥
+
+Next step ➡️ Handling login, token access, and authentication flow
+
+Slowly shifting from just learning… to actually building like an engineer 💻
+
+#Day90 #SheryiansCodingSchool #BackendDevelopment #MERNStack #EcommerceProject #LearningInPublic #WebDevelopment #JWT #ExpressJS #Consistency

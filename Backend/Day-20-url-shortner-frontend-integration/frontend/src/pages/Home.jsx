@@ -9,48 +9,49 @@ import { IoMdTime } from "react-icons/io";
 import { LuTrendingUpDown } from "react-icons/lu";
 import Footer from "../components/Footer.jsx";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Home = () => {
 
-
-   let dummyURLs = [
-                  {
-                    "_id": "6aac793439b1643eeda37f26",
-                    "originURL": "https://www.shopsy.in/zebronics-county-pro-11-dual-drivers-tws-btv5-4-mic-input-carry-handle-rgb-lights-16-w-bluetooth-home-audio-speaker/p/itm23f203331eca2?pid=ACCHEB3PCDDNCPXC&lid=LSTACCHEB3PCDDNCPXCVRFJP4&marketplace=FLIPKART&store=0pm%2F0o7",
-                    "shortcode": "CONtu5",
-                    "clicks": 0,
-                    "createdAt": "2026-09-17T23:35:16.778Z",
-                    "updatedAt": "2026-09-17T23:35:16.778Z",
-                    "__v": 0
-                },
-
-
-                  {
-                    "_id": "6aac793439b1643eeda37f26",
-                    "originURL": "https://www.shopsy.in/zebronics-county-pro-11-dual-drivers-tws-btv5-4-mic-input-carry-handle-rgb-lights-16-w-bluetooth-home-audio-speaker/p/itm23f203331eca2?pid=ACCHEB3PCDDNCPXC&lid=LSTACCHEB3PCDDNCPXCVRFJP4&marketplace=FLIPKART&store=0pm%2F0o7",
-                    "shortcode": "CONtu5",
-                    "clicks": 0,
-                    "createdAt": "2026-09-17T23:35:16.778Z",
-                    "updatedAt": "2026-09-17T23:35:16.778Z",
-                    "__v": 0
-                },
-
-   ]
+   
     const [urls , setUrls] = useState([]);
-    const [urlInput , setUrlInput] = useState(null);
+    const [urlInput , setUrlInput] = useState("");
     const [shortCode , setShortCode] = useState(null);
 
  
 
+     // fetch all urls 
+
       const fetchURls = async () => {
 
-         
+                 const response = await axios.get("http://localhost:5173/api/url")
+
+                 setUrls(response.data.data[0].urls);
+               //   console.log(response.data.data[0]) 
+      }
+
+      // handl shorten urls 
+
+      const handleShortenUrl = async () => {
+
+         const response = await axios.post("http://localhost:5173/api/url",{url:urlInput})
+
+         // console.log(response.data.data) 
+
+         setShortCode({
+            shortCode:response.data.data.shortcode,
+            originURL:response.data.data.originURL 
+         }) 
+
+
+         setUrlInput("")
+         fetchURls();
          
       }
 
     useEffect(()=>{
 
-       setUrls(dummyURLs);
+        fetchURls();
 
     },[])
 
@@ -76,11 +77,14 @@ const Home = () => {
              <MdInsertLink color="white" size={24} />
 
              <input 
+
+             onChange={(e)=>setUrlInput(e.target.value)}
+             value={urlInput} 
              className="w-full h-full border-0   outline-0 text-lg"
              type="text" 
              placeholder="Paste your long URL here — (e.g. https://github.com/developer/project)"  />
 
-             <button className="bg-[#843fff]  text-white flex items-center gap-2  text-2xl px-3 py-2 rounded-md cursor-pointer">
+             <button onClick={handleShortenUrl} className="bg-[#843fff]  text-white flex items-center gap-2  text-2xl px-3 py-2 rounded-md cursor-pointer">
                 Shoreten <FaLocationArrow size={24}/>
              </button>
             
@@ -104,7 +108,6 @@ const Home = () => {
                 </div>
 
          {/* list item  */}
-
               {
                urls.map((url , idx)=>{
                    return (
@@ -118,10 +121,10 @@ const Home = () => {
                         <div className="flex gap-4 flex-col">
 
                              {/* shortCode */}
-                            <h2 className=" flex gap-4 items-center  font-bold  cursor-pointer text-lg text-[#d2bbff]"> https://short.ly/v8xK9p <FaArrowUpRightFromSquare /> <span className=" text-sm font-semibold text-green-500 bg-green-100/10 px-2 py-1 rounded"> • Active  </span> </h2>
+                            <a href={`http://localhost:5000/api/url/${url.shortcode}`} target=" _blank" className=" flex gap-4 items-center  font-bold  cursor-pointer text-lg text-[#d2bbff]"> https://short.ly/{url.shortcode} <FaArrowUpRightFromSquare /> <span className=" text-sm font-semibold text-green-500 bg-green-100/10 px-2 py-1 rounded"> • Active  </span> </a>
 
                             {/* longUrl */}
-                            <p className=" truncate "> {url.originURL} </p>
+                            <p className=" truncate w-120"> {url.originURL} </p>
 
                              <div className="flex gap-4">
                                 {/* createdAt */}
@@ -133,8 +136,8 @@ const Home = () => {
                         </div>
 
                         <div className="flex gap-4">
-                             <button className="bg-[#222a3d] text-white flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer"> <FaCopy size={16}/> Copy</button>
-                             <button className="bg-[#222a3d] text-white flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer"> <MdDelete size={16} />  Delete</button>
+                             <button className="bg-[#222a3d] text-white flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer active:scale-95  transition-all  duration-200 hover:bg-[#2f374c] hover:text-[#ceb1ff]"> <FaCopy size={16}/> Copy</button>
+                             <button className="bg-[#222a3d] text-white flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer active:scale-95 transition-all  duration-200 hover:bg-[#2f374c] hover:text-[#ceb1ff]"> <MdDelete size={16} />  Delete</button>
                         </div>
                         
                     </div>
@@ -143,10 +146,6 @@ const Home = () => {
                    )
                })
               }
-                
-
-              
-
          </div>
 
      </section>
