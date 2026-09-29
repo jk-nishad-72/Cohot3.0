@@ -1,35 +1,19 @@
-
 class Solution {
-    public String intToRoman(int num) {
-
-        int[] values = {
-            1000, 900, 500, 400,
-            100, 90, 50, 40,
-            10, 9, 5, 4, 1
-        };
-
-        String[] symbols = {
-            "M", "CM", "D", "CD",
-            "C", "XC", "L", "XL",
-            "X", "IX", "V", "IV", "I"
-        };
-
-        StringBuilder ans = new StringBuilder();
-
-        for (int i = 0; i < values.length; i++) {
-
-            while (num >= values[i]) {
-                ans.append(symbols[i]);
-                num -= values[i];
+    public int hIndex(int[] citations) {
+        int n = citations.length;
+        
+        // step 1: sort array
+        Arrays.sort(citations);
+        
+        // step 2: check condition
+        for(int i = 0; i < n; i++) {
+            int h = n - i;
+            
+            if(citations[i] >= h) {
+                return h;
             }
         }
-
-        return ans.toString();
+        
+        return 0;
     }
-
-    public static void main(String[] args) {
-        Solution sol = new Solution();
-        int num = 1994;
-        System.out.println(sol.intToRoman(num));
-    } 
 }
